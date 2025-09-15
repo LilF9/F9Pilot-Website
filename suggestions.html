@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback & Suggestions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .container {
+            max-width: 800px;
+        }
+        .required::after {
+            content: '*';
+            color: #ef4444; /* red-500 */
+            margin-left: 4px;
+        }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'frontier-green': '#008467',
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body class="bg-gray-100 p-4 sm:p-8 flex items-center justify-center min-h-screen">
+    <div class="container mx-auto bg-white p-6 md:p-10 rounded-xl shadow-lg">
+        <a href="index.html" class="inline-block px-4 py-2 text-sm text-frontier-green font-semibold rounded-lg hover:underline transition-colors duration-300 mb-4">
+            ← Back to Main Menu
+        </a>
+        <header class="text-center mb-6">
+            <h1 class="text-2xl font-bold text-gray-800">Feedback & Suggestions</h1>
+        </header>
+        <section>
+            <p class="text-sm font-medium text-gray-600 mb-6 leading-relaxed">
+                Fill out the form below for feedback, suggestions, or improvements. If you want a reply, be sure to include your contact information. If you don't hear back in a few days, check your spam filter.
+            </p>
+            <form id="feedbackForm" class="space-y-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700 required">Name</label>
+                    <input type="text" id="name" name="from_name" required 
+                      class="mt-1 block w-full rounded-md border-gray-300 shadow-sm 
+                            focus:border-frontier-green focus:ring focus:ring-frontier-green 
+                            focus:ring-opacity-50 text-sm p-2">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 required">Email</label>
+                    <input type="email" id="email" name="reply_to" required 
+                      class="mt-1 block w-full rounded-md border-gray-300 shadow-sm 
+                            focus:border-frontier-green focus:ring focus:ring-frontier-green 
+                            focus:ring-opacity-50 text-sm p-2">
+                </div>
+                <div>
+                    <label for="feedback" class="block text-sm font-medium text-gray-700 required">
+                        Please write any feedback, suggestions, or improvements below
+                    </label>
+                    <textarea id="feedback" name="message" rows="6" required 
+                      class="mt-1 block w-full rounded-md border-gray-300 shadow-sm 
+                            focus:border-frontier-green focus:ring focus:ring-frontier-green 
+                            focus:ring-opacity-50 text-sm p-2"></textarea>
+                <div id="submissionMessage" 
+                     class="hidden text-center text-sm font-semibold text-frontier-green">
+                    ✅ Submission sent! Thank you for your feedback.
+                </div>
+                <input type="submit" id="button" value="Send Feedback"
+                  class="w-full px-4 py-2 bg-frontier-green text-white font-semibold 
+                         rounded-md shadow-md hover:bg-frontier-green-dark 
+                         transition-colors duration-300">
+            </form>
+            <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+            <script>
+                // Initialize EmailJS with your Public Key
+                emailjs.init("AmYpT3SBVg3F2gpG1"); 
+                const form = document.getElementById("feedbackForm");
+                const button = document.getElementById("button");
+                const submissionMessage = document.getElementById("submissionMessage");
+                form.addEventListener("submit", function(event) {
+                    event.preventDefault();
+                    // Get the reCAPTCHA response token
+                    const recaptchaResponse = grecaptcha.getResponse();
+                    // Check if the response is empty
+                    if (!recaptchaResponse.length > 0) {
+                        alert("Please complete the reCAPTCHA to prove you're not a robot.");
+                        return; // Stop the form submission
+                    }
+                    button.value = "Sending...";
+                    emailjs.sendForm("service_qv5gayp", "template_1qmgg9f", form)
+                        .then(() => {
+                            button.value = "Send Feedback";
+                            submissionMessage.classList.remove("hidden");
+                            form.reset();
+                            // Reset the reCAPTCHA
+                            grecaptcha.reset();
+                            // Hide message after 3 seconds
+                            setTimeout(() => {
+                                submissionMessage.classList.add("hidden");
+                            }, 3000);
+                        }, (err) => {
+                            button.value = "Send Feedback";
+                            alert("Failed to send: " + JSON.stringify(err));
+                        });
+                });
+            </script>
+        </section>
+    </div>
+</body>
+</html>

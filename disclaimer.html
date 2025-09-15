@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .container {
+            max-width: 800px;
+        }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'frontier-green': '#008467',
+            },
+          },
+        },
+      };
+    </script>
+</head>
+<body class="bg-gray-100 p-4 sm:p-8 flex items-center justify-center min-h-screen">
+    <div class="container mx-auto bg-white p-6 md:p-10 rounded-xl shadow-lg text-center">
+
+        <!-- Back to Menu Button -->
+        <a href="index.html" class="inline-block px-4 py-2 text-sm text-frontier-green font-semibold rounded-lg hover:underline transition-colors duration-300 mb-4">
+            ← Back to Main Menu
+        </a>
+
+        <!-- Shoutout to NKpilot -->
+        <div class="bg-gray-100 p-4 rounded-lg border border-gray-200 mb-6">
+            <p class="text-xs text-gray-600">A special thank you to NKpilot for giving me permission to use his website's design style as inspiration for this project.</p>
+        </div>
+
+        <!-- Header Section -->
+        <header class="text-center mb-6">
+            <h1 class="text-2xl font-bold text-gray-800">Disclaimer</h1>
+        </header>
+
+        <!-- Disclaimer Content -->
+        <section class="text-sm text-gray-600 leading-relaxed space-y-4 text-left">
+            <p>This site is provided free of charge and contains no advertising or pay-per-click revenue.</p>
+            <p>No personal information is collected, stored, or used from visitors. Any donation links shared are solely to support pilots and their families in need. If you would like a campaign posted, please email <a href="mailto:F9PilotWebsite@gmail.com" class="text-frontier-green hover:underline">F9PilotWebsite@gmail.com</a>.</p>
+            
+            <div class="pt-4 mt-4 border-t border-gray-200">
+                <p>
+                    This site is an independent resource. The views expressed are solely those of the author and are not endorsed, sponsored, or affiliated with Frontier Airlines, ALPA, or any other company, service, or organization referenced.
+                </p>
+                <p class="mt-2">
+                    All images, logos, and trademarks are the property of their respective owners.
+                </p>
+            </div>
+
+            <p class="font-bold mt-6">&copy; 2025 F9Pilot.com</p>
+        </section>
+    </div>
+</body>
+</html>

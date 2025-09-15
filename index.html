@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F9 Pilot Hub</title>
+    <link rel="icon" href="favicon.png">
+    <style>
+        :root {
+            --f9-green: #008467;
+            --f9-dark-green: #005f4a;
+            --f9-light-green-bg: #e6f2ee;
+            --f9-dark-gray: #333;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            background-color: var(--f9-light-green-bg);
+            color: var(--f9-dark-gray);
+            margin: 0;
+            padding: 15px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        header {
+            padding: 30px 0;
+        }
+
+        header h1 {
+            color: var(--f9-dark-green);
+            font-weight: 700;
+            font-size: 2.2em;
+            margin: 0;
+        }
+        
+        header p {
+            color: #555;
+            font-size: 1em;
+            margin-top: 8px;
+            /* Change this value to decrease the space */
+            margin-bottom: 5px; 
+        }
+
+        .category {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+            padding: 15px;
+            /* Change this value to decrease the space */
+            margin-bottom: 10px; 
+        }
+
+        .category-title {
+            color: var(--f9-green);
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-top: 0;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            justify-items: center;
+        }
+
+        .grid-item {
+            text-decoration: none;
+            color: #555;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-radius: 8px;
+            padding: 8px;
+            text-align: center;
+        }
+        
+        .grid-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        .grid-item span {
+            font-size: 0.85em;
+            font-weight: 500;
+            color: var(--f9-dark-green);
+        }
+        
+        .text-links-section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .text-links-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .text-links-section li:not(:last-child)::after {
+            content: "|";
+            padding-left: 15px;
+            color: #ccc;
+        }
+
+        .text-links-section ul li a {
+            text-decoration: none;
+            color: var(--f9-dark-green);
+            font-weight: 600;
+            font-size: 1em;
+            transition: color 0.2s;
+        }
+
+        .text-links-section ul li a:hover {
+            color: var(--f9-green);
+            text-decoration: underline;
+        }
+
+        footer {
+            margin-top: 30px;
+            color: #888;
+            font-size: 0.75em;
+            position: relative;
+        }
+
+        footer a {
+            color: #888;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .version-info {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            font-size: 0.75em;
+        }
+        
+        .version-info a {
+            color: #888;
+            text-decoration: none;
+        }
+
+        .version-info a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome, Frontier Pilots!</h1>
+            <p>Your one-stop hub for everything you need. Click an icon below to get started. ✈️</p>
+        </header>
+
+        <div class="category" id="bidding-schedule">
+            <h2 class="category-title">Bidding & Scheduling</h2>
+            <div class="grid-container">
+                <a class="grid-item" href="pbs_timeline.html">
+                    <img src="Normal Bid Timeline.png" alt="Normal Bid Timeline">
+                    <span>Bid Timeline</span>
+                </a>
+                <a class="grid-item" href="https://frontier.flica.net/ui/public/login/index.html" target="_blank">
+                    <img src="FLICA.png" alt="FLICA">
+                    <span>FLICA</span>
+                </a>
+                <a class="grid-item" href="https://fft.pbs.vmc.navblue.cloud/webapp/#/login" target="_blank">
+                    <img src="PBS.png" alt="NavBlue PBS">
+                    <span>NavBlue PBS</span>
+                </a>
+                <a class="grid-item" href="https://www.myfrontier.org/cvpn/http/www.myfrontier.org/" target="_blank">
+                    <img src="MyFrontier9.png" alt="My Frontier">
+                    <span>My Frontier</span>
+                </a>
+                <a class="grid-item" href="https://www.myfrontier.org/cvpn/http/78340-cprctweb.flyfrontier.com/crewweb/" target="_blank">
+                    <img src="SabreCrewTrac.png" alt="Sabre Crew Trac">
+                    <span>Crew Trac</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="category" id="travel-benefits">
+            <h2 class="category-title">Travel & Benefits</h2>
+            <div class="grid-container">
+                <a class="grid-item" href="https://www.id90travel.com/" target="_blank">
+                    <img src="id90.png" alt="ID90 Travel">
+                    <span>ID90 Travel</span>
+                </a>
+                <a class="grid-item" href="http://www.myidtravel.com/" target="_blank">
+                    <img src="myid.png" alt="myIDTravel">
+                    <span>myIDTravel</span>
+                </a>
+                <a class="grid-item" href="https://compass.empyreanbenefits.com/f9benefits" target="_blank">
+                    <img src="frontierBenefits.png" alt="Frontier Benefits">
+                    <span>Benefits Center</span>
+                </a>
+                <a class="grid-item" href="https://api2.apicrewcare.com/Main/login.aspx" target="_blank">
+                    <img src="api.png" alt="My Crew Care">
+                    <span>MyCrewCare</span>
+                </a>
+                <a class="grid-item" href="https://www.healthsafe-id.com/rt/login/myuhc/en" target="_blank">
+                    <img src="UHC.png" alt="United Health Care">
+                    <span>United Healthcare</span>
+                </a>
+                <a class="grid-item" href="https://www.healthsafe-id.com/rt/login/optumints/en" target="_blank">
+                    <img src="optum.png" alt="Optum HSA">
+                    <span>HSA</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="category" id="company-resources">
+            <h2 class="category-title">Company & Union</h2>
+            <div class="grid-container">
+                <a class="grid-item" href="https://fft.alpa.org/Portals/94/Documents/contract/fft_cba_loa31_compressed.pdf" target="_blank">
+                    <img src="2019CBA.png" alt="Frontier 2019 CBA">
+                    <span>2019 CBA</span>
+                </a>
+                <a class="grid-item" href="https://fft.alpa.org/" target="_blank">
+                    <img src="FFT MEC.png" alt="Frontier ALPA MEC">
+                    <span>FFT ALPA MEC</span>
+                </a>
+                <a class="grid-item" href="https://fft.prosafet.com/home" target="_blank">
+                    <img src="frontierASAP.png" alt="Frontier ASAP/Safety">
+                    <span>ASAP / Safety</span>
+                </a>
+                <a class="grid-item" href="http://dart.alpa.org/" target="_blank">
+                    <img src="DART.png" alt="ALPA DART">
+                    <span>ALPA DART</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="category" id="training-tools">
+            <h2 class="category-title">Training & Guides</h2>
+            <div class="grid-container">
+                <a class="grid-item" href="https://frontier.mint-online.com/frontier/" target="_blank">
+                    <img src="frontierMintTrainingPortal.png" alt="Mint Training Portal">
+                    <span>Mint Training</span>
+                </a>
+                <a class="grid-item" href="https://app.schoox.com/login.php" target="_blank">
+                    <img src="frontierSchoox.png" alt="Frontier Schoox">
+                    <span>SchooX</span>
+                </a>
+                <a class="grid-item" href="https://login-us.vistair.com/login" target="_blank">
+                    <img src="docunet.png" alt="DocuNet">
+                    <span>DocuNet</span>
+                </a>
+                <a class="grid-item" href="Frontier Pilot Guide.html">
+                    <img src="New Hires.png" alt="New Hire Getting Started Guide">
+                    <span>New Hire Guide</span>
+                </a>
+                <a class="grid-item" href="http://www.a320guide.com/" target="_blank">
+                    <img src="a320.png" alt="A320 Free Guide">
+                    <span>A320 Guide</span>
+                </a>
+                <a class="grid-item" href="finances.html">
+                    <img src="finaces.png" alt="Pilot Finance Guide">
+                    <span>Finance Guide</span>
+                </a>
+                <a class="grid-item" href="https://radio.arinc.net/atlantic/" target="_blank">
+                    <img src="arincphoto.png" alt="Arinc HF Assignments">
+                    <span>ARINC HF</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="category" id="crew-support">
+            <h2 class="category-title">Crew Support & Pay</h2>
+            <div class="grid-container">
+                <a class="grid-item" href="https://flyfrontier.coupahost.com/" target="_blank">
+                    <img src="Expenses.png" alt="Coupa Expenses">
+                    <span>Expenses</span>
+                </a>
+                <a class="grid-item" href="https://n22.ultipro.com/Login.aspx" target="_blank">
+                    <img src="frontierulti.png" alt="Frontier UltiPro">
+                    <span>UltiPro Pay Stubs</span>
+                </a>
+                <a class="grid-item" href="pilothelp.html">
+                    <img src="PLEASE HELP.png" alt="Pilot Help">
+                    <span>Team Members in Need💚</span>
+                </a>
+                <a class="grid-item" href="http://workplace.schwab.com/" target="_blank">
+                    <img src="401k.png" alt="Schwab 401k">
+                    <span>Schwab 401k</span>
+                </a>
+                <a class="grid-item" href="https://www.frontier-crewpay.elpportal.com/login" target="_blank">
+                    <img src="frontierpayreport.png" alt="Frontier Pay Report">
+                    <span>Pay Report</span>
+                </a>
+                <a class="grid-item" href="https://www.crewportal.elpportal.com/login" target="_blank">
+                    <img src="elp.png" alt="ELP">
+                    <span>ELP Portal</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="category" id="other-links">
+            <h2 class="category-title">Pilot Perks & More</h2>
+            <div class="grid-container">
+                <a class="grid-item" href="https://www.mandhuniforms.com/account/login?company=fro" target="_blank">
+                    <img src="MHuniforms.png" alt="M & H Uniforms">
+                    <span>M & H Uniforms</span>
+                </a>
+                <a class="grid-item" href="https://thefrontierstore.com/" target="_blank">
+                    <img src="frontierswag.png" alt="Frontier Swag">
+                    <span>Frontier Swag</span>
+                </a>
+                <a class="grid-item" href="https://www.onepassselect.com/" target="_blank">
+                    <img src="onepass.png" alt="One Pass Select">
+                    <span>One Pass Select</span>
+                </a>
+                <a class="grid-item" href="https://www.myfrontier.org/cvpn/https/pslogin.perkspot.com/login?communityId=1131" target="_blank">
+                    <img src="discounts.png" alt="Perk Spots Discounts">
+                    <span>Discounts</span>
+                </a>
+                <a class="grid-item" href="https://www.aviationmedicine.com/medication-database/" target="_blank">
+                    <img src="AMAS.png" alt="AMAS">
+                    <span>AMAS</span>
+                </a>
+                <a class="grid-item" href="https://www.fftpilots.com/" target="_blank">
+                    <img src="FFTPilots.png" alt="FFT Pilots">
+                    <span>FFT Pilots</span>
+                </a>
+                <a class="grid-item" href="https://www.crewtel-usa.com/" target="_blank">
+                    <img src="crewtel.png" alt="CrewTel">
+                    <span>CrewTel</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="text-links-section">
+            <h2 class="category-title">Additional Resources</h2>
+            <ul>
+                <li><a href="flica-codes.html">FLICA Pay Codes</a></li>
+                <li><a href="travelpriv.html">Travel Agreements</a></li>
+                <li><a href="ConfidentialInfo.html">Confidential Information</a></li>
+                <li><a href="https://safetyfirst.airbus.com/" target="_blank">Airbus Safety Magazine</a></li>
+            </ul>
+        </div>
+        
+        <footer>
+            <p style="margin-top: 8px; font-size: 12px; color: #888; font-style: italic;">
+                *For links to myfrontier.org, you'll need to log in and then re-click the link on this page to be directed to the correct destination.*
+            </p>
+            <p><a href="disclaimer.html">Disclaimer</a> | <a href="suggestions.html">Feedback or Suggestions</a></p>
+            <p>&copy;2025 F9Pilot.com</p>
+        </footer>
+    </div>
+
+    <div class="version-info">
+        <a href="changelogs.html">Version 1.3</a>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confidential Information</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .container {
+            max-width: 800px;
+        }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'frontier-green': '#008467',
+              'frontier-green-dark': '#00745a',
+              'frontier-green-light': '#c2f0e6'
+            },
+          },
+        },
+      };
+    </script>
+</head>
+<body class="bg-gray-100 p-4 sm:p-8 flex items-center justify-center min-h-screen">
+
+    <div class="container mx-auto bg-white p-6 md:p-10 rounded-xl shadow-lg">
+
+        <!-- Header Section -->
+        <header class="text-center mb-10">
+            <div class="flex justify-between items-center mb-4">
+                <a id="home-button" href="index.html" class="px-4 py-2 bg-frontier-green text-white font-semibold rounded-md shadow-md hover:bg-frontier-green-dark transition-colors duration-300 text-xs">
+                    Back to main menu
+                </a>
+                <a id="logout-button" href="#" class="hidden px-4 py-2 bg-red-500 text-white font-semibold rounded-md shadow-md hover:bg-red-600 transition-colors duration-300 text-xs">
+                    Logout
+                </a>
+            </div>
+            <img src="https://placehold.co/200x60/008467/000?text=FRONTIER" alt="Frontier Logo" class="mx-auto h-12 mb-4">
+            <h1 class="text-2xl font-bold text-gray-800">CONFIDENTIAL INFORMATION</h1>
+            <p class="text-sm font-medium text-gray-500">Pilot Reference</p>
+        </header>
+
+        <!-- Confidential Information Section - Login Form -->
+        <section id="confidential-login" class="mb-8">
+            <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                <p class="text-sm text-gray-700 leading-relaxed mb-4">This section contains information pilots should have on hand but which is not public. Please enter the access code to view it.</p>
+                
+                <form id="access-form" class="space-y-4">
+                    <label for="access-code" class="block text-sm font-medium text-gray-700">What approach plates does Frontier use?</label>
+                    <input type="password" id="access-code" class="w-full rounded-md border-gray-300 shadow-sm focus:border-frontier-green focus:ring focus:ring-frontier-green-light focus:ring-opacity-50 text-sm p-2" placeholder="Enter code here...">
+                    <button type="submit" class="w-full px-4 py-2 bg-frontier-green text-white font-semibold rounded-md shadow-md hover:bg-frontier-green-dark transition-colors duration-300">
+                        Submit
+                    </button>
+                    <p id="feedback-message" class="text-sm text-center font-medium"></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Confidential Information Section - Content -->
+        <section id="confidential-content" class="hidden">
+            <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                <h3 class="text-xl font-semibold text-gray-700 border-b-2 border-frontier-green pb-2 mb-4">CONFIDENTIAL INFORMATION</h3>
+                
+                <p class="text-sm text-gray-800 leading-relaxed mb-6">
+                    Frontier Airlines uses **LIDO** charts.
+                </p>
+
+                <h4 class="text-lg font-semibold text-gray-700 mb-2">Miscellaneous</h4>
+                <div class="bg-white p-4 rounded-lg shadow-inner">
+                    <ul class="list-disc list-inside space-y-2 text-sm text-gray-600">
+                        <li>
+                            <span class="font-semibold">TPA Shuttle Digital Pass:</span> <a href="https://app.tampaairport.com/digitalpass.html" class="text-frontier-green hover:underline" target="_blank">https://app.tampaairport.com/digitalpass.html</a>
+                        </li>
+                        <li>
+                            <span class="font-semibold">IT Requests:</span> 720-374-4400
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mt-8">
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        <span class="font-bold">Suggestions for things to add?</span> Email <a href="mailto:F9PilotWebsite@gmail.com" class="text-frontier-green hover:underline">F9PilotWebsite@gmail.com</a>
+                    </p>
+                </div>
+
+                <h4 class="text-lg font-semibold text-gray-700 mt-8 mb-2">OPS Phone Numbers</h4>
+                <div class="bg-white p-4 rounded-lg shadow-inner overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    City
+                                </th>
+                                <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Phone Number
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">ATL</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500">555-555-5555</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">CLE</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500">555-555-5555</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">CVG</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500">555-555-5555</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">DEN</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500">555-555-5555</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">DFW</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500">555-555-5555</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">LAS</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500">555-555-5555</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">MCO</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500">555-555-5555</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">MDW</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500">555-555-5555</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">MIA</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500">555-555-5555</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">ORD</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500">555-555-5555</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">PHL</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500">555-555-5555</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">PHX</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500">555-555-5555</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">TPA</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500">555-555-5555</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-8">
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        <span class="font-bold">MORE OPS PHONES NEEDED!</span> Email <a href="mailto:F9PilotWebsite@gmail.com" class="text-frontier-green hover:underline">F9PilotWebsite@gmail.com</a> if you have an ops phone for a station not listed here.
+                    </p>
+                </div>
+                
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Get the relevant HTML elements
+        const loginSection = document.getElementById('confidential-login');
+        const confidentialContent = document.getElementById('confidential-content');
+        const accessCodeInput = document.getElementById('access-code');
+        const feedbackMessage = document.getElementById('feedback-message');
+        const logoutButton = document.getElementById('logout-button');
+
+        // Add an event listener to the access form for submission
+        document.getElementById('access-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const correctCode = 'LIDO';
+            const submittedCode = accessCodeInput.value.trim().toUpperCase();
+
+            // Check if the submitted code is correct
+            if (submittedCode === correctCode) {
+                // Hide the login section and show the confidential content
+                loginSection.classList.add('hidden');
+                confidentialContent.classList.remove('hidden');
+                logoutButton.classList.remove('hidden');
+            } else {
+                // Display an error message for incorrect code
+                feedbackMessage.textContent = 'Incorrect code. Please try again.';
+                feedbackMessage.classList.add('text-red-600');
+                feedbackMessage.classList.remove('text-green-600');
+            }
+        });
+
+        // Add an event listener to the logout button
+        logoutButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the page from reloading
+
+            // Hide the confidential content and show the login section
+            confidentialContent.classList.add('hidden');
+            loginSection.classList.remove('hidden');
+            logoutButton.classList.add('hidden');
+
+            // Clear the access code input and feedback message for a clean slate
+            accessCodeInput.value = '';
+            feedbackMessage.textContent = '';
+            feedbackMessage.classList.remove('text-red-600');
+        });
+    </script>
+
+</body>
+</html>
