@@ -26,6 +26,11 @@
         .container {
             max-width: 800px;
         }
+        /* Add this new rule to your style block */
+        .digital-pass-link {
+            word-break: break-all;
+            overflow-wrap: break-word;
+        }
     </style>
     <script>
       tailwind.config = {
@@ -89,7 +94,7 @@
                 <div class="bg-white p-4 rounded-lg shadow-inner">
                     <ul class="list-disc list-inside space-y-2 text-sm text-gray-600">
                         <li>
-                            <span class="font-semibold">TPA Shuttle Digital Pass:</span> <a href="https://app.tampaairport.com/digitalpass.html" class="text-frontier-green hover:underline" target="_blank">https://app.tampaairport.com/digitalpass.html</a>
+                            <span class="font-semibold">TPA Shuttle Digital Pass:</span> <a href="https://app.tampaairport.com/digitalpass.html" class="text-frontier-green hover:underline digital-pass-link" target="_blank">https://app.tampaairport.com/digitalpass.html</a>
                         </li>
                     </ul>
                 </div>

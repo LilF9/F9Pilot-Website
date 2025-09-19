@@ -179,12 +179,12 @@
         }
 
         .modal-content {
-            background-color: #fefefe;
-            padding: 20px;
-            border-radius: 8px;
+            background-color: #fff;
+            padding: 13px;
+            border-radius: 12px;
             width: 90%;
-            max-width: 600px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             position: relative;
             text-align: center;
         }
@@ -197,6 +197,8 @@
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
+            @apply hover:text-gray-700 transition-colors duration-200;
+
         }
 
         .modal-title {
@@ -214,8 +216,8 @@
         .image-container {
             display: flex;
             justify-content: space-around;
+            align-items: center;
             gap: 20px;
-            flex-wrap: wrap;
         }
 
         .modal-image {
@@ -245,7 +247,7 @@
         }
 
         .modal-image-fixed:hover {
-            border-color: #007bff;
+            border-color: #008467;
         }
 
         .image-container {
@@ -254,6 +256,29 @@
             justify-content: center; /* Horizontally centers the items */
             gap: 70px; /* Adjust this to change spacing between items */
         }
+
+        /* This targets all links within the div that has the class "modal-content" */
+        .modal-content a {
+            text-decoration: none; /* This removes the underline from all links */
+        }
+
+        /* This adds a subtle underline back when a user hovers over the link, for better usability */
+        .modal-content a:hover {
+            text-decoration: underline; 
+        }
+        
+        /* This new style block contains only the Tailwind rules you need */
+        .text-xs {
+        font-size: 0.75rem;
+        line-height: 1rem;
+        }
+        .text-gray-500 {
+        color: #6b7280;
+        }
+        .mt-2 {
+        margin-top: 0.5rem;
+        }
+
     </style>
 </head>
 
@@ -468,18 +493,18 @@
     <div id="f9sowebModal" class="modal-overlay">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
-            <h2 class="modal-title">Station Operations Login</h2>
-            <p class="modal-text">1st log in to MyFrontier. 2nd return here and click the second link to go to Station Ops.</p>
+            <h2 class="modal-title text-2xl font-bold mb-4">Station Operations Login</h2>
+            <p class="text-gray-600 mb-6">1st log in to MyFrontier. 2nd return here and click the second link to go to Station Ops.</p>
             
             <div class="image-container">
                 <a href="https://www.myfrontier.org/cvpn/http/www.myfrontier.org/" target="_blank">
                     <img src="MyFrontier9.png" alt="Step 1: Log In" class="modal-image-fixed">
-                    <p class="image-caption">Step 1: My Frontier Log In</p>
+                    <p class="text-xs text-gray-500 mt-2">Step 1: My Frontier Log In</p>
                 </a>
 
                 <a href="https://www.myfrontier.org/cvpn/http/socappmcwebp01/F9SOWeb" target="_blank">
                     <img src="f9soweb.png" alt="Step 2: Go to Station Ops" class="modal-image-fixed">
-                    <p class="image-caption">Step 2: Go to Station Ops</p>
+                    <p class="text-xs text-gray-500 mt-2">Step 2: Station Ops</p>
                 </a>
             </div>
         </div>
