@@ -61,28 +61,40 @@
 
             <div class="space-y-6">
                 <!-- Ben Pratt Campaign -->
-                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm">
-                    <h3 class="text-lg font-bold text-gray-800 mb-2">Help for MCO-based Captain Ben Pratt and his family</h3>
-                    <p class="text-sm text-gray-600 mb-3">Posted on: <strong>June 14, 2025</strong></p>
-                    <p class="text-sm font-semibold text-gray-700 leading-relaxed mb-4">
-                        A message from the family:
-                    </p>
-                    <p class="text-sm text-gray-700 leading-relaxed mb-4">
-                        Last spring Ben was diagnosed with a rare abdominal cancer, rhabdomyosarcoma. The tumor grew large and fast. Over the past year Ben has gone through a series of treatments and was able to eventually have the tumor removed. Unfortunately, the damage to Ben’s stomach from the treatments and surgery was significant, causing issues with his ability to eat. Doctors have been working closely with the Pratt’s to find a long-term solution. Everyone was very optimistic that he was nearing the end of his cancer journey. He was looking forward to returning to work and getting back to life as normal.
-                    </p>
-                    <p class="text-sm text-gray-700 leading-relaxed mb-4">
-                        Unfortunately, over the past few weeks, May/early June, Ben began having significant abdominal pain again. Friday, June 6th, Ben’s mom drove him down to Moffitt in Tampa, hoping to help resolve his pain. Upon being admitted, tests reveled that the tumor growth had returned, more aggressive than it had been previously. In addition, they found that the scar tissue in what remained of his stomach was too significant for any viable, long-term nutritional options. On Wednesday, June 11th, the Pratt family made the incredibly difficult decision to move Ben to hospice. Their incredible network of friends were able to help move him into a hospice facility close to home.
-                    </p>
-                    <p class="text-sm text-gray-700 leading-relaxed mb-4">
-                        If you know the Pratt family, you know how amazing they are and how big their hearts are. They’ve always been the ones to show up for others - with love, with laughter, with kindness. Now it’s our turn to show up for them.
-                    </p>
-                    <p class="text-sm text-gray-700 leading-relaxed mb-4">
-                        Ben, Lindsey and the kids are beyond thankful for the love and support they have received and continue to receive. Thank you all.
-                    </p>
-                    <a href="https://www.gofundme.com/f/lets-back-the-pratts" class="inline-block px-4 py-2 bg-frontier-green text-white font-semibold rounded-md shadow-md hover:bg-green-700 transition-colors duration-300 text-sm" target="_blank">
-                        Donate to this campaign
-                    </a>
-                </div>
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm">
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Help for MCO-based Captain Ben Pratt and his family</h3>
+                        <p class="text-sm text-gray-600 mb-3">Posted on: <strong>June 14, 2025</strong></p>
+                        <p class="text-sm font-semibold text-gray-700 leading-relaxed mb-4">
+                            A message from the family:
+                        </p>
+
+                        <div id="preview-text-1" class="text-sm text-gray-700 leading-relaxed mb-4">
+                            Last spring Ben was diagnosed with a rare abdominal cancer, rhabdomyosarcoma. The tumor grew large and fast. Over the past year Ben has gone through a series of treatments...
+                        </div>
+
+                        <div id="full-text-1" class="hidden">
+                            <p class="text-sm text-gray-700 leading-relaxed mb-4">
+                                Last spring Ben was diagnosed with a rare abdominal cancer, rhabdomyosarcoma. The tumor grew large and fast. Over the past year Ben has gone through a series of treatments and was able to eventually have the tumor removed. Unfortunately, the damage to Ben’s stomach from the treatments and surgery was significant, causing issues with his ability to eat. Doctors have been working closely with the Pratt’s to find a long-term solution. Everyone was very optimistic that he was nearing the end of his cancer journey. He was looking forward to returning to work and getting back to life as normal.
+                            </p>
+                            <p class="text-sm text-gray-700 leading-relaxed mb-4">
+                                Unfortunately, over the past few weeks, May/early June, Ben began having significant abdominal pain again. Friday, June 6th, Ben’s mom drove him down to Moffitt in Tampa, hoping to help resolve his pain. Upon being admitted, tests reveled that the tumor growth had returned, more aggressive than it had been previously. In addition, they found that the scar tissue in what remained of his stomach was too significant for any viable, long-term nutritional options. On Wednesday, June 11th, the Pratt family made the incredibly difficult decision to move Ben to hospice. Their incredible network of friends were able to help move him into a hospice facility close to home.
+                            </p>
+                            <p class="text-sm text-gray-700 leading-relaxed mb-4">
+                                If you know the Pratt family, you know how amazing they are and how big their hearts are. They’ve always been the ones to show up for others - with love, with laughter, with kindness. Now it’s our turn to show up for them.
+                            </p>
+                            <p class="text-sm text-gray-700 leading-relaxed mb-4">
+                                Ben, Lindsey and the kids are beyond thankful for the love and support they have received and continue to receive. Thank you all.
+                            </p>
+                        </div>
+
+                            <div class="flex flex-col items-start justify-center mt-4 space-y-2">
+                                <button id="toggle-button-1" class="text-frontier-green font-semibold hover:underline text-sm">
+                                    Read more
+                                </button>
+                            <a href="https://www.gofundme.com/f/lets-back-the-pratts" class="px-3 py-1.5 bg-frontier-green text-white font-semibold rounded-md shadow-md hover:bg-green-700 transition-colors duration-300 text-xs" target="_blank">
+                                Donate to this campaign
+                            </a>
+                            </div>
             </div>
         </section>
 
@@ -94,5 +106,31 @@
         </section>
 
     </div>
+    <script>
+    function setupReadMore(buttonId, previewId, fullId) {
+        const toggleBtn = document.getElementById(buttonId);
+        const previewText = document.getElementById(previewId);
+        const fullText = document.getElementById(fullId);
+
+        toggleBtn.addEventListener('click', () => {
+            // Toggle the visibility of the full text
+            fullText.classList.toggle('hidden');
+
+            // Change the button text based on visibility
+            if (fullText.classList.contains('hidden')) {
+                toggleBtn.textContent = 'Read more';
+                previewText.classList.remove('hidden');
+            } else {
+                toggleBtn.textContent = 'Read less';
+                previewText.classList.add('hidden');
+            }
+        });
+    }
+
+    // Call the function for each campaign on your page
+    setupReadMore('toggle-button-1', 'preview-text-1', 'full-text-1');
+    // If you add another campaign, you would add a new call here:
+    // setupReadMore('toggle-button-2', 'preview-text-2', 'full-text-2');
+</script>
 </body>
 </html>
