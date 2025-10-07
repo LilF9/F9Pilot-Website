@@ -32,6 +32,35 @@
             color: #008467;
             font-weight: bold;
         }
+                .tooltip {
+            border-bottom: 1px dotted #000000; /* dotted underline to hint hover */
+            cursor: help;                     /* pointer changes to a help cursor */
+            position: relative;
+        }
+
+        .tooltip:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            background: #333;
+            color: #fff;
+            padding: 6px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: normal;
+            width: 220px;
+            bottom: 125%;                      /* show above text */
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 1;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .tooltip::after {
+            content: '';
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
     </style>
 </head>
 <body class="bg-gray-100 p-4 sm:p-8 text-gray-900">
@@ -82,7 +111,11 @@
                 <div>
                     <h4 class="text-lg font-semibold">Compensation & Pay (CBA Sections 3, 26, 4) 💰</h4>
                     <ul class="list-disc list-inside space-y-2 text-sm text-gray-800">
-                        <li><strong class="dark-green-text">Monthly Guarantee:</strong> Line holders have a typical credit window of ~71–85 hours, which can be reduced by unpaid drops or leave. <strong class="dark-green-text">Reserve</strong> pilots are guaranteed at least <strong class="dark-green-text">75 hours of pay per month</strong> or their credited hours, whichever is higher. Extra pay can be earned by flying over eight hours on certain legs, working on a day off, or taking extra trips.</li>
+                        <li>
+                        <strong class="dark-green-text">Monthly Guarantee:</strong> 
+                        Both <strong class="dark-green-text">Line Holders</strong> and <strong class="dark-green-text">Reserve</strong> pilots are guaranteed <strong class="dark-green-text">75 hrs/month</strong> or their actual credit, whichever is higher. 
+                        Extra pay comes from >8-hr legs, day-off flying, or picking up extra trips.
+                        </li>
                         <li><strong class="dark-green-text">Overtime Pay:</strong> All Pay Credit over 82 hours a month is paid at 125%.</li>
                         <li><strong class="dark-green-text">Pay Rigs:</strong> The CBA includes "Trip Rig" (pay for time away from base) and "Duty Rig" (minimum pay for certain trips) to ensure fair compensation.</li>
                     </ul>
@@ -99,19 +132,33 @@
                 <div>
                     <h4 class="text-lg font-semibold">Reserve - General Information (CBA Section 25.R) 📝</h4>
                     <p class="text-sm text-gray-800 leading-relaxed">
-                        New pilots will likely spend time on <strong class="dark-green-text">Reserve</strong>. Short Call Reserves must report to their home airport within <strong class="dark-green-text">2 hours</strong> of a call. You only need to be available during your assigned <strong class="dark-green-text">Reserve Duty Period (RDP)</strong>. If you miss a call, return it within <strong class="dark-green-text">10 minutes</strong>.
+                        New pilots usually start on <strong class="dark-green-text">Reserve</strong>. 
+                        Short Call Reserves must report within <strong class="dark-green-text">2 hrs</strong> of a call and be available only during their assigned <strong class="dark-green-text">Reserve Duty Period RDP</strong>. 
+                        Missed calls must be returned within <strong class="dark-green-text">10 min</strong>.
                     </p>
                     <p class="text-sm text-gray-800 leading-relaxed mt-4">
-                        <strong class="font-bold" style="color:#000000;">Note:</strong> While the CBA provides the framework, actual times and critical dates are determined by the monthly PBS bid.
+                        <strong class="font-bold" style="color:#000000;">Note:</strong> While the CBA sets the framework, actual times and critical dates are determined by the monthly PBS bid.
                     </p>
                     <h5 class="font-bold text-sm mt-4">Reserve Duty Period Times (Local Domicile Time):</h5>
                     <ul class="list-disc list-inside text-sm text-gray-800 mt-2">
                         <li><span class="dark-green-text">RSV A:</span> 0300 - 1330. Latest release is 1700.</li>
                         <li>RSV B: 0800 - 1830. Latest release is 2200.</li>
                         <li><span class="dark-green-text">RSV C:</span> 1200 - 2230. Latest release is 0200.</li>
-                        <li><span class="dark-green-text">RSV D:</span> 1700 - 2400. Latest release is 0700 (except 0900 for CDO's).</li>
-                        <li>RSV E: 1900 - 0200. Latest release is 0900 (except 1100 for CDO's).</li>
-                    </ul>
+                        <li>
+                            <span class="dark-green-text">RSV D:</span> 1700 - 2400. Latest release is 0700 
+                            (except 0900 for 
+                            <span class="tooltip" data-tooltip="Continuous Duty Overnight — Overnight duty with less rest than normal.">
+                            CDO
+                            </span>’s).
+                        </li>
+                        <li>
+                            RSV E:</span> 1900 - 0200. Latest release is 0900 
+                            (except 1100 for 
+                            <span class="tooltip" data-tooltip="Continuous Duty Overnight — Overnight duty with less rest than normal.">
+                            CDO
+                            </span>’s).
+                        </li>    
+                </ul>
                     <p class="text-sm text-gray-800 leading-relaxed mt-4">
                         Only the <strong class="dark-green-text">A</strong>, <strong class="dark-green-text">C</strong>, and <strong class="dark-green-text">D</strong> RDPs are biddable. The <strong class="dark-green-text">B</strong> and <strong class="dark-green-text">E</strong> RDPs are assigned by Crew Scheduling.
                     </p>
@@ -119,7 +166,9 @@
 
                     <h4 class="text-lg font-semibold mt-6">FDO - Fixed Day Off Reserve Lines</h4>
                     <p class="text-sm text-gray-800 leading-relaxed">
-                        FDO lines are bid on FLICA and are like a block of <strong class="dark-green-text">Long Call Reserve (LCR)</strong> days. You don’t need to be on call at your home airport, but must have a 31-hour rest period every 7 days. FDO lines are predictable and cannot be used for Aggressive Reserve or dropped/swapped.                    </p>
+                        FDO lines, bid in FLICA, work like a block of <strong class="dark-green-text">Long Call Reserve (LCR)</strong> days. 
+                        You must be able to report within <strong class="dark-green-text">12 hours</strong> and get a 31-hour rest every 7 days. 
+                        FDO lines are fixed — not eligible for Aggressive Reserve or drops/swaps.
                     <ul class="list-disc list-inside space-y-2 text-sm text-gray-800 mt-2">
                         <li><strong class="dark-green-text">Call-out:</strong> The first day of the block is Long Call. Future days can be converted to Short Call with 12 hours' notice.</li>
                         <li><strong class="dark-green-text">Release:</strong> On the last day, you are released by 1000 LDT if no assignment. Assigned trips must end by 2359 LDT.</li>
@@ -130,16 +179,21 @@
                         Reserve pilots can proactively seek flying assignments by calling Scheduling before 1200 LDT the day prior to add their name to the list. Trips are then awarded by seniority.
                     </p>
 
-                    <h4 class="text-lg font-semibold mt-6">Aggressive Reserve</h4>
-                    <p class="text-sm text-gray-800 leading-relaxed">
-                        Eligible reserve pilots can <strong>pick up extra trips</strong> in FLICA (bidding closes 1:30 PM LDT). Trips are awarded by <strong>seniority</strong>—Short Call first, then Long Call—and <strong>cannot be declined</strong>. Pilots on FDO or 3x6 lines are <strong>not eligible</strong>.
-                    </p>
-                    <p class="text-sm text-gray-800 leading-relaxed mt-2">
-                        The main benefit is <strong>extra pay</strong>. Flying on scheduled reserve days counts toward your Monthly Pay Guarantee, and trips outside your reserve days or on days off are paid <strong>above guarantee</strong>.
-                    </p>
-                    <p class="text-sm text-gray-800 leading-relaxed mt-2">
-                        <strong>Example:</strong> If your reserve ends Friday and you pick up a trip through Sunday, Friday counts toward your guarantee, while Saturday and Sunday pay extra. Aggressive Reserve helps you earn more and build credit by flying on off days.
-                    </p>
+                        <h4 class="text-lg font-semibold mt-6">Aggressive Reserve</h4>
+                        <p class="text-sm text-gray-800 leading-relaxed">
+                            Reserve pilots can <strong>pick up extra trips</strong> in FLICA (bidding closes at 1:30 PM LDT). 
+                            Trips go by <strong>seniority</strong>—Short Call first, then Long Call—and <strong>can’t be turned down</strong>. 
+                            Pilots on FDO or 3×6 lines are <strong>not eligible</strong>.
+                        </p>
+                        <p class="text-sm text-gray-800 leading-relaxed mt-2">
+                            The big perk is <strong>extra pay</strong>. 
+                            Flying during your reserve days counts toward your monthly guarantee, 
+                            but any flying that goes past your reserve days or falls on days off is paid <strong>on top of your guarantee</strong>.
+                        </p>
+                        <p class="text-sm text-gray-800 leading-relaxed mt-2">
+                            <strong>Example:</strong> If your reserve ends Friday and you pick up a trip that runs through Sunday, 
+                            Friday’s hours count toward your guarantee, while Saturday and Sunday pay extra. 
+                        </p>
                     </div>
                     <div>
                     <h4 class="text-lg font-semibold mt-6">Reserve Drop/Trade/Swap</h4>
@@ -165,21 +219,97 @@
             </div>
         </section>
 
+                <hr class="section-divider my-8">
+<section class="mb-8">
+    <div class="max-w-4xl mx-auto">
+        
+        <h3 class="text-lg font-semibold border-b-2 border-[#008467] pb-2 mb-3 text-center">
+            Pay & Benefits Overview
+        </h3>
+
+        <div class="w-full md:w-3/5 lg:w-1/2 overflow-x-visible mx-auto">
+            <table class="w-full border border-gray-300 text-xs text-center">
+                <thead class="bg-[#008467] text-white">
+                    <tr>
+                        <th class="px-2 py-0.5 border border-gray-300 w-3/5">Item</th>
+                        <th class="px-2 py-0.5 border border-gray-300 w-2/5">Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="px-2 py-0.5 border border-gray-300">Reserve Hourly Minimum</td>
+                        <td class="px-2 py-0.5 border border-gray-300">75 hrs / month</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 py-0.5 border border-gray-300">Regular Hourly Guarantee</td>
+                        <td class="px-2 py-0.5 border border-gray-300">75 hrs / month</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 py-0.5 border border-gray-300">Minimum Days Off</td>
+                        <td class="px-2 py-0.5 border border-gray-300">12 per month</td>
+                    </tr>
+                    <tr>
+                    <td class="px-2 py-0.5 border border-gray-300">
+                        Daily / Duty Period Min
+                    </td>
+                    <td class="px-2 py-0.5 border border-gray-300">
+                        <span class="tooltip" data-tooltip="Split Time: Sometimes a pairing is split in domicile and credits under 5 hrs. You may see a 'fake' first leg like SJU-SJU. The TCRD shows the true credit.">
+                        5 hrs
+                        </span>
+                    </td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 py-0.5 border border-gray-300">Per-Diem Rate</td>
+                        <td class="px-2 py-0.5 border border-gray-300">$2.15 per hour</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 py-0.5 border border-gray-300">Deadhead Pay</td>
+                        <td class="px-2 py-0.5 border border-gray-300">100% of flight pay</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 py-0.5 border border-gray-300">Trip Rig</td>
+                        <td class="px-2 py-0.5 border border-gray-300">3.5:1 (hours vs. days)</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 py-0.5 border border-gray-300">Over 82 Hrs Pay</td>
+                        <td class="px-2 py-0.5 border border-gray-300">125% of hourly rate</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 py-0.5 border border-gray-300">Premium Pay</td>
+                        <td class="px-2 py-0.5 border border-gray-300">150% of hourly rate</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 py-0.5 border border-gray-300">DC Contribution</td>
+                        <td class="px-2 py-0.5 border border-gray-300">15% company match<br><span class="text-gray-500">401(k) retirement savings</span></td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 py-0.5 border border-gray-300">Holiday / Night Pay</td>
+                        <td class="px-2 py-0.5 border border-gray-300">Not offered</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 py-0.5 border border-gray-300">Profit Sharing</td>
+                        <td class="px-2 py-0.5 border border-gray-300">Not offered<br><span class="text-gray-500">Company-wide bonus plan</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
         <hr class="section-divider my-8">
 
-        <section class="mb-8">
-            <h3 class="text-xl font-semibold border-b-2 border-[#008467] pb-2 mb-4">Helpful Tips 💡</h3>
-            <ul class="list-disc list-inside space-y-4 text-sm text-gray-800">
-                <li><strong class="dark-green-text">Use Your Union Rep:</strong> Your reps are here to help. Don’t hesitate to send a DART or text your ALPA mentor—others on the committee can respond if one is busy.</li>
-                <li><strong class="dark-green-text">Stay Updated with Your MEC:</strong> FFT MEC uses TextCaster for urgent updates, bid reminders, and news. <a href="https://fft.alpa.org/Resources/TextCaster-SignUp" class="text-[#008467] underline" target="_blank">Sign up for TextCaster</a> if you haven’t already.</li>
-                <li><strong class="dark-green-text">Scheduling Mistakes:</strong> Challenge crew scheduling if you see an error. Text your ALPA mentor or submit a <strong class="dark-green-text">DART</strong>.</li>
-                <li><strong class="dark-green-text">Your Right to a Two-Hour Call-In:</strong> On reserve, you have the right to the full two hours. Let Crew Scheduling know if you need the full time to get to the airport.</li>
-                <li><strong class="dark-green-text">Filing a Grievance:</strong> If the company breaks a contract rule, file a grievance. First-timers should submit a DART to the Grievance Committee for guidance.</li>
-                <li><strong class="dark-green-text">Speak Up on Probation:</strong> Even during probation, report safety or contractual issues to your union. The system works when pilots advocate for a safe workplace.</li>
-                <li><strong class="dark-green-text">Stay Informed:</strong> Review relevant CBA sections, like <strong class="dark-green-text">Section 25.R (Reserve)</strong>, to understand your rules and rights.</li>
-            </ul>
-        </section>
-
+<section class="mb-8">
+      <h3 class="text-xl font-semibold border-b-2 border-[#008467] pb-2 mb-4">Helpful Tips 💡</h3>
+      <ul class="list-disc list-inside space-y-4 text-sm text-gray-800">
+        <li><strong class="dark-green-text">Use Your Union Rep:</strong> Your reps are here to help. Don’t hesitate to send a DART or text your ALPA mentor—others on the committee can respond if one is busy.</li>
+        <li><strong class="dark-green-text">Stay Updated with Your MEC:</strong> FFT MEC uses TextCaster for urgent updates, bid reminders, and news. <a href="https://fft.alpa.org/Resources/TextCaster-SignUp" class="text-[#008467] underline" target="_blank">Sign up for TextCaster</a> if you haven’t already.</li>
+        <li><strong class="dark-green-text">Scheduling Mistakes:</strong> Challenge crew scheduling if you see an error. Text your ALPA mentor or submit a <strong class="dark-green-text">DART</strong>.</li>
+        <li><strong class="dark-green-text">Your Right to a Two-Hour Call-In:</strong> On reserve, you have the right to the full two hours. Let Crew Scheduling know if you need the full time to get to the airport.</li>
+        <li><strong class="dark-green-text">Filing a Grievance:</strong> If the company breaks a contract rule, file a grievance. First-timers should submit a DART to the Grievance Committee for guidance.</li>
+        <li><strong class="dark-green-text">Speak Up on Probation:</strong> Even during probation, report safety or contractual issues to your union. The system works when pilots advocate for a safe workplace.</li>
+        <li><strong class="dark-green-text">Stay Informed:</strong> Review relevant CBA sections, like <strong class="dark-green-text">Section 25.R (Reserve)</strong>, to understand your rules and rights.</li>
+        <li><strong class="dark-green-text">Understanding Codes & Lingo:</strong> Not sure what a code or term means? The <a href="flica-codes.html" class="text-[#008467] underline" target="_blank">Paycodes and Definitions section</a> makes it easy to search and learn quickly.</li>
+    </ul>
+    </section>
         <hr class="section-divider my-8">
         
         <section class="mb-8">

@@ -12,7 +12,7 @@
             </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frontier FLICA Codes</title>
+    <title>FLICA Codes & Definitions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,25 +28,45 @@
         tr:not(:last-child) td {
             border-bottom: 1px solid rgba(229, 231, 235, 0.7); /* Using a slightly transparent gray */
         }
+        /* Custom styles for the definition list */
+        #pilot-agreement-definitions dt {
+            font-weight: 600; /* Semi-bold for the term */
+            margin-top: 1rem;
+            color: #1f2937; /* Darker text */
+        }
+        #pilot-agreement-definitions dd {
+            margin-left: 1rem;
+            padding-left: 0.5rem;
+            border-left: 2px solid #008467; /* Green accent bar */
+            margin-bottom: 1rem;
+        }
+        #pilot-agreement-definitions ul {
+            list-style-type: disc;
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+        }
     </style>
 </head>
 <body class="bg-gray-100 p-4 sm:p-8 text-gray-900">
 
     <div class="max-w-2xl mx-auto bg-white p-6 md:p-10 rounded-xl shadow-lg">
 
-        <header class="text-center mb-10">
+        <header class="text-center mb-6">
             <img src="https://placehold.co/200x60/008467/000?text=FRONTIER" alt="Frontier Logo" class="mx-auto h-12 mb-4">
-            <h1 class="text-2xl font-bold">PAY CODES</h1>
-            <h2 class="text-lg font-medium text-gray-800">FLICA & Navblue Codes</h2>
-        <a href="index.html" class="inline-block px-4 py-2 text-sm text-[#008467] font-semibold rounded-lg hover:underline transition-colors duration-300 mb-4">
-            ← Back to Main Page
+            <h1 class="text-2xl font-bold">Pay Codes & Definitions</h1>
+            <h2 class="text-lg font-medium text-gray-800">FLICA, Navblue Codes, & Definitions</h2>
+            <a href="index.html" class="inline-block px-4 py-2 text-sm text-[#008467] font-semibold rounded-lg hover:underline transition-colors duration-300 mb-4">
+                ← Back to Main Page
             </a>
         </header>
 
+        <div class="mb-8">
+            <input type="text" id="searchInput" onkeyup="filterContent()" placeholder="Search codes, descriptions, or terms..." class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#008467] text-gray-700 shadow-sm transition duration-150">
+        </div>
         <section class="mb-8">
             <h3 class="text-xl font-semibold border-b-2 border-[#008467] pb-2 mb-4 text-center">Absence and Pay Codes</h3>
             <div class="overflow-x-auto">
-                <table class="min-w-full bg-white rounded-lg shadow-md">
+                <table id="table-absence-pay" class="min-w-full bg-white rounded-lg shadow-md">
                     <thead>
                         <tr>
                             <th class="py-3 px-4 bg-[#008467] text-white text-center font-semibold uppercase rounded-tl-lg">FLICA Code</th>
@@ -149,7 +169,7 @@
         <section class="mb-8">
             <h3 class="text-xl font-semibold border-b-2 border-[#008467] pb-2 mb-4 text-center">Vacation Credit Codes (VAC CR)</h3>
             <div class="overflow-x-auto">
-                <table class="min-w-full bg-white rounded-lg shadow-md">
+                <table id="table-vacation" class="min-w-full bg-white rounded-lg shadow-md">
                     <thead>
                         <tr>
                             <th class="py-3 px-4 bg-[#008467] text-white text-center font-semibold uppercase rounded-tl-lg">FLICA Code</th>
@@ -165,11 +185,213 @@
                 </table>
             </div>
         </section>
-            <div class="flex justify-center w-full">
-                <a href="index.html" class="text-center mb-10 inline-block px-4 py-2 text-sm text-[#008467] font-semibold rounded-lg hover:underline transition-colors duration-300 mb-4">
-                    ← Back to Main Page
-                </a>
+        <div class="flex justify-center w-full">
+            <a href="index.html" class="text-center mb-10 inline-block px-4 py-2 text-sm text-[#008467] font-semibold rounded-lg hover:underline transition-colors duration-300 mb-4">
+                ← Back to Main Page
+            </a>
+        </div>
+        <section id="pilot-agreement-definitions" class="mb-8">
+            <h3 class="text-xl font-semibold border-b-2 border-[#008467] pb-2 mb-4 text-center">Pilot Agreement Definitions</h3>
+            <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                <dl id="definitions-list">
+                    <dt><strong>ACCRUED VACATION</strong></dt><dd>means vacation a Pilot accrues in the current year that may be used the next year</dd>
+                    <dt><strong>ACTIVE SERVICE</strong></dt><dd>means the period of time that begins on a Pilot's most recent date of hire as a Pilot and continues until resignation, termination, furlough, or as set forth in Section 13 (Leaves of Absence). A Pilot shall continue to accrue Active Service upon return from Leave of Absence or Furlough in accordance with those Sections. A Pilot shall forfeit all Active Service upon resignation or termination</dd>
+                    <dt><strong>ACTUAL BLOCK HOURS</strong></dt><dd>means actual time from Block Out to Block In</dd>
+                    <dt><strong>ADD</strong></dt><dd>means a Sequence or Reserve Day or RDP a Pilot voluntarily elects to place on his schedule from Open Time or the Premium Add Folder</dd>
+                    <dt><strong>AGGRESSIVE RESERVE</strong></dt><dd>means the process that allows an eligible Reserve Pilot to bid for Sequences on his Reserve Days or RDPs one (1) hour after Daily Open Time closes and prior to Reserve assignment, in accordance with Section 25.T.7</dd>
+                    <dt><strong>AVERAGE LINE VALUE (ALV)</strong></dt><dd>means the number of hours (including both Pay Credit hours and Virtual Credit hours) published by the Company prior to the opening of the monthly bid that is the projected average of all Regular Line PBS awards for a Category in a Monthly Bid Period</dd>
+                    <dt><strong>BASE MONTH or MAY GO</strong></dt><dd>means the calendar month a Pilot is due for training as defined by the FARs. Training may also occur in the month prior to the Base Month or in The Late Grace Month</dd>
+                    <dt><strong>BLOCK IN</strong></dt><dd>means the time at which an aircraft reaches a destination (generally, at a gate), the parking brake is set and a door is opened (typically as shown by ACARS)</dd>
+                    <dt><strong>BLOCK OUT</strong></dt><dd>means the time at which an aircraft's parking brake is released and all doors are closed for departure (generally from a gate, and typically as shown by ACARS)</dd>
+                    <dt><strong>BLOCK TIME or BLOCK</strong></dt><dd>means the time elapsed from Block Out to Block In</dd>
+                    <dt><strong>CALENDAR DAY or DAY</strong></dt><dd>means the twenty-four (24) hour period commencing at 0001 and ending at 2400 hours Local Time</dd>
+                    <dt><strong>CANCELLATION</strong></dt><dd>means any scheduled flight which does not operate for any reason</dd>
+                    <dt><strong>CAPTAIN</strong></dt><dd>means a Pilot who is in command of the aircraft, is responsible for the aircraft and crew while on-duty, is properly qualified and designated by the Company and who holds currently effective airman's certificates authorizing such Pilot to serve as Captain and act as pilot-in command</dd>
+                    <dt><strong>CATEGORY</strong></dt><dd>means Seat and equipment (e.g., Airbus 320 Captain)</dd>
+                    <dt><strong>CDO LINE</strong></dt><dd>means a line of flying consisting of only CDO Sequences</dd>
+                    <dt><strong>CHECK AIRMAN or LINE CHECK PILOT or LCP</strong></dt><dd>means a Pilot who is designated by the Company and approved by the FAA to examine other Pilots to determine Pilot proficiency with respect to Company and FAR procedures and competency to perform Pilot duties</dd>
+                    <dt><strong>CONTINUOUS DUTY OVERNIGHT (CDO)</strong></dt><dd>means a scheduled Duty Period which begins in one Calendar Day and ends in the following Calendar Day which includes an overnight stay out of Domicile that is scheduled for less than FAR required minimum rest</dd>
+                    <dt><strong>CORRECT LINE</strong></dt><dd>means the initial line the Pilot should have been awarded had a PBS misaward not occurred</dd>
+                    <dt><strong>DAILY DROP LIMIT (DDL)</strong></dt><dd>means the limit on the number of Duty Periods that may be Dropped on a given day. The limit will include all Duty Periods operating that day</dd>
+                    <dt><strong>DAY OFF</strong></dt><dd>means a Calendar Day free from all duty with the Company which occurs in a Pilot's Domicile</dd>
+                    <dt><strong>DEADHEAD</strong></dt><dd>means transportation at Company direction (not local in character) to or from a duty assignment</dd>
+                    <dt><strong>DENIAL MODE</strong></dt><dd>means a process in PBS that:
+                        <ul>
+                            <li>is performed after PBS is unable to award a Pilot a line consistent with bid preferences, seniority, his Known Absences, the FARs, the CBA, and within his credit window.</li>
+                            <li>is utilized after Shuffle and prior to SLG, and</li>
+                            <li>ignores, one at a time, a Pilot's preference(s) to avoid flying a specified Sequence or a Sequence with specified criteria (e.g., number of Duty Periods in a Sequence, departure time of Sequence, number of flight segments per Duty period) or his preference to avoid flying on a specified Day, in an effort to award him a line within his credit window.</li>
+                        </ul>
+                    </dd>
+                    <dt><strong>DISPLACEMENT or DISPLACED</strong></dt><dd>means that a Pilot no longer has sufficient seniority to hold his current Position pursuant to Section 24</dd>
+                    <dt><strong>DOMICILE</strong></dt><dd>means a geographic location where Pilots are based and the location from which Sequences are constructed to start and finish</dd>
+                    <dt><strong>DROP</strong></dt><dd>means a Sequence, Reserve Day, or RDP, or portion thereof, that a Pilot voluntarily removes from his schedule resulting in a deduction in Pay Credit</dd>
+                    <dt><strong>DUTY PERIOD</strong></dt><dd>means the period from scheduled Report Time until fifteen (15) minutes after actual Block In for domestic flights, and thirty (30) minutes for international flights</dd>
+                    <dt><strong>EARNED VACATION</strong></dt><dd>means unused vacation a Pilot has accrued the previous year for use in the current year</dd>
+                    <dt><strong>EFFECTIVE DATE</strong></dt><dd>means the date when a Pilot's Hourly Rate changes as a result of a change in a Pilot's Position (subject to the Bypass provisions set out in Section 24) or the date upon which a Pilot is based at a different Domicile</dd>
+                    <dt><strong>ELECTRONIC BID SYSTEM</strong></dt><dd>means an internet-based method for Pilots to access and modify their schedules. As of the date of signing of this Agreement, the Electronic Bid System is FLICA</dd>
+                    <dt><strong>EXTENDED/EXTENSION</strong></dt><dd>means a Reserve assignment that is not in accordance with Section 25.R.4</dd>
+                    <dt><strong>FILL TO THRESHOLD</strong></dt><dd>means a tool in PBS that:
+                        <ul>
+                            <li>is utilized prior to Denial Mode; and</li>
+                            <li>continues to award Sequences to each Pilot's line, if possible, until such line is at or above the Threshold.</li>
+                        </ul>
+                    </dd>
+                    <dt><strong>FINAL LINE CHECK</strong></dt><dd>means the line check that qualifies the Pilot to be released to the line (either by the Company or FAA)</dd>
+                    <dt><strong>FIRST OFFICER</strong></dt><dd>means a Pilot who is second-in-command of the aircraft whose duty is to assist and relieve the Captain and, in the absence of the Captain, is responsible for the aircraft and crew while on duty. A First Officer shall be properly qualified and designated by the Company, hold currently effective airman's certificates authorizing such Pilot to serve as First Officer and act as second-in-command</dd>
+                    <dt><strong>FLIGHT TIME</strong></dt><dd>means the total time from Block Out to Block In for scheduling and pay purposes</dd>
+                    <dt><strong>FOOTPRINT</strong></dt><dd>means the time between the originally scheduled Sequence Report Time and the originally Scheduled Sequence Release Time</dd>
+                    <dt><strong>FORCE PRIORITY STACK DATE ON SLG</strong></dt><dd>means a tool in PBS that ensures a Pilot who is awarded a line during the SLG process is awarded a Sequence that is scheduled to operate on the specified Priority Stack Date</dd>
+                    <dt><strong>GOLDEN DAYS</strong></dt><dd>means days chosen by a Pilot on which no training can be assigned</dd>
+                    <dt><strong>GROUND TRAINING</strong></dt><dd>means all training conducted in a classroom or at any place that is not usually associated with flight training. It shall include classroom instruction, and training involving aircraft emergency procedures, flight equipment, hands on equipment, home/distance learning, or a Cockpit Procedure Trainer (CPT)</dd>
+                    <dt><strong>HARD LINE or REGULAR LINE</strong></dt><dd>means a line that includes only Sequences and Days Off and is not a Reserve Line</dd>
+                    <dt><strong>HISTORICAL LINE VALUE</strong></dt><dd>means the twelve (12) Monthly Bid Period rolling average of the ALV for a Category</dd>
+                    <dt><strong>HOURLY RATE</strong></dt><dd>means the rate of pay applicable to a Pilot in accordance with Section 3.B.1</dd>
+                    <dt><strong>INCENTIVE CREDIT</strong></dt><dd>means additional Pay Credit time added to a Sequence in accordance with Section 3.G</dd>
+                    <dt><strong>INSTRUCTOR PILOT</strong></dt><dd>means a Pilot assigned by the Company to provide simulator training or Ground Training</dd>
+                    <dt><strong>KNOWN ABSENCE</strong></dt><dd>means an event including, but not limited to, vacation, training, LOA, etc. that is placed on a Pilot's schedule prior to the opening of the monthly bid</dd>
+                    <dt><strong>LARGE DOMICILE</strong></dt><dd>means a Domicile with seventy six (76) or more eligible monthly bidders by Position</dd>
+                    <dt><strong>LATE GRACE MONTH or MUST GO MONTH</strong></dt><dd>means the month after the Base Month during which a Pilot must complete recurrent training to maintain currency</dd>
+                    <dt><strong>LINE CREDIT REDUCTION</strong></dt><dd>means the value assigned to each Day of an unpaid absence that reduces the upper and lower values of each credit window for the purposes of completing a Pilot's Line</dd>
+                    <dt><strong>LINEHOLDER</strong></dt><dd>means a Pilot who holds a Hard Line</dd>
+                    <dt><strong>LOCAL DOMICILE TIME</strong></dt><dd>means the time of day in the Pilot's Domicile</dd>
+                    <dt><strong>LOCAL TIME</strong></dt><dd>means the time of day where the Pilot is physically located</dd>
+                    <dt><strong>LONGEVITY</strong></dt><dd>means the period of time commencing on the date a Pilot first reports for Pilot training (or, if required by USERRA, the date the Pilot was initially scheduled to report for Pilot training) and shall continue to accrue except as otherwise provided in this Agreement</dd>
+                    <dt><strong>MANAGEMENT PILOT</strong></dt><dd>means a Pilot whose name appears on the Seniority List who has been designated by the Company and is responsible for managing Pilots and/or administering Company policy as it relates to the Pilot work force</dd>
+                    <dt><strong>MASTER BID</strong></dt><dd>means a Pilot's bid for permanent Positions in accordance with Section 24</dd>
+                    <dt><strong>MAX FOLLOWED BY TIME</strong></dt><dd>means the maximum time between Sequences that are awarded via the Followed By bid statement</dd>
+                    <dt><strong>MAX ITERATION</strong></dt><dd>means a parameter in PBS that limits the number of Sequences PBS considers when attempting to construct a Regular Line</dd>
+                    <dt><strong>MAX PASSES</strong></dt><dd>means the maximum number of passes through the data that will be attempted by the solver</dd>
+                    <dt><strong>MAX RESERVES</strong></dt><dd>means a parameter in PBS that limits the number of Pilots permitted to be awarded a Reserve Line in a Position</dd>
+                    <dt><strong>MAX SWAP DEPTH</strong></dt><dd>means a parameter in PBS that limits the number of Sequences that may be moved among lines and/or open time in an effort to comply with a Pilot's bid preference</dd>
+                    <dt><strong>MAX TRIP SUBSTITUTION</strong></dt><dd>means a parameter in PBS that limits multiple combinations of Sequences to be tested on a Pilot's Regular Line that match specific bid preferences in an attempt to construct a Regular Line for the Pilot</dd>
+                    <dt><strong>MAXIMUM CREDIT WINDOW</strong></dt><dd>means the range of hours based on ALV plus fourteen (14) hours. The Maximum Credit Window is available to Pilots on a seniority basis to those who used a set condition preference for the Maximum Credit Window</dd>
+                    <dt><strong>MAXIMUM STACK HEIGHT</strong></dt><dd>means a parameter in PBS that limits a stack</dd>
+                    <dt><strong>MINIMUM CREDIT WINDOW</strong></dt><dd>means the range of hours based on ALV minus fourteen (14) hours except that the bottom of the Minimum Credit Window will never be set lower than seventy-four and one-half (74.5) hours. The Minimum Credit Window is available to Pilots on a seniority basis to those who used a set condition preference for the Minimum Credit Window</dd>
+                    <dt><strong>MONTHLY BID PERIOD</strong></dt><dd>means one of twelve Calendar month-based periods of thirty (30) or thirty-one (31) days as described in Section 25.K</dd>
+                    <dt><strong>MONTHLY CREDIT OVERRIDE or MCO</strong></dt><dd>means one hundred twenty-five percent (125%) Pay Credit for all credit in excess of eighty-two (82) hours, exclusive of sick and training credits, accrued in a Monthly Bid Period</dd>
+                    <dt><strong>MONTHLY PAY GUARANTEE</strong></dt><dd>means the minimum amount of Pay Credit paid per Monthly Bid Period in accordance with Section 4.A</dd>
+                    <dt><strong>NEW HIRE PILOT</strong></dt><dd>means a Pilot who has not completed initial training</dd>
+                    <dt><strong>NO-BID PILOT or SPECIAL PROJECT PILOT</strong></dt><dd>means a Pilot (other than a Management Pilot) working on Company business who is not eligible to participate in the monthly schedule bid process in accordance with Section 10.D</dd>
+                    <dt><strong>NORMAL CREDIT WINDOW</strong></dt><dd>means the range of hours based on ALV plus or minus seven (7) hours. A Pilot who does not use a Set Condition preference for the Minimum Credit Window or Maximum Credit Window, or who is not awarded a Line in their desired window, will be awarded within the Normal Credit Window</dd>
+                    <dt><strong>OPEN TIME</strong></dt><dd>means a Sequence, Reserve Day or RDP that has not been assigned or awarded to a Pilot as part of the Monthly Bid process or Sequences that were originally assigned or awarded to a Pilot but have become unassigned due to illness, injury, qualification, leaves of absence, etc</dd>
+                    <dt><strong>OPEN VACATION PERIOD</strong></dt><dd>means a block of vacation that is not assigned or awarded to a Pilot</dd>
+                    <dt><strong>OPERATING EXPERIENCE</strong></dt><dd>means the operating experience required by FARs and administered by Company Line Check Pilots</dd>
+                    <dt><strong>OVERNIGHTABLE RESERVE</strong></dt><dd>means a Short Call Reserve Pilot who is available for two (2) or more RDPs</dd>
+                    <dt><strong>PAY CREDIT</strong></dt><dd>means a unit of pay to be multiplied by a Pilot's Hourly Rate to determine the Pilot's pay, in accordance with the provisions of this Agreement</dd>
+                    <dt><strong>PAY REPORT</strong></dt><dd>means a monthly report electronically provided by the Company to a Pilot indicating daily Pay Credit, Pay Credit adjustments (i.e. Premium Add Folder, etc.), and per diem</dd>
+                    <dt><strong>PILOT</strong></dt><dd>means an employee of Frontier Airlines, Inc. whose name appears on the Frontier Pilot Seniority List</dd>
+                    <dt><strong>POSITION</strong></dt><dd>means Domicile, equipment, and Seat (e.g., Denver Airbus 320 Captain)</dd>
+                    <dt><strong>POSITIVE SPACE MUST RIDE</strong></dt><dd>means a guaranteed seat for a Pilot from which the Pilot will not be removed by a revenue passenger, in accordance with the provisions of Sections 8 and 11</dd>
+                    <dt><strong>POSITIVE TELEPHONE CONTACT</strong></dt><dd>means a telephone conversation between the Pilot and the Company</dd>
+                    <dt><strong>PREMIUM PAY</strong></dt><dd>means the pay applicable to Premium Add Folder Adds, which will be paid at one hundred fifty percent (150%) of the Pay Credit for the Sequence</dd>
+                    <dt><strong>PRIORITY STACK DATE</strong></dt><dd>means a designated date that is unstacked before PBS unstacks any other date</dd>
+                    <dt><strong>PROBATION</strong></dt><dd>means the period of three hundred sixty-five (365) days from the date of hire (or as extended by a leave of absence) as a Pilot or the successful completion of the probationary proficiency check as described in Section 11 whichever comes later (see Section 22.D.2.)</dd>
+                    <dt><strong>REASSIGNMENT or REASSIGNED</strong></dt><dd>means a Pilot is directed to operate or Deadhead on a leg or legs that is not a part of the Pilot's originally scheduled Sequence</dd>
+                    <dt><strong>RECURRENT TRAINING</strong></dt><dd>means the FAA required training necessary for a Pilot to remain qualified in his current Position</dd>
+                    <dt><strong>RED-EYE</strong></dt><dd>means any Duty Period, other than a CDO, that reports prior to and releases after, or the entire Duty Period occurs between 0100-0300 LDT</dd>
+                    <dt><strong>REPORT TIME</strong></dt><dd>means the time that a Pilot is scheduled to report at the beginning of a Duty Period</dd>
+                    <dt><strong>RESERVE AVAILABILITY PERIOD or RAP</strong></dt><dd>means short call reserve duty in accordance with FAR 117</dd>
+                    <dt><strong>RESERVE DAY</strong></dt><dd>means the period of time a Long Call Reserve is obligated to be available to the Company for assignment</dd>
+                    <dt><strong>RESERVE DUTY PERIOD or RDP</strong></dt><dd>means the period of time a Short Call Reserve is obligated to be contactable by the Company for notification of an assignment</dd>
+                    <dt><strong>RESERVE LINE</strong></dt><dd>means a line consisting only of RDPs or Reserve Days and Days Off</dd>
+                    <dt><strong>RESERVE PILOT or RESERVE</strong></dt><dd>means a Pilot who is awarded Reserve</dd>
+                    <dt><strong>RESERVE SWAP</strong></dt><dd>means the movement of Reserve Days or RDPs within an individual Reserve Pilot's schedule. All elements of the Swap must be scheduled to occur within the same Monthly Bid Period</dd>
+                    <dt><strong>RESERVE TRADE</strong></dt><dd>means the exchange of Reserve Days or RDPs between two Pilots who hold the same Position that is scheduled to occur in the same Monthly Bid Period</dd>
+                    <dt><strong>REST PERIOD</strong></dt><dd>means the period of time free from all Company duty between Duty Periods</dd>
+                    <dt><strong>SCHEDULED BLOCK</strong></dt><dd>means the scheduled length of time from Block Out to Block In when the Sequence was originally constructed and as shown in the Monthly Bid Package</dd>
+                    <dt><strong>SEAT</strong></dt><dd>means Captain or First Officer</dd>
+                    <dt><strong>SECONDARY LINE GENERATION (SLG)</strong></dt><dd>means the final PBS process, used after Shuffle and Denial Mode, that ignores a Pilot's bid preferences in an attempt to construct a Regular Line for the Pilot</dd>
+                    <dt><strong>SENIORITY LIST</strong></dt><dd>means the list of Pilots employed by the Company. The Pilot Seniority List as of the date of signing of this Agreement is attached as Appendix 1</dd>
+                    <dt><strong>SEQUENCE or PAIRING or TRIP</strong></dt><dd>means a series of flights over one (1) or more days, which starts in the Pilot's Domicile and ends with a legal Rest Period in the Pilot's Domicile</dd>
+                    <dt><strong>SEQUENCE PAY CREDIT</strong></dt><dd>means the sum of all the Pay Credit in a Monthly Bid Period by Position, including carry-in Pay Credit from the previous Monthly Bid period, excluding carry-out Pay Credit from the current Monthly Bid Period and excluding all Pay Credit associated with a Known Absence(s)</dd>
+                    <dt><strong>SEQUENCE RELEASE TIME</strong></dt><dd>means the time of the end of a Duty Period in Domicile on the last day of a Sequence</dd>
+                    <dt><strong>SEQUENCE REPORT TIME</strong></dt><dd>means the time of the start of a Duty Period in Domicile on the first day of a Sequence</dd>
+                    <dt><strong>SHUFFLE</strong></dt><dd>means a tool in PBS that:
+                        <ul>
+                            <li>is utilized after PBS is unable to award a Pilot a Regular Line within his credit window which complies with his higher priority bid preference(s),</li>
+                            <li>removes a Sequence(s) which had been awarded in accordance with such bid preference(s) and searches for combinations of Sequence(s) which comply with his lower priority bid preference(s), and</li>
+                            <li>is utilized prior to Denial Mode.</li>
+                        </ul>
+                    </dd>
+                    <dt><strong>SMALL DOMICILE</strong></dt><dd>means a Domicile with seventy five (75) or fewer eligible monthly bidders by Position</dd>
+                    <dt><strong>SPLIT</strong></dt><dd>means a Sequence that is divided in a Pilot's Domicile. However, this definition is not applicable to the Company's option to divide a Sequence to assign a Reserve, in accordance with Section 25.0.5.b.iv</dd>
+                    <dt><strong>STACK</strong></dt><dd>means the number of Duty Periods that remain in Open Time on a given Day at the end of a bid run</dd>
+                    <dt><strong>SWAP</strong></dt><dd>means an exchange of flying, vacation, (or other activities as allowed by this Agreement) between a Pilot and Open Time (or Open Vacation Periods). All elements of the Swap (i.e. the work being added and the work being removed) must be scheduled to occur within the same Monthly Bid Period, except as provided in the Note below the grid in Section 25.1</dd>
+                    <dt><strong>THRESHOLD</strong></dt><dd>means the target number of Pay Credit hours set by ALPA for a given credit window</dd>
+                    <dt><strong>TIME AWAY FROM BASE (TAFB)</strong></dt><dd>means the time from Sequence Report Time to the Sequence Release Time</dd>
+                    <dt><strong>TRADE</strong></dt><dd>means an exchange of flying, vacation or other activities as allowed by this Agreement between two Pilots</dd>
+                    <dt><strong>TRANSITION CONFLICT</strong></dt><dd>means conflicts due to an interference or illegality from the current Monthly Bid Period to the following Monthly Bid Period</dd>
+                    <dt><strong>UNSTACK or COVERAGE AWARD</strong></dt><dd>means a tool in PBS that assigns Sequences to Pilots in such a way as to prevent a Stack that is greater than the maximum Stack Height</dd>
+                    <dt><strong>VACANCY</strong></dt><dd>means an opening in a Position</dd>
+                    <dt><strong>VIRTUAL CREDIT</strong></dt><dd>means the value of three (3) hours assigned to each Day of a Known Absence that the solver will use for Line construction. Virtual Credit has no pay value</dd>
+                    <dt><strong>WINDOW</strong></dt><dd>means a time period associated with a Short Call Reserve's RDPs. The AM Window includes A and B Reserves, the MID Window includes C Reserves, and the PM Window includes D and E Reserves</dd>
+                </dl>
+            </div>
+        </section>
+
+        <div class="flex justify-center w-full">
+            <a href="index.html" class="text-center mb-10 inline-block px-4 py-2 text-sm text-[#008467] font-semibold rounded-lg hover:underline transition-colors duration-300 mb-4">
+                ← Back to Main Page
+            </a>
+        </div>
+
     </div>
 
-</body>
+    <script>
+        function filterContent() {
+            // Get the search input value and convert it to uppercase for case-insensitive search
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toUpperCase();
+
+            // --- 1. Filter Tables (Absence/Pay & Vacation) ---
+            const tableIds = ['table-absence-pay', 'table-vacation'];
+            tableIds.forEach(id => {
+                const table = document.getElementById(id);
+                if (table) {
+                    const rows = table.getElementsByTagName('tr');
+                    // Start from index 1 to skip the header row (<thead>)
+                    for (let i = 1; i < rows.length; i++) {
+                        let rowVisible = false;
+                        const cells = rows[i].getElementsByTagName('td');
+
+                        // Loop through all cells in the row (FLICA, Navblue, Description)
+                        for (let j = 0; j < cells.length; j++) {
+                            const cellText = cells[j].textContent || cells[j].innerText;
+                            if (cellText.toUpperCase().indexOf(filter) > -1) {
+                                rowVisible = true;
+                                break;
+                            }
+                        }
+                        rows[i].style.display = rowVisible ? '' : 'none';
+                    }
+                }
+            });
+
+            // --- 2. Filter Definitions List ---
+            const definitionsList = document.getElementById('definitions-list');
+            if (definitionsList) {
+                const listItems = definitionsList.children; // This gets all <dt> and <dd> elements
+
+                for (let i = 0; i < listItems.length; i += 2) {
+                    const dt = listItems[i]; // The term (e.g., ACCRUED VACATION)
+                    const dd = listItems[i+1]; // The definition
+
+                    if (dt && dd) {
+                        const termText = dt.textContent || dt.innerText;
+                        const definitionText = dd.textContent || dd.innerText;
+
+                        // Check if the filter matches the term OR the definition
+                        if (termText.toUpperCase().indexOf(filter) > -1 || definitionText.toUpperCase().indexOf(filter) > -1) {
+                            dt.style.display = '';
+                            dd.style.display = '';
+                        } else {
+                            dt.style.display = 'none';
+                            dd.style.display = 'none';
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    </body>
 </html>
