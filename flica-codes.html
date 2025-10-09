@@ -373,62 +373,76 @@
 
     </div>
 
-    <script>
-        function filterContent() {
-            // Get the search input value and convert it to uppercase for case-insensitive search
-            const input = document.getElementById('searchInput');
-            const filter = input.value.toUpperCase();
+<script>
+function filterContent() {
+    const input = document.getElementById('searchInput');
+    const filter = input.value.trim().toUpperCase();
 
-            // --- 1. Filter Tables (Absence/Pay & Vacation) ---
-            const tableIds = ['table-absence-pay', 'table-vacation'];
-            tableIds.forEach(id => {
-                const table = document.getElementById(id);
-                if (table) {
-                    const rows = table.getElementsByTagName('tr');
-                    // Start from index 1 to skip the header row (<thead>)
-                    for (let i = 1; i < rows.length; i++) {
-                        let rowVisible = false;
-                        const cells = rows[i].getElementsByTagName('td');
+    // Tables to filter
+    const tableIds = ['table-absence-pay', 'table-vacation', 'table-schedule-detail'];
 
-                        // Loop through all cells in the row (FLICA, Navblue, Description)
-                        for (let j = 0; j < cells.length; j++) {
-                            const cellText = cells[j].textContent || cells[j].innerText;
-                            if (cellText.toUpperCase().indexOf(filter) > -1) {
-                                rowVisible = true;
-                                break;
-                            }
-                        }
-                        rows[i].style.display = rowVisible ? '' : 'none';
-                    }
-                }
-            });
+    tableIds.forEach(id => {
+        const table = document.getElementById(id);
+        if (!table) return;
 
-            // --- 2. Filter Definitions List ---
-            const definitionsList = document.getElementById('definitions-list');
-            if (definitionsList) {
-                const listItems = definitionsList.children; // This gets all <dt> and <dd> elements
+        const rows = table.getElementsByTagName('tr');
+        for (let i = 1; i < rows.length; i++) {
+            let rowVisible = false;
+            const cells = rows[i].getElementsByTagName('td');
 
-                for (let i = 0; i < listItems.length; i += 2) {
-                    const dt = listItems[i]; // The term (e.g., ACCRUED VACATION)
-                    const dd = listItems[i+1]; // The definition
+            for (let j = 0; j < cells.length; j++) {
+                const cell = cells[j];
 
-                    if (dt && dd) {
-                        const termText = dt.textContent || dt.innerText;
-                        const definitionText = dd.textContent || dd.innerText;
+                // Save original text if not already saved
+                if (!cell.dataset.original) cell.dataset.original = cell.innerHTML;
 
-                        // Check if the filter matches the term OR the definition
-                        if (termText.toUpperCase().indexOf(filter) > -1 || definitionText.toUpperCase().indexOf(filter) > -1) {
-                            dt.style.display = '';
-                            dd.style.display = '';
-                        } else {
-                            dt.style.display = 'none';
-                            dd.style.display = 'none';
-                        }
-                    }
+                const text = cell.dataset.original;
+                if (filter && text.toUpperCase().includes(filter)) {
+                    rowVisible = true;
+                    // Highlight all matches
+                    const regex = new RegExp(filter, 'gi');
+                    cell.innerHTML = text.replace(regex, match => `<span class="bg-yellow-200">${match}</span>`);
+                } else {
+                    cell.innerHTML = text; // reset
                 }
             }
+            rows[i].style.display = rowVisible || !filter ? '' : 'none';
         }
-    </script>
+    });
+
+    // Definitions list
+    const definitionsList = document.getElementById('definitions-list');
+    if (definitionsList) {
+        const items = definitionsList.children; // dt + dd
+        for (let i = 0; i < items.length; i += 2) {
+            const dt = items[i];
+            const dd = items[i + 1];
+
+            if (!dt || !dd) continue;
+
+            if (!dt.dataset.original) dt.dataset.original = dt.innerHTML;
+            if (!dd.dataset.original) dd.dataset.original = dd.innerHTML;
+
+            const combined = dt.dataset.original + ' ' + dd.dataset.original;
+            if (!filter || combined.toUpperCase().includes(filter)) {
+                dt.style.display = '';
+                dd.style.display = '';
+                if (filter) {
+                    const regex = new RegExp(filter, 'gi');
+                    dt.innerHTML = dt.dataset.original.replace(regex, match => `<span class="bg-yellow-200">${match}</span>`);
+                    dd.innerHTML = dd.dataset.original.replace(regex, match => `<span class="bg-yellow-200">${match}</span>`);
+                } else {
+                    dt.innerHTML = dt.dataset.original;
+                    dd.innerHTML = dd.dataset.original;
+                }
+            } else {
+                dt.style.display = 'none';
+                dd.style.display = 'none';
+            }
+        }
+    }
+}
+</script>
   <!-- Back to Top Button -->
   <button
     onclick="window.scrollTo({top: 0, behavior: 'smooth'});"
