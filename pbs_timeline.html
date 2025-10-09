@@ -24,14 +24,15 @@
     </style>
 </head>
 <body class="bg-gray-100 p-4 sm:p-8 flex items-center justify-center min-h-screen">
-    <div class="container mx-auto max-w-3xl bg-white p-6 md:p-8 rounded-xl shadow-lg text-center">
+    <div class="max-w-6xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-xl border border-gray-100 text-center">
+
         
         <img src="https://placehold.co/200x60/008467/000?text=FRONTIER" alt="Frontier Logo" class="mx-auto h-12 mb-4">
-        <h1 class="text-3xl font-bold text-[#008467] mb-2">Normal Bid Timeline</h1>
+        <h1 class="text-2xl font-bold">Normal Bid Timeline</h1>
+        <p class="text-gray-600 text-lg">Reference guide for FLICA & Navblue bid cycles</p>
         <a href="index.html" class="inline-block px-4 py-2 text-sm text-[#008467] font-semibold rounded-lg hover:underline transition-colors duration-300 mb-4">
             ← Back to Main Page
         </a>
-
         <div class="space-y-4">
 
             <div class="bg-green-50 p-4 rounded-lg border border-green-200">
@@ -161,5 +162,11 @@
                 <a href="index.html" class="text-center mb-10 inline-block px-4 py-2 text-sm text-[#008467] font-semibold rounded-lg hover:underline transition-colors duration-300 mb-4">
                     ← Back to Main Page
                 </a>
+  <!-- Back to Top Button -->
+  <button
+    onclick="window.scrollTo({top: 0, behavior: 'smooth'});"
+    class="fixed bottom-6 right-6 bg-[#008467]/70 text-white text-xs px-3 py-2 rounded-full shadow-md hover:bg-[#008467] hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
+    ↑ Top
+  </button>
 </body>
 </html>

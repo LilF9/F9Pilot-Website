@@ -49,12 +49,12 @@
 </head>
 <body class="bg-gray-100 p-4 sm:p-8 text-gray-900">
 
-    <div class="max-w-2xl mx-auto bg-white p-6 md:p-10 rounded-xl shadow-lg">
+        <div class="max-w-6xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-xl border border-gray-100">
 
         <header class="text-center mb-6">
             <img src="https://placehold.co/200x60/008467/000?text=FRONTIER" alt="Frontier Logo" class="mx-auto h-12 mb-4">
             <h1 class="text-2xl font-bold">Pay Codes & Definitions</h1>
-            <h2 class="text-lg font-medium text-gray-800">FLICA, Navblue Codes, & Definitions</h2>
+            <p class="text-gray-600 text-lg">FLICA, Navblue Codes, & Definitions</p>
             <a href="index.html" class="inline-block px-4 py-2 text-sm text-[#008467] font-semibold rounded-lg hover:underline transition-colors duration-300 mb-4">
                 ← Back to Main Page
             </a>
@@ -166,6 +166,42 @@
             </div>
         </section>
 
+        <!-- Schedule Detail Codes Section (UPDATED TO MATCH Absence and Pay Codes) -->
+        <section class="mb-8">
+            <h3 class="text-xl font-semibold border-b-2 border-[#008467] pb-2 mb-4 text-center">Schedule Detail Codes (FLICA Pairing)</h3>
+            <div class="overflow-x-auto">
+                <table id="table-schedule-detail" class="min-w-full bg-white rounded-lg shadow-md">
+                    <thead>
+                        <tr>
+                            <th class="py-3 px-4 bg-[#008467] text-white text-center font-semibold uppercase rounded-tl-lg">Code</th>
+                            <th class="py-3 px-4 bg-[#008467] text-white text-center font-semibold uppercase rounded-tr-lg">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>DY</td><td>Day of Trip: Day of the week e.g., <em>FR</em> for Friday.</td></tr>
+                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>DD</td><td>Duty Day: Calendar day of the month e.g., <em>10</em> for the 10th.</td></tr>
+                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>DH</td><td>Deadhead: Traveling as a passenger to or from an assignment.</td></tr>
+                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>C</td><td>Aircraft Change: You’ll switch to a different plane for this leg.</td></tr>
+                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>FLTNO</td><td>Flight Number: The number assigned to your flight.</td></tr>
+                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>DPS</td><td>Departure Station: Airport code where your flight departs.</td></tr>
+                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>ARS</td><td>Arrival Station: Airport code where your flight lands.</td></tr>
+                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>DEPL</td><td>Departure Time (Local): Scheduled local departure time.</td></tr>
+                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>ARRL</td><td>Arrival Time (Local): Scheduled local arrival time.</td></tr>
+                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>BLKT</td><td>Block Time: Time from pushback to parking at the gate.</td></tr>
+                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>GRNT</td><td>Guarantee Time: Pay based on block time or the minimum guarantee, whichever is higher.</td></tr>
+                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>OA</td><td>Other Airline: A deadhead flight on a different airline.</td></tr>
+                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>TBLK</td><td>Total Block Time: All block time added up for the trip.</td></tr>
+                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>TDHD</td><td>Total Deadhead Time: All deadhead travel time for the trip.</td></tr>
+                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>TCRD</td><td>Total Credit: All paid time for the trip or duty period.</td></tr>
+                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>TDUTY</td><td>Total Duty Time: Total time on duty from sign-in to sign-out.</td></tr>
+                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>FDP LAYOVER</td><td>Flight Duty + Layover: Time on duty plus scheduled rest time.</td></tr>
+                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>T.A.F.B.</td><td>Time Away From Base: Total time from sign-in at base until sign-out back at base.</td></tr>
+                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>D-END</td><td>Day End: When your duty period ends.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
         <section class="mb-8">
             <h3 class="text-xl font-semibold border-b-2 border-[#008467] pb-2 mb-4 text-center">Vacation Credit Codes (VAC CR)</h3>
             <div class="overflow-x-auto">
@@ -393,5 +429,11 @@
             }
         }
     </script>
+  <!-- Back to Top Button -->
+  <button
+    onclick="window.scrollTo({top: 0, behavior: 'smooth'});"
+    class="fixed bottom-6 right-6 bg-[#008467]/70 text-white text-xs px-3 py-2 rounded-full shadow-md hover:bg-[#008467] hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
+    ↑ Top
+  </button>
     </body>
 </html>
