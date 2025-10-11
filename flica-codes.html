@@ -365,6 +365,97 @@
             </div>
         </section>
 
+<section id="general-pilot-terms" class="mb-8">
+  <h3 class="text-xl font-semibold border-b-2 border-[#008467] pb-2 mb-4 text-center">
+    General Terms
+  </h3>
+  <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+    <dl id="general-definitions-list">
+      <dt><strong>BLOCK TIME</strong></dt>
+      <dd>The time from when the aircraft first moves under its own power until it stops at the gate after landing.</dd>
+
+      <dt><strong>CHECK AIRMAN</strong></dt>
+      <dd>A pilot qualified to give flight training and conduct check rides or evaluations.</dd>
+
+      <dt><strong>CREW SCHEDULING</strong></dt>
+      <dd>The team that assigns trips, reserve days, and handles schedule changes or delays.</dd>
+
+      <dt><strong>DEADHEAD PAY</strong></dt>
+      <dd>Pay for travel done at the company’s direction to or from a work assignment.</dd>
+
+      <dt><strong>DOMICILE (Base)</strong></dt>
+      <dd>Your assigned home airport where trips begin and end.</dd>
+
+      <dt><strong>DUTY RIG</strong></dt>
+      <dd>A minimum pay rule that ensures pay for time spent on duty (e.g., 1 hour pay per 2–3 hours on duty).</dd>
+
+      <dt><strong>FLIGHT DUTY PERIOD (FDP)</strong></dt>
+      <dd>Total time from when you report for duty until you’re released after the final flight.</dd>
+
+      <dt><strong>FLIGHT SEGMENT (Leg)</strong></dt>
+      <dd>A single flight from one city to another within a trip.</dd>
+
+      <dt><strong>GUARANTEED FLIGHT TIME</strong></dt>
+      <dd>The minimum pay for each flight, based on block time or a set hourly minimum.</dd>
+
+      <dt><strong>LEGAL REST</strong></dt>
+      <dd>The minimum rest time required between duty periods to meet FAA regulations.</dd>
+
+      <dt><strong>LINE OF FLYING (Line)</strong></dt>
+      <dd>Your monthly schedule made up of trips and days off.</dd>
+
+      <dt><strong>LONG CALL RESERVE (LCR)</strong></dt>
+      <dd>Reserve status with longer notice (12 hours) before reporting for duty.</dd>
+
+      <dt><strong>MINIMUM PAY GUARANTEE</strong></dt>
+      <dd>The least amount of hours you’re paid each month (75hours).</dd>
+
+      <dt><strong>OPEN TIME (OT)</strong></dt>
+      <dd>Unassigned trips or reserve days that pilots can pick up or be assigned to.</dd>
+
+      <dt><strong>PAIRING (Sequence or Trip)</strong></dt>
+      <dd>A group of flights over one or more days that starts and ends at your base.</dd>
+
+      <dt><strong>PAY-VS-CREDIT</strong></dt>
+      <dd>You’re paid whichever is higher — actual flight time or contractual pay protections.</dd>
+
+      <dt><strong>PER DIEM</strong></dt>
+      <dd>Hourly allowance for meals and expenses while away from base.</dd>
+
+      <dt><strong>PILOT BIDDING SYSTEM (PBS)</strong></dt>
+      <dd>Software used to bid for monthly schedules based on seniority and preferences.</dd>
+
+      <dt><strong>RESERVE</strong></dt>
+      <dd>A period when a pilot must be available for assignment if needed by the company.</dd>
+
+      <dt><strong>REASSIGNMENT</strong></dt>
+      <dd>A new trip or duty given after your original schedule changes due to weather, maintenance, or other disruptions.</dd>
+
+      <dt><strong>SENIORITY</strong></dt>
+      <dd>Your position on the pilot list. Determines bidding priority, schedules, and upgrades.</dd>
+
+      <dt><strong>SHORT CALL RESERVE (SCR)</strong></dt>
+      <dd>Reserve status requiring you to report quickly (2 hours).</dd>
+
+      <dt><strong>TRIP RIG</strong></dt>
+      <dd>Ensures pay for the full trip based on total time away from base, not just flight hours.</dd>
+
+      <dt><strong>JA (Junior Assignment)</strong></dt>
+      <dd>A trip assigned when there aren’t enough volunteers, often paid at a higher rate.</dd>
+
+      <dt><strong>TURN</strong></dt>
+      <dd>A same-day out-and-back flight with no overnight stay.</dd>
+
+      <dt><strong>COMMUTE</strong></dt>
+      <dd>Traveling to your base on your own time (not paid).</dd>
+
+      <dt><strong>SHOW TIME</strong></dt>
+      <dd>The scheduled time to report for duty before your first flight.</dd>
+    </dl>
+  </div>
+</section>
+
+
         <div class="flex justify-center w-full">
             <a href="index.html" class="text-center mb-10 inline-block px-4 py-2 text-sm text-[#008467] font-semibold rounded-lg hover:underline transition-colors duration-300 mb-4">
                 ← Back to Main Page
@@ -410,14 +501,15 @@ function filterContent() {
         }
     });
 
-    // Definitions list
-    const definitionsList = document.getElementById('definitions-list');
-    if (definitionsList) {
+    // Function to handle definition lists (reusable for multiple lists)
+    function filterDefinitionList(listId) {
+        const definitionsList = document.getElementById(listId);
+        if (!definitionsList) return;
+
         const items = definitionsList.children; // dt + dd
         for (let i = 0; i < items.length; i += 2) {
             const dt = items[i];
             const dd = items[i + 1];
-
             if (!dt || !dd) continue;
 
             if (!dt.dataset.original) dt.dataset.original = dt.innerHTML;
@@ -441,8 +533,13 @@ function filterContent() {
             }
         }
     }
+
+    // Apply to both definition sections
+    filterDefinitionList('definitions-list');         // Pilot Agreement Definitions
+    filterDefinitionList('general-definitions-list'); // General Pilot Terms
 }
 </script>
+
   <!-- Back to Top Button -->
   <button
     onclick="window.scrollTo({top: 0, behavior: 'smooth'});"
