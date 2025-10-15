@@ -13,44 +13,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FLICA Codes & Definitions</title>
+    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind and Inter font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary-green': '#008467',
+                        'light-gray': '#f9fafb',
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Smooth scrolling for navigation */
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+            color: #1f2937;
         }
-        .section-divider {
-            border-top: 2px dashed #9ca3af;
-        }
-        /* Faded line between table rows */
-        tr:not(:last-child) td {
-            border-bottom: 1px solid rgba(229, 231, 235, 0.7); /* Using a slightly transparent gray */
-        }
-        /* Custom styles for the definition list */
-        #pilot-agreement-definitions dt {
-            font-weight: 600; /* Semi-bold for the term */
-            margin-top: 1rem;
+        /* Custom styling for definitions lists */
+        .glossary-list dt {
+            font-weight: 700; /* Bold for the term */
+            margin-top: 1.5rem;
             color: #1f2937; /* Darker text */
         }
-        #pilot-agreement-definitions dd {
+        .glossary-list dd {
             margin-left: 1rem;
+            color: #4b5563; /* Slightly lighter text for definitions */
             padding-left: 0.5rem;
-            border-left: 2px solid #008467; /* Green accent bar */
+            border-left: 3px solid #008467; /* Green accent bar */
+            padding-bottom: 0.5rem;
             margin-bottom: 1rem;
         }
-        #pilot-agreement-definitions ul {
+        .glossary-list ul {
             list-style-type: disc;
             margin-left: 2rem;
             margin-top: 0.5rem;
+            color: #4b5563;
+        }
+
+        /* Navigation Link Styling */
+        .nav-link {
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem; /* sm text size */
+            font-weight: 600;
+            color: white;
+            background-color: #008467;
+            transition: background-color 0.2s, transform 0.1s;
+            text-decoration: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .nav-link:hover {
+            background-color: #006b51;
+            transform: translateY(-1px);
+        }
+        /* Mobile responsiveness for the definition lists */
+        @media (max-width: 640px) {
+            .glossary-list dd {
+                margin-left: 0;
+            }
+            .glossary-list dt {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
-<body class="bg-gray-100 p-4 sm:p-8 text-gray-900">
+<body class="p-4 sm:p-8">
 
-        <div class="max-w-6xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-xl border border-gray-100">
+    <div class="max-w-6xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-xl border border-gray-100">
 
+        <!-- Header Content -->
         <header class="text-center mb-6">
             <img src="https://placehold.co/200x60/008467/000?text=FRONTIER" alt="Frontier Logo" class="mx-auto h-12 mb-4">
             <h1 class="text-2xl font-bold">Pay Codes & Definitions</h1>
@@ -58,12 +105,24 @@
             <a href="index.html" class="inline-block px-4 py-2 text-sm text-[#008467] font-semibold rounded-lg hover:underline transition-colors duration-300 mb-4">
                 ← Back to Main Page
             </a>
+
+        <!-- Section Select / Navigation Bar (Sticky at the top) -->
+        <!-- Note: Added pt-8 to offset the header content when navigating -->
+        <nav class="sticky top-0 z-10 bg-white shadow-md p-3 rounded-lg mb-8 border-t border-gray-200">
+            <h2 class="text-xl font-bold text-gray-700 mb-3 text-center">Quick Navigation</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-3">
+                <a href="#table-vacation" class="nav-link">Vacation Codes</a>
+                <a href="#table-schedule-detail" class="nav-link">Schedule Detail</a>
+                <a href="#pilot-agreement-definitions" class="nav-link">Pilot Agreement Defs</a>
+                <a href="#general-pilot-terms" class="nav-link">General Terms</a>
+            </div>
+        </nav>
         </header>
 
         <div class="mb-8">
             <input type="text" id="searchInput" onkeyup="filterContent()" placeholder="Search codes, descriptions, or terms..." class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#008467] text-gray-700 shadow-sm transition duration-150">
         </div>
-        <section class="mb-8">
+        <section id="table-absence-pay" class="mb-8">
             <h3 class="text-xl font-semibold border-b-2 border-[#008467] pb-2 mb-4 text-center">Absence and Pay Codes</h3>
             <div class="overflow-x-auto">
                 <table id="table-absence-pay" class="min-w-full bg-white rounded-lg shadow-md">
@@ -165,9 +224,28 @@
                 </table>
             </div>
         </section>
-
+        
+        <section id="table-vacation" class="mb-8">
+            <h3 class="text-xl font-semibold border-b-2 border-[#008467] pb-2 mb-4 text-center">Vacation Credit Codes (VAC CR)</h3>
+            <div class="overflow-x-auto">
+                <table id="table-vacation" class="min-w-full bg-white rounded-lg shadow-md">
+                    <thead>
+                        <tr>
+                            <th class="py-3 px-4 bg-[#008467] text-white text-center font-semibold uppercase rounded-tl-lg">FLICA Code</th>
+                            <th class="py-3 px-4 bg-[#008467] text-white text-center font-semibold uppercase">Navblue Code</th>
+                            <th class="py-3 px-4 bg-[#008467] text-white text-center font-semibold uppercase rounded-tr-lg">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>V00</td><td>00</td><td>VAC CR 00 HRS</td></tr>
+                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>V01</td><td>01</td><td>VAC CR 01 HRS</td></tr>
+                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>V40</td><td>40</td><td>VAC CR 40 HRS</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
         <!-- Schedule Detail Codes Section (UPDATED TO MATCH Absence and Pay Codes) -->
-        <section class="mb-8">
+        <section id="table-schedule-detail" class="mb-8">
             <h3 class="text-xl font-semibold border-b-2 border-[#008467] pb-2 mb-4 text-center">Schedule Detail Codes (FLICA Pairing)</h3>
             <div class="overflow-x-auto">
                 <table id="table-schedule-detail" class="min-w-full bg-white rounded-lg shadow-md">
@@ -201,26 +279,7 @@
                 </table>
             </div>
         </section>
-        
-        <section class="mb-8">
-            <h3 class="text-xl font-semibold border-b-2 border-[#008467] pb-2 mb-4 text-center">Vacation Credit Codes (VAC CR)</h3>
-            <div class="overflow-x-auto">
-                <table id="table-vacation" class="min-w-full bg-white rounded-lg shadow-md">
-                    <thead>
-                        <tr>
-                            <th class="py-3 px-4 bg-[#008467] text-white text-center font-semibold uppercase rounded-tl-lg">FLICA Code</th>
-                            <th class="py-3 px-4 bg-[#008467] text-white text-center font-semibold uppercase">Navblue Code</th>
-                            <th class="py-3 px-4 bg-[#008467] text-white text-center font-semibold uppercase rounded-tr-lg">Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>V00</td><td>00</td><td>VAC CR 00 HRS</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>V01</td><td>01</td><td>VAC CR 01 HRS</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>V40</td><td>40</td><td>VAC CR 40 HRS</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+
         <div class="flex justify-center w-full">
             <a href="index.html" class="text-center mb-10 inline-block px-4 py-2 text-sm text-[#008467] font-semibold rounded-lg hover:underline transition-colors duration-300 mb-4">
                 ← Back to Main Page
@@ -251,13 +310,7 @@
                     <dt><strong>DAILY DROP LIMIT (DDL)</strong></dt><dd>means the limit on the number of Duty Periods that may be Dropped on a given day. The limit will include all Duty Periods operating that day</dd>
                     <dt><strong>DAY OFF</strong></dt><dd>means a Calendar Day free from all duty with the Company which occurs in a Pilot's Domicile</dd>
                     <dt><strong>DEADHEAD</strong></dt><dd>means transportation at Company direction (not local in character) to or from a duty assignment</dd>
-                    <dt><strong>DENIAL MODE</strong></dt><dd>means a process in PBS that:
-                        <ul>
-                            <li>is performed after PBS is unable to award a Pilot a line consistent with bid preferences, seniority, his Known Absences, the FARs, the CBA, and within his credit window.</li>
-                            <li>is utilized after Shuffle and prior to SLG, and</li>
-                            <li>ignores, one at a time, a Pilot's preference(s) to avoid flying a specified Sequence or a Sequence with specified criteria (e.g., number of Duty Periods in a Sequence, departure time of Sequence, number of flight segments per Duty period) or his preference to avoid flying on a specified Day, in an effort to award him a line within his credit window.</li>
-                        </ul>
-                    </dd>
+<dt><strong>DENIAL MODE</strong></dt><dd> A step in PBS used when the system can’t build a schedule that meets all your preferences. It relaxes one “avoid” preference at a time (like avoiding certain trips or days) to make sure you still get a legal schedule within your credit window.</dd>
                     <dt><strong>DISPLACEMENT or DISPLACED</strong></dt><dd>means that a Pilot no longer has sufficient seniority to hold his current Position pursuant to Section 24</dd>
                     <dt><strong>DOMICILE</strong></dt><dd>means a geographic location where Pilots are based and the location from which Sequences are constructed to start and finish</dd>
                     <dt><strong>DROP</strong></dt><dd>means a Sequence, Reserve Day, or RDP, or portion thereof, that a Pilot voluntarily removes from his schedule resulting in a deduction in Pay Credit</dd>
@@ -266,12 +319,7 @@
                     <dt><strong>EFFECTIVE DATE</strong></dt><dd>means the date when a Pilot's Hourly Rate changes as a result of a change in a Pilot's Position (subject to the Bypass provisions set out in Section 24) or the date upon which a Pilot is based at a different Domicile</dd>
                     <dt><strong>ELECTRONIC BID SYSTEM</strong></dt><dd>means an internet-based method for Pilots to access and modify their schedules. As of the date of signing of this Agreement, the Electronic Bid System is FLICA</dd>
                     <dt><strong>EXTENDED/EXTENSION</strong></dt><dd>means a Reserve assignment that is not in accordance with Section 25.R.4</dd>
-                    <dt><strong>FILL TO THRESHOLD</strong></dt><dd>means a tool in PBS that:
-                        <ul>
-                            <li>is utilized prior to Denial Mode; and</li>
-                            <li>continues to award Sequences to each Pilot's line, if possible, until such line is at or above the Threshold.</li>
-                        </ul>
-                    </dd>
+                    <dt><strong>FILL TO THRESHOLD</strong></dt><dd>means a tool in PBS that: is utilized prior to Denial Mode; and continues to award Sequences to each Pilot's line, if possible, until such line is at or above the Threshold.</dd>
                     <dt><strong>FINAL LINE CHECK</strong></dt><dd>means the line check that qualifies the Pilot to be released to the line (either by the Company or FAA)</dd>
                     <dt><strong>FIRST OFFICER</strong></dt><dd>means a Pilot who is second-in-command of the aircraft whose duty is to assist and relieve the Captain and, in the absence of the Captain, is responsible for the aircraft and crew while on duty. A First Officer shall be properly qualified and designated by the Company, hold currently effective airman's certificates authorizing such Pilot to serve as First Officer and act as second-in-command</dd>
                     <dt><strong>FLIGHT TIME</strong></dt><dd>means the total time from Block Out to Block In for scheduling and pay purposes</dd>
@@ -342,13 +390,7 @@
                     <dt><strong>SEQUENCE PAY CREDIT</strong></dt><dd>means the sum of all the Pay Credit in a Monthly Bid Period by Position, including carry-in Pay Credit from the previous Monthly Bid period, excluding carry-out Pay Credit from the current Monthly Bid Period and excluding all Pay Credit associated with a Known Absence(s)</dd>
                     <dt><strong>SEQUENCE RELEASE TIME</strong></dt><dd>means the time of the end of a Duty Period in Domicile on the last day of a Sequence</dd>
                     <dt><strong>SEQUENCE REPORT TIME</strong></dt><dd>means the time of the start of a Duty Period in Domicile on the first day of a Sequence</dd>
-                    <dt><strong>SHUFFLE</strong></dt><dd>means a tool in PBS that:
-                        <ul>
-                            <li>is utilized after PBS is unable to award a Pilot a Regular Line within his credit window which complies with his higher priority bid preference(s),</li>
-                            <li>removes a Sequence(s) which had been awarded in accordance with such bid preference(s) and searches for combinations of Sequence(s) which comply with his lower priority bid preference(s), and</li>
-                            <li>is utilized prior to Denial Mode.</li>
-                        </ul>
-                    </dd>
+                    <dt><strong>SHUFFLE</strong></dt><dd>means a tool in PBS that: is utilized after PBS is unable to award a Pilot a Regular Line within his credit window which complies with his higher priority bid preference(s), removes a Sequence(s) which had been awarded in accordance with such bid preference(s) and searches for combinations of Sequence(s) which comply with his lower priority bid preference(s), and is utilized prior to Denial Mode.</dd>
                     <dt><strong>SMALL DOMICILE</strong></dt><dd>means a Domicile with seventy five (75) or fewer eligible monthly bidders by Position</dd>
                     <dt><strong>SPLIT</strong></dt><dd>means a Sequence that is divided in a Pilot's Domicile. However, this definition is not applicable to the Company's option to divide a Sequence to assign a Reserve, in accordance with Section 25.0.5.b.iv</dd>
                     <dt><strong>STACK</strong></dt><dd>means the number of Duty Periods that remain in Open Time on a given Day at the end of a bid run</dd>
