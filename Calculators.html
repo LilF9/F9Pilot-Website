@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroCompute | Pilot Tools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'aviation-navy': '#0f172a',
+                        'aviation-emerald': '#10b981',
+                        'aviation-accent': '#3b82f6',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark {
+            --bg-gradient: radial-gradient(circle at top left, #1e293b, #0f172a);
+        }
+
+        body {
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 24px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .readout-panel {
+            background: #0f172a;
+            border-radius: 16px;
+            padding: 20px;
+            border-left: 4px solid #10b981;
+        }
+
+        .digital-text {
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: -0.05em;
+        }
+
+        input[type="range"] {
+            height: 6px;
+            -webkit-appearance: none;
+            background: #cbd5e1;
+            border-radius: 5px;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 18px; width: 18px;
+            border-radius: 50%;
+            background: #10b981;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+        }
+    </style>
+</head>
+
+<body class="p-4 md:p-10 font-sans text-slate-800 dark:text-slate-100">
+
+    <div class="max-w-4xl mx-auto">
+        <header class="flex justify-between items-end mb-12">
+            <div>
+                <h1 class="text-4xl font-extrabold tracking-tight text-aviation-navy dark:text-white">
+                    Aero<span class="text-aviation-emerald">Compute</span>
+                </h1>
+                <p class="text-slate-500 dark:text-slate-400 font-medium">Flight Operations Calculator v2.0</p>
+            </div>
+            <button id="theme-toggle" class="p-3 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700 transition-all hover:scale-110">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <section class="glass-card p-8 md:col-span-2">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="p-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg">
+                        💸
+                    </div>
+                    <h2 class="text-xl font-bold">Earnings Estimator</h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="space-y-6 lg:col-span-2">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Rank</label>
+                                <select id="role" onchange="updatePayScale(); updatePay();" class="w-full bg-slate-100 dark:bg-slate-900/50 p-3 rounded-xl border-none ring-1 ring-slate-200 dark:ring-slate-700">
+                                    <option value="FO">First Officer</option>
+                                    <option value="CA">Captain</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Longevity</label>
+                                <select id="yearSelect" onchange="updatePay()" class="w-full bg-slate-100 dark:bg-slate-900/50 p-3 rounded-xl border-none ring-1 ring-slate-200 dark:ring-slate-700"></select>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Monthly Credit</label>
+                                <span class="digital-text text-aviation-emerald font-bold" id="creditVal">75</span>
+                            </div>
+                            <input type="range" id="creditRange" min="1" max="130" value="75" oninput="updatePay()" class="w-full">
+                        </div>
+
+                        <div class="flex items-center gap-3 p-4 bg-slate-100 dark:bg-slate-900/50 rounded-xl">
+                            <input type="checkbox" id="include401k" onchange="updatePay()" class="w-5 h-5 accent-aviation-emerald">
+                            <label for="include401k" class="text-sm font-semibold italic">Show 15% Employer 401k Direct Contribution</label>
+                        </div>
+                    </div>
+
+                    <div class="readout-panel flex flex-col justify-center items-center text-center">
+                        <span class="text-slate-400 text-xs font-bold uppercase mb-2">Estimated Total Gross</span>
+                        <div id="totalPayDisplay" class="digital-text text-3xl md:text-4xl text-white font-bold mb-4">$0.00</div>
+                        <div class="w-full h-px bg-slate-700 mb-4"></div>
+                        <div class="flex flex-col gap-1">
+                            <span class="text-slate-400 text-[10px] uppercase font-bold">Hourly Rate</span>
+                            <span id="rateOut" class="digital-text text-aviation-emerald">$0.00</span>
+                        </div>
+                        <div id="dcRow" class="hidden mt-4 pt-4 border-t border-slate-700 w-full">
+                            <span class="text-slate-400 text-[10px] uppercase font-bold text-center block">401k Direct</span>
+                            <span id="dcAmountOut" class="digital-text text-blue-400">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="glass-card p-8">
+                <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <span class="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-sm">📅</span>
+                    FDP Limits
+                </h2>
+                <div class="space-y-5">
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold uppercase text-slate-400">Report Time</label>
+                        <input type="time" id="fdpReport" oninput="calcRSV()" class="w-full bg-slate-100 dark:bg-slate-900/50 p-3 rounded-xl border-none ring-1 ring-slate-200 dark:ring-slate-700">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold uppercase text-slate-400">Flight Legs</label>
+                        <select id="legs" onchange="calcRSV()" class="w-full bg-slate-100 dark:bg-slate-900/50 p-3 rounded-xl border-none ring-1 ring-slate-200 dark:ring-slate-700">
+                            <option value="1">1 Leg</option>
+                            <option value="2" selected>2 Legs</option>
+                            <option value="3">3 Legs</option>
+                            <option value="4">4 Legs</option>
+                            <option value="5">5+ Legs</option>
+                        </select>
+                    </div>
+                    <div class="readout-panel mt-6">
+                        <div class="flex justify-between text-xs text-slate-400 mb-2 font-bold uppercase">
+                            <span>Max FDP: <span id="maxDurationOut" class="text-white">--</span></span>
+                        </div>
+                        <div id="rsvResult" class="digital-text text-xl text-aviation-emerald font-bold">SET REPORT TIME</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="glass-card p-8">
+                <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <span class="p-2 bg-amber-100 dark:bg-amber-900/30 rounded-lg text-sm">🌙</span>
+                    Legal Rest
+                </h2>
+                <div class="space-y-5">
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold uppercase text-slate-400">Block-In (Local)</label>
+                        <input type="time" id="blockInTime" oninput="calcRest()" class="w-full bg-slate-100 dark:bg-slate-900/50 p-3 rounded-xl border-none ring-1 ring-slate-200 dark:ring-slate-700">
+                    </div>
+                    <div class="flex items-center gap-3 p-3 bg-slate-100 dark:bg-slate-900/50 rounded-xl">
+                        <input type="checkbox" id="returnToBase" onchange="calcRest()" class="w-5 h-5 accent-aviation-emerald">
+                        <label class="text-sm font-semibold">Returning to Base</label>
+                    </div>
+                    <div class="readout-panel mt-6">
+                        <div class="flex justify-between text-xs text-slate-400 mb-2 font-bold uppercase">
+                            <span>Duration: <span id="restDurationOut" class="text-white">10 hrs</span></span>
+                        </div>
+                        <div id="restResult" class="digital-text text-xl text-aviation-emerald font-bold">SET BLOCK-IN</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="mt-12 text-center text-slate-400 text-xs font-medium">
+            <p>&copy; 2026 AeroCompute Systems. Provided for reference only. Verify with official Scheduling.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Pay Logic
+        const payScales = {
+            FO: [100.00, 118.74, 127.55, 134.77, 142.97, 148.88, 155.68, 160.34, 166.81, 170.96, 175.11, 179.26],
+            CA: [202.76, 219.47, 222.88, 227.43, 229.70, 231.98, 235.57, 242.59, 248.64, 254.87, 259.94, 270.07]
+        };
+
+        function updatePayScale() {
+            const role = document.getElementById('role').value;
+            const select = document.getElementById('yearSelect');
+            const currentYear = select.value || 1;
+            select.innerHTML = '';
+            payScales[role].forEach((rate, index) => {
+                const opt = document.createElement('option');
+                opt.value = index + 1;
+                opt.textContent = `Year ${index + 1} ($${rate.toFixed(2)})`;
+                select.appendChild(opt);
+            });
+            select.value = currentYear;
+        }
+
+        function updatePay() {
+            const role = document.getElementById('role').value;
+            const yearIndex = Math.min(parseInt(document.getElementById('yearSelect').value) - 1, payScales[role].length -1);
+            const rate = payScales[role][yearIndex];
+            const credit = parseInt(document.getElementById('creditRange').value);
+            const include401k = document.getElementById('include401k').checked;
+            
+            document.getElementById('creditVal').textContent = credit;
+            const totalGross = rate * credit;
+            
+            document.getElementById('rateOut').textContent = `$${rate.toFixed(2)}`;
+            document.getElementById('totalPayDisplay').textContent = `$${totalGross.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+            
+            const dcRow = document.getElementById('dcRow');
+            if (include401k) {
+                dcRow.classList.remove('hidden');
+                document.getElementById('dcAmountOut').textContent = `$${(totalGross * 0.15).toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+            } else { dcRow.classList.add('hidden'); }
+        }
+
+        // FDP Logic
+        function calcRSV() {
+            const report = document.getElementById('fdpReport').value;
+            const legs = parseInt(document.getElementById('legs').value);
+            if (!report) return;
+            const [h, m] = report.split(':').map(Number);
+            let maxFdp = 12; 
+            if (h >= 0 && h < 5) maxFdp = 9;
+            else if (h >= 5 && h < 6) maxFdp = 10;
+            else if (h >= 6 && h < 7) maxFdp = 11;
+            else if (h >= 7 && h < 13) maxFdp = 13;
+            else if (h >= 13 && h < 17) maxFdp = 12;
+            else if (h >= 17 && h < 24) maxFdp = 11;
+            if (legs > 2) maxFdp -= (legs - 2) * 0.5;
+
+            const reportDate = new Date();
+            reportDate.setHours(h, m, 0);
+            const releaseDate = new Date(reportDate.getTime() + maxFdp * 60 * 60 * 1000);
+            const releaseStr = releaseDate.getHours().toString().padStart(2, '0') + ':' + releaseDate.getMinutes().toString().padStart(2, '0');
+            
+            document.getElementById('maxDurationOut').textContent = `${maxFdp} hrs`;
+            document.getElementById('rsvResult').textContent = `RELEASE BY: ${releaseStr}`;
+        }
+
+        // Rest Logic
+        function calcRest() {
+            const time = document.getElementById('blockInTime').value;
+            const toBase = document.getElementById('returnToBase').checked;
+            if (!time) return;
+            const [h, m] = time.split(':').map(Number);
+            const blockIn = new Date();
+            blockIn.setHours(h, m, 0);
+            const restStart = new Date(blockIn.getTime() + 15 * 60 * 1000); // 15m post block
+            const minRestHours = toBase ? 11 : 10;
+            const legalReport = new Date(restStart.getTime() + minRestHours * 60 * 60 * 1000);
+            const reportStr = legalReport.getHours().toString().padStart(2, '0') + ':' + legalReport.getMinutes().toString().padStart(2, '0');
+            
+            document.getElementById('restDurationOut').textContent = `${minRestHours} hrs`;
+            document.getElementById('restResult').textContent = `LEGAL AT: ${reportStr}`;
+        }
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            themeIcon.textContent = isDark ? '☀️' : '🌙';
+        });
+
+        // Init
+        updatePayScale();
+        updatePay();
+    </script>
+</body>
+</html>

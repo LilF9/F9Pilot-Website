@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <!-- Google tag (gtag.js) -->
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-NKD0YM45CW"></script>
-            <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NKD0YM45CW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NKD0YM45CW');
+    </script>
+    
+    <!-- THEME LOADER: This MUST be the first thing in the <head> of every page -->
+    <script>
+        // Use an IIFE to execute immediately and prevent theme flickering
+        (function() {
+            try {
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.style.backgroundColor = '#111827'; // Immediate color fix
+                }
+            } catch (e) {
+                console.log("Local storage blocked or unavailable");
+            }
+        })();
+    </script>
 
-            gtag('config', 'G-NKD0YM45CW');
-            </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>F9 Pilot Hub</title>
@@ -18,10 +34,24 @@
     <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
     <style>
         :root {
+            /* Original Light Mode Colors */
             --f9-green: #008467;
             --f9-dark-green: #005f4a;
             --f9-light-green-bg: #e6f2ee;
             --f9-dark-gray: #333;
+            --card-bg: #ffffff;
+            --text-muted: #555;
+            --transition-speed: 0.3s;
+        }
+
+        /* Dark Mode Overrides */
+        .dark {
+            --f9-light-green-bg: #111827;
+            --f9-dark-gray: #f3f4f6;
+            --f9-green: #10b981; 
+            --f9-dark-green: #34d399;
+            --card-bg: #1f2937;
+            --text-muted: #9ca3af;
         }
 
         body {
@@ -30,6 +60,7 @@
             color: var(--f9-dark-gray);
             margin: 0;
             padding: 15px;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
         }
 
         .container {
@@ -50,18 +81,24 @@
         }
         
         header p {
-            color: #555;
+            color: var(--text-muted);
             font-size: 1em;
             margin-top: 8px;
             margin-bottom: 5px;
         }
 
         .category {
-            background-color: #ffffff;
+            background-color: var(--card-bg);
             border-radius: 12px;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
             padding: 15px;
             margin-bottom: 10px;
+            transition: background-color var(--transition-speed), box-shadow var(--transition-speed), border var(--transition-speed);
+        }
+
+        .dark .category {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            border: 1px solid #374151;
         }
 
         .category-title {
@@ -74,6 +111,10 @@
             margin-bottom: 15px;
         }
 
+        .dark .category-title {
+            border-bottom-color: #374151;
+        }
+
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -83,11 +124,11 @@
 
         .grid-item {
             text-decoration: none;
-            color: #555;
+            color: var(--text-muted);
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
             border-radius: 8px;
             padding: 8px;
             text-align: center;
@@ -96,6 +137,11 @@
         .grid-item:hover {
             transform: translateY(-4px);
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(0, 132, 103, 0.05);
+        }
+
+        .dark .grid-item:hover {
+            background-color: #374151;
         }
 
         .grid-item img {
@@ -113,11 +159,16 @@
         }
         
         .text-links-section {
-            background-color: #ffffff;
+            background-color: var(--card-bg);
             border-radius: 12px;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
             padding: 15px;
             margin-top: 20px;
+            transition: background-color var(--transition-speed);
+        }
+
+        .dark .text-links-section {
+            border: 1px solid #374151;
         }
 
         .text-links-section ul {
@@ -134,6 +185,10 @@
             content: "|";
             padding-left: 15px;
             color: #ccc;
+        }
+
+        .dark .text-links-section li:not(:last-child)::after {
+            color: #4b5563;
         }
 
         .text-links-section ul li a {
@@ -153,7 +208,6 @@
             margin-top: 30px;
             color: #888;
             font-size: 0.75em;
-            position: relative;
         }
 
         footer a {
@@ -166,7 +220,32 @@
             text-decoration: underline;
         }
         
-        /* MODAL CSS - ADDED */
+        /* THEME TOGGLE BUTTON */
+        #theme-toggle {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 2000;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .dark #theme-toggle {
+            background: #374151;
+            border-color: #4b5563;
+            color: #facc15;
+        }
+
+        /* MODAL CSS */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -181,14 +260,15 @@
         }
 
         .modal-content {
-            background-color: #fff;
-            padding: 13px;
+            background-color: var(--card-bg);
+            padding: 20px;
             border-radius: 12px;
             width: 90%;
             max-width: 400px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             position: relative;
             text-align: center;
+            transition: background-color var(--transition-speed);
         }
 
         .close-btn {
@@ -199,8 +279,10 @@
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
-            @apply hover:text-gray-700 transition-colors duration-200;
+        }
 
+        .close-btn:hover {
+            color: var(--f9-dark-gray);
         }
 
         .modal-title {
@@ -211,80 +293,43 @@
 
         .modal-text {
             font-size: 0.9rem;
-            color: #555;
+            color: var(--text-muted);
             margin-bottom: 20px;
         }
 
-        .image-container {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .modal-image {
-            width: 150px;
-            height: auto;
-            border: 2px solid transparent;
-            transition: border-color 0.3s ease;
-        }
-
-        .modal-image:hover {
-            border-color: #007bff;
-        }
-
-        .image-caption {
-            font-size: 0.85rem;
-            color: #333;
-            margin-top: 5px;
-            font-weight: 500;
-        }
-
         .modal-image-fixed {
-            width: 100px; /* Adjust this value to your preferred size */
-            height: 100px; /* Keep this value the same as width for a square */
-            object-fit: contain; /* This prevents the image from stretching */
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
             border: 2px solid transparent;
             transition: border-color 0.3s ease;
         }
 
         .modal-image-fixed:hover {
-            border-color: #008467;
+            border-color: var(--f9-green);
         }
 
         .image-container {
-            display: flex; /* Makes the images and arrow flex items */
-            align-items: center; /* Vertically centers all items in the container */
-            justify-content: center; /* Horizontally centers the items */
-            gap: 70px; /* Adjust this to change spacing between items */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
         }
 
-        /* This targets all links within the div that has the class "modal-content" */
-        .modal-content a {
-            text-decoration: none; /* This removes the underline from all links */
-        }
-
-        /* This adds a subtle underline back when a user hovers over the link, for better usability */
-        .modal-content a:hover {
-            text-decoration: underline; 
-        }
-        
-        /* This new style block contains only the Tailwind rules you need */
-        .text-xs {
-        font-size: 0.75rem;
-        line-height: 1rem;
-        }
-        .text-gray-500 {
-        color: #6b7280;
-        }
-        .mt-2 {
-        margin-top: 0.5rem;
-        }
+        .text-xs { font-size: 0.75rem; line-height: 1rem; }
+        .text-gray-500 { color: #6b7280; }
+        .dark .text-gray-500 { color: #9ca3af; }
+        .mt-2 { margin-top: 0.5rem; }
 
     </style>
 </head>
 
 <body>
+    <!-- Theme Toggle -->
+    <button id="theme-toggle" title="Toggle Dark Mode">
+        <span id="theme-icon">🌙</span>
+    </button>
+
     <div class="container">
         <header>
             <h1>Welcome, Frontier Pilots!</h1>
@@ -486,17 +531,17 @@
         </div>
         
         <footer>
-            <p style="margin-top: 8px; font-size: 12px; color: #888; font-style: italic;">
-            <p><a href="disclaimer.html">Disclaimer</a> | <a href="suggestions.html">Feedback or Suggestions</a> | <a href="changelogs.html">v1.7</a></p>
-            <p>&copy;2026 F9Pilot.com</p>
+            <p><a href="disclaimer.html">Disclaimer</a> | <a href="suggestions.html">Feedback or Suggestions</a> | <a href="changelogs.html">v1.8</a></p>
+            <p>&copy; <span id="current-year"></span> F9Pilot.com</p>
         </footer>
     </div>
 
+    <!-- Modal for Station Ops -->
     <div id="f9sowebModal" class="modal-overlay">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
-            <h2 class="modal-title text-2xl font-bold mb-4">Station Operations Login</h2>
-            <p class="text-gray-600 mb-6">1st log in to MyFrontier. 2nd return here and click the second link to go to Station Ops.</p>
+            <h2 class="modal-title">Station Operations Login</h2>
+            <p class="modal-text">1st log in to MyFrontier. 2nd return here and click the second link to go to Station Ops.</p>
             
             <div class="image-container">
                 <a href="https://www.myfrontier.org/cvpn/http/www.myfrontier.org/" target="_blank">
@@ -513,23 +558,42 @@
     </div>
     
     <script>
-        // MODAL JAVASCRIPT - ADDED
+        // --- Theme Toggle Logic ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        // Check icon state on load (class is already applied by head script)
+        if (document.documentElement.classList.contains('dark')) {
+            themeIcon.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            themeIcon.textContent = isDark ? '☀️' : '🌙';
+            try {
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            } catch (e) {
+                console.warn("Could not save theme to local storage.");
+            }
+        });
+
+        // --- Auto Year Logic ---
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- Modal Logic ---
         const f9sowebLink = document.getElementById('f9sowebLink');
         const f9sowebModal = document.getElementById('f9sowebModal');
         const closeBtn = f9sowebModal.querySelector('.close-btn');
         
-        // When the user clicks on the main link, open the modal
         f9sowebLink.onclick = function(event) {
-            event.preventDefault(); // Prevent the link from navigating
+            event.preventDefault();
             f9sowebModal.style.display = 'flex';
         }
 
-        // When the user clicks on (x), close the modal
         closeBtn.onclick = function() {
             f9sowebModal.style.display = 'none';
         }
 
-        // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
             if (event.target == f9sowebModal) {
                 f9sowebModal.style.display = 'none';
