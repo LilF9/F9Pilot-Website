@@ -131,6 +131,45 @@
         color: #f3f4f6 !important;
         border-color: #4b5563 !important;
         }
+            /* Light mode - force light bg & dark text */
+            :not(.dark) .bg-gray-50,
+            :not(.dark) #pilot-agreement-definitions > div,
+            :not(.dark) #general-pilot-terms > div {
+            background-color: #f9fafb !important;
+            color: #1f2937 !important;
+            }
+
+            :not(.dark) dt,
+            :not(.dark) dd {
+            color: #1f2937 !important;
+            }
+
+            /* Dark mode - force dark bg & light text */
+            .dark .bg-gray-50,
+            .dark #pilot-agreement-definitions > div,
+            .dark #general-pilot-terms > div {
+            background-color: #1f2937 !important;
+            color: #f3f4f6 !important;
+            }
+
+            .dark dt,
+            .dark dd {
+            color: #f3f4f6 !important;
+            }
+                            /* Force correct light-mode hover color with high specificity */
+                html:not(.dark) tr.hover\:bg-gray-50:hover {
+                background-color: #f3f4f6 !important;
+                }
+
+                /* Ensure rows are white/light when not hovered in light mode */
+                html:not(.dark) tr {
+                background-color: #ffffff !important;
+                }
+
+                .dark .bg-yellow-200 {
+                background-color: #ca8a04 !important; /* amber-600 dark readable */
+                color: #111827 !important;            /* gray-900 text on highlight */
+                }
 
     </style>
 
@@ -193,94 +232,94 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>ATD</td><td>AT</td><td>ALPA Travel Day</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>AVA</td><td>AV</td><td>Avail to Assign</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>BGP</td><td>BG</td><td>Below Guarantee Pay</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>CBS</td><td>CB</td><td>Reserve Call Back Status....Not Company Business</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>CL1</td><td>CL</td><td>COLA</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>COM</td><td>CO</td><td>Company Business</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>CRT</td><td>CT</td><td>COURT SUMMONS</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>D/P</td><td>TD</td><td>TRG Displaced Pilot</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>D/Q</td><td>DQ</td><td>Dequal</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>DOD</td><td>DD</td><td>Day Off Moving Bases - Displacement (paid)</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>DOM</td><td>DO</td><td>Day Off Moving Bases - Voluntary (unpaid)</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>DV8</td><td>DV</td><td>Deadhead Deviation</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>EMR</td><td>EL</td><td>Emergency Leave</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>EMV</td><td>EV</td><td>Emergency via Vac</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>FAP</td><td>FD</td><td>ALPA DROP FPL</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>FAT</td><td>FA</td><td>Fatigue</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>FCO</td><td>FC</td><td>Company Paid ALPA FPL</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>FLA</td><td>FL</td><td>Family Leave - Unpaid</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>FLS</td><td>FS</td><td>Family Leave Sick</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>FLV</td><td>FV</td><td>Family Leave Vac</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>FNN</td><td>FN</td><td>Funeral Leave Unpaid</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>FNR</td><td>FR</td><td>Funeral Leave - Paid</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>FUR</td><td>FH</td><td>Furlough</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>GLD</td><td>GD</td><td>Golden Day - Training</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>HSK</td><td>HS</td><td>Half Day Sick</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>HSP</td><td>OP</td><td>Out of Service- Paid</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>HSU</td><td>OU</td><td>Out of Serv- Unpaid</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>JUR</td><td>JD</td><td>Jury Duty</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>M/P</td><td>MD</td><td>Mgt. Displaced Pilot</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>M/T</td><td>MT</td><td>Missed Trip</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>MAT</td><td>MY</td><td>Maternity Leave</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>MED</td><td>ME</td><td>Medical Leave</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>MGT</td><td>MG</td><td>MANAGEMENT PILOT</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>MIL</td><td>ML</td><td>Military Leave</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>MLS</td><td>MS</td><td>Medical Leave Sick</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>MLV</td><td>MV</td><td>Medical Leave VAC</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>MNA</td><td>MA</td><td>Medical UNA</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>N/L</td><td>NL</td><td>Not Legal</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>NSO</td><td>NO</td><td>NO SHOW</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>OJI</td><td>OI</td><td>On the Job Injury</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>PAY</td><td>PY</td><td>PAY</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>PDO</td><td>PD</td><td>Pay on Day Off During Training</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>PER</td><td>PR</td><td>Personal Drop</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>PP1</td><td>P1</td><td>SPECIAL PROJ PILOT</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>PP2</td><td>P2</td><td>CHECK AIRMAN</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>PP3</td><td>P3</td><td>FO Duty Officer Pay</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RES</td><td>RS</td><td>Resigned</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RSND</td><td>RS</td><td>Resigned</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RG1</td><td>RO</td><td>Grnd Schl on day off</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RGS</td><td>RT</td><td>Recurrent Ground Sch</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RIA</td><td>IA</td><td>Reserve A Inbound From Trip</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RIB</td><td>IB</td><td>Reserve B Inbound From Trip</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RIC</td><td>IC</td><td>Reserve C Inbound From Trip</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RID</td><td>ID</td><td>Reserve D Inbound From Trip</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RIE</td><td>IE</td><td>Reserve E Inbound From Trip</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RNF</td><td>RF</td><td>Reserve No Fly</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RPP</td><td>RP</td><td>Remove Pending Paper</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RSA</td><td>R1</td><td>Reserve A 0300-1300: Latest release 1700</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RSB</td><td>RB</td><td>Reserve B 0800-1830: Latest release 2200</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RSC</td><td>R2</td><td>Reserve C 1200-2230: Latest release 0200</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RSD</td><td>R3</td><td>Reserve D 1700-2400: Latest release 0700(except 0900 for CDO’s)</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RSE</td><td>RE</td><td>Reserve E 1900-0200: Latest release 0900(except 1100 for CDO’s)</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RSL</td><td>RL</td><td>Reserve Long Call</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RVA</td><td>AR</td><td>RVA Open Time</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RVB</td><td>BR</td><td>RVB Open Time</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RVC</td><td>CR</td><td>RVC Open Time</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RVD</td><td>DR</td><td>RVD Open Time</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RVE</td><td>ER</td><td>RVE Open Time</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>SCV</td><td>SV</td><td>VAC pay for Sick day</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>SIC</td><td>SC</td><td>Sick Pilot</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>SIM</td><td>SM</td><td>Simulator Event</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>SM1</td><td>S1</td><td>Simulator on day off</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>SM1</td><td>SR</td><td>Simulator on day off rsv</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>TRG</td><td>TG</td><td>Instructor Code -Training Dpt</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>TRB</td><td>TB</td><td>Day Block for Training</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>TRM</td><td>TM</td><td>TERMINATION</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>TRP</td><td>TP</td><td>Training Pay</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>TRP</td><td>TR</td><td>Training Pay- RSV</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>TTT</td><td>TV</td><td>Travel to Training</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>UPG</td><td>UG</td><td>Upgrade Training</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>USK</td><td>UK</td><td>Unpaid Sick</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>UTC</td><td>UC</td><td>Unable to Contact</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>UTF</td><td>UF</td><td>UNABLE TO FLY - Line Holder</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>UTF</td><td>UR</td><td>UNABLE TO FLY - RSV</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>VSP</td><td>VS</td><td>Vacation Stretch Day Paid</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>VSU</td><td>VU</td><td>Vacation Stretch Day Unpaid</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>WIL</td><td>WL</td><td>Willing to Fly Reserve</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>WTF</td><td>WF</td><td>Want to Fly Reserve</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>ATD</td><td>AT</td><td>ALPA Travel Day</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>AVA</td><td>AV</td><td>Avail to Assign</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>BGP</td><td>BG</td><td>Below Guarantee Pay</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>CBS</td><td>CB</td><td>Reserve Call Back Status...Not Company Business</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>CL1</td><td>CL</td><td>COLA</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>COM</td><td>CO</td><td>Company Business</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>CRT</td><td>CT</td><td>COURT SUMMONS</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>D/P</td><td>TD</td><td>TRG Displaced Pilot</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>D/Q</td><td>DQ</td><td>Dequal</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>DOD</td><td>DD</td><td>Day Off Moving Bases - Displacement (paid)</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>DOM</td><td>DO</td><td>Day Off Moving Bases - Voluntary (unpaid)</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>DV8</td><td>DV</td><td>Deadhead Deviation</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>EMR</td><td>EL</td><td>Emergency Leave</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>EMV</td><td>EV</td><td>Emergency via Vac</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>FAP</td><td>FD</td><td>ALPA DROP FPL</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>FAT</td><td>FA</td><td>Fatigue</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>FCO</td><td>FC</td><td>Company Paid ALPA FPL</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>FLA</td><td>FL</td><td>Family Leave - Unpaid</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>FLS</td><td>FS</td><td>Family Leave Sick</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>FLV</td><td>FV</td><td>Family Leave Vac</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>FNN</td><td>FN</td><td>Funeral Leave Unpaid</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>FNR</td><td>FR</td><td>Funeral Leave - Paid</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>FUR</td><td>FH</td><td>Furlough</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>GLD</td><td>GD</td><td>Golden Day - Training</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>HSK</td><td>HS</td><td>Half Day Sick</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>HSP</td><td>OP</td><td>Out of Service- Paid</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>HSU</td><td>OU</td><td>Out of Serv- Unpaid</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>JUR</td><td>JD</td><td>Jury Duty</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>M/P</td><td>MD</td><td>Mgt. Displaced Pilot</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>M/T</td><td>MT</td><td>Missed Trip</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>MAT</td><td>MY</td><td>Maternity Leave</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>MED</td><td>ME</td><td>Medical Leave</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>MGT</td><td>MG</td><td>MANAGEMENT PILOT</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>MIL</td><td>ML</td><td>Military Leave</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>MLS</td><td>MS</td><td>Medical Leave Sick</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>MLV</td><td>MV</td><td>Medical Leave VAC</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>MNA</td><td>MA</td><td>Medical UNA</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>N/L</td><td>NL</td><td>Not Legal</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>NSO</td><td>NO</td><td>NO SHOW</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>OJI</td><td>OI</td><td>On the Job Injury</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>PAY</td><td>PY</td><td>PAY</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>PDO</td><td>PD</td><td>Pay on Day Off During Training</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>PER</td><td>PR</td><td>Personal Drop</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>PP1</td><td>P1</td><td>SPECIAL PROJ PILOT</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>PP2</td><td>P2</td><td>CHECK AIRMAN</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>PP3</td><td>P3</td><td>FO Duty Officer Pay</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RES</td><td>RS</td><td>Resigned</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RSND</td><td>RS</td><td>Resigned</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RG1</td><td>RO</td><td>Grnd Schl on day off</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RGS</td><td>RT</td><td>Recurrent Ground Sch</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RIA</td><td>IA</td><td>Reserve A Inbound From Trip</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RIB</td><td>IB</td><td>Reserve B Inbound From Trip</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RIC</td><td>IC</td><td>Reserve C Inbound From Trip</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RID</td><td>ID</td><td>Reserve D Inbound From Trip</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RIE</td><td>IE</td><td>Reserve E Inbound From Trip</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RNF</td><td>RF</td><td>Reserve No Fly</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RPP</td><td>RP</td><td>Remove Pending Paper</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RSA</td><td>R1</td><td>Reserve A 0300-1300: Latest release 1700</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RSB</td><td>RB</td><td>Reserve B 0800-1830: Latest release 2200</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RSC</td><td>R2</td><td>Reserve C 1200-2230: Latest release 0200</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RSD</td><td>R3</td><td>Reserve D 1700-2400: Latest release 0700(except 0900 for CDO’s)</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RSE</td><td>RE</td><td>Reserve E 1900-0200: Latest release 0900(except 1100 for CDO’s)</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RSL</td><td>RL</td><td>Reserve Long Call</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RVA</td><td>AR</td><td>Reserve A Open Time</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RVB</td><td>BR</td><td>Reserve B Open Time</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RVC</td><td>CR</td><td>Reserve C Open Time</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RVD</td><td>DR</td><td>Reserve D Open Time</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>RVE</td><td>ER</td><td>Reserve E Open Time</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>SCV</td><td>SV</td><td>VAC pay for Sick day</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>SIC</td><td>SC</td><td>Sick Pilot</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>SIM</td><td>SM</td><td>Simulator Event</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>SM1</td><td>S1</td><td>Simulator on day off</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>SM1</td><td>SR</td><td>Simulator on day off Reserve</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>TRG</td><td>TG</td><td>Instructor Code -Training Dpt</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>TRB</td><td>TB</td><td>Day Block for Training</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>TRM</td><td>TM</td><td>TERMINATION</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>TRP</td><td>TP</td><td>Training Pay</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>TRP</td><td>TR</td><td>Training Pay- Reserve</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>TTT</td><td>TV</td><td>Travel to Training</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>UPG</td><td>UG</td><td>Upgrade Training</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>USK</td><td>UK</td><td>Unpaid Sick</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>UTC</td><td>UC</td><td>Unable to Contact</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>UTF</td><td>UF</td><td>UNABLE TO FLY - Line Holder</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>UTF</td><td>UR</td><td>UNABLE TO FLY - Reserve</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>VSP</td><td>VS</td><td>Vacation Stretch Day Paid</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>VSU</td><td>VU</td><td>Vacation Stretch Day Unpaid</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>WIL</td><td>WL</td><td>Willing to Fly Reserve</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>WTF</td><td>WF</td><td>Want to Fly Reserve</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -298,9 +337,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>V00</td><td>00</td><td>VAC CR 00 HRS</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>V01</td><td>01</td><td>VAC CR 01 HRS</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>V40</td><td>40</td><td>VAC CR 40 HRS</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>V00</td><td>00</td><td>VAC CR 00 HRS</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>V01</td><td>01</td><td>VAC CR 01 HRS</td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>V40</td><td>40</td><td>VAC CR 40 HRS</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -317,25 +356,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>DY</td><td>Day of Trip: Day of the week e.g., <em>FR</em> for Friday.</td></tr>
-                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>DD</td><td>Duty Day: Calendar day of the month e.g., <em>10</em> for the 10th.</td></tr>
-                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>DH</td><td>Deadhead: Traveling as a passenger to or from an assignment.</td></tr>
-                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>C</td><td>Aircraft Change: You’ll switch to a different plane for this leg.</td></tr>
-                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>FLTNO</td><td>Flight Number: The number assigned to your flight.</td></tr>
-                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>DPS</td><td>Departure Station: Airport code where your flight departs.</td></tr>
-                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>ARS</td><td>Arrival Station: Airport code where your flight lands.</td></tr>
-                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>DEPL</td><td>Departure Time (Local): Scheduled local departure time.</td></tr>
-                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>ARRL</td><td>Arrival Time (Local): Scheduled local arrival time.</td></tr>
-                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>BLKT</td><td>Block Time: Time from pushback to parking at the gate.</td></tr>
-                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>GRNT</td><td>Guarantee Time: Pay based on block time or the minimum guarantee, whichever is higher.</td></tr>
-                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>OA</td><td>Other Airline: A deadhead flight on a different airline.</td></tr>
-                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>TBLK</td><td>Total Block Time: All block time added up for the trip.</td></tr>
-                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>TDHD</td><td>Total Deadhead Time: All deadhead travel time for the trip.</td></tr>
-                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>TCRD</td><td>Total Credit: All paid time for the trip or duty period.</td></tr>
-                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>TDUTY</td><td>Total Duty Time: Total time on duty from sign-in to sign-out.</td></tr>
-                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>FDP LAYOVER</td><td>Flight Duty + Layover: Time on duty plus scheduled rest time.</td></tr>
-                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>T.A.F.B.</td><td>Time Away From Base: Total time from sign-in at base until sign-out back at base.</td></tr>
-                    <tr class="hover:bg-gray-50 transition-colors text-center"><td>D-END</td><td>Day End: When your duty period ends.</td></tr>
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>DY</td><td>Day of Trip: Day of the week e.g., <em>FR</em> for Friday.</td></tr>
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>DD</td><td>Duty Day: Calendar day of the month e.g., <em>10</em> for the 10th.</td></tr>
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>DH</td><td>Deadhead: Traveling as a passenger to or from an assignment.</td></tr>
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>C</td><td>Aircraft Change: You’ll switch to a different plane for this leg.</td></tr>
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>FLTNO</td><td>Flight Number: The number assigned to your flight.</td></tr>
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>DPS</td><td>Departure Station: Airport code where your flight departs.</td></tr>
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>ARS</td><td>Arrival Station: Airport code where your flight lands.</td></tr>
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>DEPL</td><td>Departure Time (Local): Scheduled local departure time.</td></tr>
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>ARRL</td><td>Arrival Time (Local): Scheduled local arrival time.</td></tr>
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>BLKT</td><td>Block Time: Time from pushback to parking at the gate.</td></tr>
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>GRNT</td><td>Guarantee Time: Pay based on block time or the minimum guarantee, whichever is higher.</td></tr>
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>OA</td><td>Other Airline: A deadhead flight on a different airline.</td></tr>
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>TBLK</td><td>Total Block Time: All block time added up for the trip.</td></tr>
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>TDHD</td><td>Total Deadhead Time: All deadhead travel time for the trip.</td></tr>
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>TCRD</td><td>Total Credit: All paid time for the trip or duty period.</td></tr>
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>TDUTY</td><td>Total Duty Time: Total time on duty from sign-in to sign-out.</td></tr>
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>FDP LAYOVER</td><td>Flight Duty + Layover: Time on duty plus scheduled rest time.</td></tr>
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>T.A.F.B.</td><td>Time Away From Base: Total time from sign-in at base until sign-out back at base.</td></tr>
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-center"><td>D-END</td><td>Day End: When your duty period ends.</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -348,7 +387,7 @@
         </div>
         <section id="pilot-agreement-definitions" class="mb-8">
             <h3 class="text-xl font-semibold border-b-2 border-[#008467] pb-2 mb-4 text-center">Pilot Agreement Definitions</h3>
-            <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+            <div class="p-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
                 <dl id="definitions-list">
                     <dt><strong>ACCRUED VACATION</strong></dt><dd>means vacation a Pilot accrues in the current year that may be used the next year</dd>
                     <dt><strong>ACTIVE SERVICE</strong></dt><dd>Time from most recent pilot hire date until resignation, termination, furlough, or per Section 13 (Leaves). Accrues during leave/furlough return per those sections; forfeited on resignation or termination.</dd>
@@ -472,7 +511,7 @@
   <h3 class="text-xl font-semibold border-b-2 border-[#008467] pb-2 mb-4 text-center">
     General Terms
   </h3>
-  <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+  <div class="p-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
     <dl id="general-definitions-list">
       <dt><strong>BLOCK TIME</strong></dt>
       <dd>The time from when the aircraft first moves under its own power until it stops at the gate after landing.</dd>
