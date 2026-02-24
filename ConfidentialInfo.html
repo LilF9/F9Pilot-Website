@@ -1,37 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <!-- Google tag (gtag.js) -->
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-NKD0YM45CW"></script>
-            <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+    <!-- THEME LOADER: First script in head -->
+    <script>
+        (function() {
+            try {
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.style.backgroundColor = '#111827';
+                }
+            } catch (e) {}
+        })();
+    </script>
 
-            gtag('config', 'G-NKD0YM45CW');
-            </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NKD0YM45CW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NKD0YM45CW');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confidential Information</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Confidential Information - F9 Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Inter font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
+        body { font-family: 'Inter', sans-serif; }
+        .container { max-width: 1000px; }
+        .calc-card {
+            background-color: white; border-radius: 16px; border: 1px solid rgba(0, 132, 103, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); padding: 20px; position: relative; overflow: hidden;
         }
-        .container {
-            max-width: 800px;
+        .calc-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #008467; }
+        .result-box {
+            margin-top: 15px; padding: 15px; background-color: #f3f7f6;
+            border-radius: 12px; border: 2px solid #008467; display: flex; flex-direction: column; align-items: center;
         }
-        /* Add this new rule to your style block */
-        .digital-pass-link {
-            word-break: break-all;
-            overflow-wrap: break-word;
-        }
+        .main-result { font-size: 1.5rem; font-weight: 800; color: #008467; margin-top: 2px; line-height: 1; }
+        .range-container { background: #f3f7f6; padding: 12px; border-radius: 10px; border: 1px solid #d1d5db; }
+        .yoy-box { background: #fff; border: 1px dashed #008467; padding: 10px; border-radius: 8px; margin-top: 10px; width: 100%; }
+.dark body {
+  background-color: #111827;
+  color: #f3f4f6;
+}
+
+.dark .bg-white {
+  background-color: #1f2937;
+}
+
+.dark .bg-gray-100 {
+  background-color: #111827;
+}
+
+.dark .calc-card {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+.dark .result-box {
+  background-color: #374151;
+  border-color: #10b981;
+}
+
+.dark .range-container {
+  background: #374151;
+  border-color: #4b5563;
+}
+
+.dark .yoy-box {
+  background: #374151;
+  border-color: #10b981;
+}
+
+.dark .text-gray-800 { color: #f3f4f6; }
+.dark .text-gray-700 { color: #d1d5db; }
+.dark .text-gray-500 { color: #9ca3af; }
+.dark .text-gray-600 { color: #d1d5db; }
+.dark .text-gray-400 { color: #9ca3af; }
+.dark .bg-green-50 { background-color: #064e3b; }
+.dark .border-green-200 { border-color: #065f46; }
+.dark .bg-green-100 { background-color: #064e3b; }
+
+.dark #theme-toggle {
+  background: #374151 !important;
+  border-color: #4b5563 !important;
+  color: #facc15 !important;
+}
+
+.dark .calc-card,
+.dark .bg-white,
+.dark .result-box,
+.dark .range-container,
+.dark .yoy-box,
+.dark .bg-green-50,
+.dark input[type="password"],
+.dark input[type="text"] {
+  background-color: #1f2937 !important;
+  color: #f3f4f6 !important;
+  border-color: #374151 !important;
+}
+
+.dark .text-gray-700,
+.dark .text-gray-800,
+.dark .text-gray-500,
+.dark .text-gray-600,
+.dark .text-gray-400 {
+  color: #d1d5db !important;
+}
+
+.dark .main-result {
+  color: #10b981 !important;
+}
+/* Stronger dark mode overrides for visibility */
+.dark .calc-card,
+.dark .calc-card * {
+  background-color: #1f2937 !important;
+  color: #e5e7eb !important;
+}
+
+.dark .calc-card input,
+.dark .calc-card select,
+.dark .calc-card option {
+  background-color: #374151 !important;
+  color: #f3f4f6 !important;
+  border-color: #4b5563 !important;
+}
+
+.dark .border-green-200 {
+  border-color: #34d399 !important;
+  border-width: 2px !important;
+}
+
+.dark .bg-green-50 {
+  background-color: #064e3b !important;
+}
+
+.dark .text-frontier-green {
+  color: #34d399 !important;
+}
     </style>
+
     <script>
       tailwind.config = {
         theme: {
@@ -47,111 +161,265 @@
     </script>
 </head>
 <body class="bg-gray-100 p-4 sm:p-8 flex items-center justify-center min-h-screen">
+<button id="theme-toggle" title="Toggle Dark Mode" style="position: fixed; top: 15px; right: 15px; z-index: 9999; background: #fff; border: 1px solid #ddd; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: all 0.3s ease;">
+  <span id="theme-icon">🌙</span>
+</button>
 
     <div class="container mx-auto bg-white p-6 md:p-10 rounded-xl shadow-lg">
 
-        <!-- Header Section -->
         <header class="text-center mb-10">
             <div class="flex justify-between items-center mb-4">
-                <a id="home-button" href="index.html" class="px-4 py-2 bg-frontier-green text-white font-semibold rounded-md shadow-md hover:bg-frontier-green-dark transition-colors duration-300 text-xs">
+                <a href="index.html" class="px-4 py-2 bg-frontier-green text-white font-semibold rounded-md shadow-md hover:bg-frontier-green-dark transition-colors duration-300 text-xs text-nowrap">
                     Back to main menu
                 </a>
                 <a id="logout-button" href="#" class="hidden px-4 py-2 bg-red-500 text-white font-semibold rounded-md shadow-md hover:bg-red-600 transition-colors duration-300 text-xs">
                     Logout
                 </a>
             </div>
-            <img src="https://placehold.co/200x60/008467/000?text=FRONTIER" alt="Frontier Logo" class="mx-auto h-12 mb-4">
-            <h1 class="text-2xl font-bold text-gray-800">CONFIDENTIAL INFORMATION</h1>
-            <p class="text-sm font-medium text-gray-500">Pilot Reference</p>
+            <img src="https://placehold.co/200x60/008467/fff?text=FRONTIER" alt="Frontier Logo" class="mx-auto h-12 mb-4">
+            <h1 class="text-2xl font-bold text-gray-800 uppercase tracking-tight">Confidential Information</h1>
+            <p class="text-sm font-medium text-gray-500">Pilot Reference Portal</p>
         </header>
 
-        <!-- Confidential Information Section - Login Form -->
         <section id="confidential-login" class="mb-8">
             <div class="bg-green-50 p-6 rounded-lg border border-green-200">
-                <p class="text-sm text-gray-700 leading-relaxed mb-4">This section contains information pilots should have on hand but which is not public. Please enter the access code to view it.</p>
-                
-                <form id="access-form" class="space-y-4">
-                    <label for="access-code" class="block text-sm font-medium text-gray-700">What approach plates does Frontier use?</label>
-                    <input type="password" id="access-code" class="w-full rounded-md border-gray-300 shadow-sm focus:border-frontier-green focus:ring focus:ring-frontier-green-light focus:ring-opacity-50 text-sm p-2" placeholder="Enter code here...">
-                    <button type="submit" class="w-full px-4 py-2 bg-frontier-green text-white font-semibold rounded-md shadow-md hover:bg-frontier-green-dark transition-colors duration-300">
-                        Submit
+                <p class="text-sm text-gray-700 leading-relaxed mb-4 text-center">This section is restricted. Please enter the access code.</p>
+                <form id="access-form" class="space-y-4 max-w-sm mx-auto">
+                    <label for="access-code" class="block text-sm font-medium text-gray-700 text-center">What approach plates does Frontier use?</label>
+                    <input type="password" id="access-code" class="w-full rounded-md border-gray-300 shadow-sm focus:border-frontier-green focus:ring focus:ring-frontier-green-light p-2 text-center" placeholder="Enter code...">
+                    <button type="submit" class="w-full px-4 py-2 bg-frontier-green text-white font-semibold rounded-md shadow-md hover:bg-frontier-green-dark transition-colors">
+                        Unlock Secure Content
                     </button>
                     <p id="feedback-message" class="text-sm text-center font-medium"></p>
                 </form>
             </div>
         </section>
 
-        <!-- Confidential Information Section - Content -->
         <section id="confidential-content" class="hidden">
-            <div class="bg-green-50 p-4 rounded-lg border border-green-200">
-                <h3 class="text-xl font-semibold text-gray-700 border-b-2 border-frontier-green pb-2 mb-4">CONFIDENTIAL INFORMATION</h3>
-                
-                <p class="text-sm text-gray-800 leading-relaxed mb-6">
-                    Frontier Airlines uses **LIDO** charts.
-                </p>
+            <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-700 border-b-2 border-frontier-green pb-2 mb-4 text-left uppercase tracking-wide">Secure Data</h3>
+                            <p class="text-sm text-gray-800 leading-relaxed mb-6 text-left">Frontier Airlines uses **LIDO** charts.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-700 mb-2 text-left">Miscellaneous</h4>
+                            <div class="bg-white p-4 rounded-lg shadow-inner text-left">
+                                <ul class="list-disc list-inside space-y-3 text-sm text-gray-600">
+                                    <li>
+                                        <span class="font-semibold text-gray-800">TPA Shuttle Digital Pass:</span> <a href="https://app.tampaairport.com/digitalpass.html" class="text-frontier-green hover:underline digital-pass-link" target="_blank">https://app.tampaairport.com/digitalpass.html</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-700 mb-2 text-left">OPS Phone Numbers</h4>
+                            <div class="bg-white p-4 rounded-lg shadow-inner text-left">
+                                <ul class="list-disc list-inside space-y-3 text-sm text-gray-600">
+                                    <li> <span class="font-semibold text-gray-800">ATL:</span> 555-555-5555</a></li>
+                                    <li> <span class="font-semibold text-gray-800">CHI:</span> 555-555-5555</a></li>
+                                    <li> <span class="font-semibold text-gray-800">CLE:</span> 555-555-5555</a></li>
+                                    <li> <span class="font-semibold text-gray-800">CVG:</span> 555-555-5555</a></li>
+                                    <li> <span class="font-semibold text-gray-800">DEN:</span> 555-555-5555</a></li>
+                                    <li> <span class="font-semibold text-gray-800">DFW:</span> 555-555-5555</a></li>
+                                    <li> <span class="font-semibold text-gray-800">LAS:</span> 555-555-5555</a></li>
+                                    <li> <span class="font-semibold text-gray-800">MCO:</span> 555-555-5555</a></li>
+                                    <li> <span class="font-semibold text-gray-800">MIA:</span> 555-555-5555</a></li>
+                                    <li> <span class="font-semibold text-gray-800">PHL:</span> 555-555-5555</a></li>
+                                    <li> <span class="font-semibold text-gray-800">PHX:</span> 555-555-5555</a></li>
+                                    <li> <span class="font-semibold text-gray-800">SJU:</span> 555-555-5555</a></li>
+                                    <li> <span class="font-semibold text-gray-800">TPA:</span> 555-555-5555</a></li>
+                                </ul>
+                            </div>
+                    </div>
 
-                <h4 class="text-lg font-semibold text-gray-700 mb-2">Miscellaneous</h4>
-                <div class="bg-white p-4 rounded-lg shadow-inner">
-                    <ul class="list-disc list-inside space-y-2 text-sm text-gray-600">
-                        <li>
-                            <span class="font-semibold">TPA Shuttle Digital Pass:</span> <a href="https://app.tampaairport.com/digitalpass.html" class="text-frontier-green hover:underline digital-pass-link" target="_blank">https://app.tampaairport.com/digitalpass.html</a>
-                        </li>
-                    </ul>
+                    <div>
+                        <div class="calc-card">
+                            <h2 class="text-md font-bold text-frontier-green mb-4 flex items-center justify-between">
+                                FFT Paycheck Calculator 
+                                <span class="text-[9px] bg-green-100 text-frontier-green px-2 py-1 rounded-full uppercase">CBA 2024</span>
+                            </h2>
+                            
+                            <div class="grid grid-cols-2 gap-3 mb-4">
+                                <div>
+                                    <label class="text-[9px] font-bold uppercase text-gray-400 mb-1 block">Role</label>
+                                    <select id="role" onchange="updatePayScale(); updatePay();" class="w-full p-1.5 border border-gray-300 rounded-md text-xs">
+                                        <option value="FO">First Officer</option>
+                                        <option value="CA">Captain</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="text-[9px] font-bold uppercase text-gray-400 mb-1 block">Longevity</label>
+                                    <select id="yearSelect" onchange="updatePay()" class="w-full p-1.5 border border-gray-300 rounded-md text-xs"></select>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <div class="range-container">
+                                    <div class="flex justify-between text-xs mb-1">
+                                        <label class="font-bold">Monthly Credit</label>
+                                        <span class="text-frontier-green font-bold"><span id="creditVal">75</span>h</span>
+                                    </div>
+                                    <input type="range" id="creditRange" min="1" max="130" value="75" oninput="updatePay()" class="w-full h-1.5 accent-frontier-green cursor-pointer">
+                                </div>
+
+                                <div class="range-container">
+                                    <div class="flex justify-between text-xs mb-1">
+                                        <label class="font-bold">Months Worked</label>
+                                        <span class="text-frontier-green font-bold" id="monthsVal">1</span>
+                                    </div>
+                                    <input type="range" id="monthsRange" min="1" max="12" value="1" oninput="updatePay()" class="w-full h-1.5 accent-frontier-green cursor-pointer">
+                                </div>
+
+                                <label class="flex items-center gap-2 p-2 bg-white border border-gray-200 rounded-lg cursor-pointer">
+                                    <input type="checkbox" id="include401k" onchange="updatePay()" class="w-3 h-3 accent-frontier-green">
+                                    <span class="text-[11px] font-medium text-gray-700">Add 15% 401k Co. Contribution</span>
+                                </label>
+                            </div>
+
+                            <div class="result-box">
+                                <div class="text-[10px] font-bold uppercase text-gray-400 text-center mb-1">Estimated Total Value</div>
+                                <div class="main-result" id="totalPayDisplay">$0.00</div>
+                                
+                                <div id="contributionBreakdown" class="text-[11px] text-frontier-green font-semibold mt-1 h-4" style="visibility: hidden;">
+                                    + $0.00 (15% Co. Contribution)
+                                </div>
+                                
+                                <div class="yoy-box text-[10px]">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-gray-500 font-bold uppercase">Vs. Previous Year:</span>
+                                        <span id="prevYearStatus" class="font-bold">--</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-500 font-bold uppercase">Next Year Jump:</span>
+                                        <span id="nextYearJump" class="text-frontier-green font-bold">--</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mt-8">
-                    <p class="text-sm text-gray-600 leading-relaxed">
-                        <span class="font-bold">Suggestions for things to add?</span> Please use the <a href="suggestions.html" class="text-frontier-green hover:underline">feedback and suggestions form</a>.
+                <div class="mt-8 text-center border-t border-green-100 pt-4">
+                    <p class="text-xs text-gray-500 italic">
+                        Suggestions? Use the <a href="suggestions.html" class="text-frontier-green font-bold hover:underline">feedback form</a>.
                     </p>
                 </div>
-                               
+            </div>
         </section>
     </div>
 
     <script>
-        // Get the relevant HTML elements
         const loginSection = document.getElementById('confidential-login');
         const confidentialContent = document.getElementById('confidential-content');
         const accessCodeInput = document.getElementById('access-code');
         const feedbackMessage = document.getElementById('feedback-message');
         const logoutButton = document.getElementById('logout-button');
 
-        // Add an event listener to the access form for submission
+        const payScales = {
+            FO: [100.00, 118.74, 127.55, 134.77, 142.97, 148.88, 155.68, 160.34, 166.81, 170.96, 175.11, 179.26],
+            CA: [202.76, 219.47, 222.88, 227.43, 229.70, 231.98, 235.57, 242.59, 248.64, 254.87, 259.94, 270.07]
+        };
+
+        function updatePayScale() {
+            const role = document.getElementById('role').value;
+            const select = document.getElementById('yearSelect');
+            const currentYear = select.value || 1;
+            select.innerHTML = '';
+            payScales[role].forEach((rate, index) => {
+                const opt = document.createElement('option');
+                opt.value = index + 1;
+                opt.textContent = `Year ${index + 1} ($${rate.toFixed(2)})`;
+                select.appendChild(opt);
+            });
+            select.value = currentYear;
+        }
+
+        function updatePay() {
+            const role = document.getElementById('role').value;
+            const yearIndex = parseInt(document.getElementById('yearSelect').value) - 1;
+            const rate = payScales[role][yearIndex];
+            const credit = parseInt(document.getElementById('creditRange').value);
+            const months = parseInt(document.getElementById('monthsRange').value);
+            const include401k = document.getElementById('include401k').checked;
+
+            document.getElementById('creditVal').textContent = credit;
+            document.getElementById('monthsVal').textContent = months;
+
+            let grossPay = rate * credit * months;
+            let totalVal = grossPay;
+            let contributionAmount = grossPay * 0.15;
+
+            const breakdown = document.getElementById('contributionBreakdown');
+
+            if (include401k) {
+                totalVal = grossPay + contributionAmount;
+                document.getElementById('totalPayDisplay').textContent = `$${totalVal.toLocaleString(undefined, {minimumFractionDigits: 2})}*`;
+                breakdown.textContent = `+ $${contributionAmount.toLocaleString(undefined, {minimumFractionDigits: 2})} (15% Co. Contribution)`;
+                breakdown.style.visibility = "visible";
+            } else {
+                document.getElementById('totalPayDisplay').textContent = `$${totalVal.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+                breakdown.style.visibility = "hidden";
+            }
+
+            // YoY Logic
+            const prevYearStatus = document.getElementById('prevYearStatus');
+            const nextYearJump = document.getElementById('nextYearJump');
+
+            if (yearIndex === 0) {
+            prevYearStatus.textContent = role === 'CA' ? "New Captain" : "New Hire";
+            prevYearStatus.className = "text-blue-500 font-bold";
+            } else {
+                const prevRate = payScales[role][yearIndex - 1];
+                const diff = ((rate - prevRate) / prevRate) * 100;
+                prevYearStatus.textContent = `+${diff.toFixed(1)}%`;
+                prevYearStatus.className = "text-frontier-green font-bold";
+            }
+
+            if (yearIndex < payScales[role].length - 1) {
+                const nextRate = payScales[role][yearIndex + 1];
+                const jump = ((nextRate - rate) / rate) * 100;
+                nextYearJump.textContent = `+${jump.toFixed(1)}% Change`;
+            } else {
+                nextYearJump.textContent = "Top of Scale";
+            }
+        }
+
         document.getElementById('access-form').addEventListener('submit', function(event) {
             event.preventDefault();
-
-            const correctCode = 'LIDO';
-            const submittedCode = accessCodeInput.value.trim().toUpperCase();
-
-            // Check if the submitted code is correct
-            if (submittedCode === correctCode) {
-                // Hide the login section and show the confidential content
+            if (accessCodeInput.value.trim().toUpperCase() === 'LIDO') {
                 loginSection.classList.add('hidden');
                 confidentialContent.classList.remove('hidden');
                 logoutButton.classList.remove('hidden');
+                updatePayScale();
+                updatePay();
             } else {
-                // Display an error message for incorrect code
-                feedbackMessage.textContent = 'Incorrect code. Please try again.';
+                feedbackMessage.textContent = 'Incorrect code.';
                 feedbackMessage.classList.add('text-red-600');
-                feedbackMessage.classList.remove('text-green-600');
             }
         });
 
-        // Add an event listener to the logout button
         logoutButton.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent the page from reloading
-
-            // Hide the confidential content and show the login section
-            confidentialContent.classList.add('hidden');
-            loginSection.classList.remove('hidden');
-            logoutButton.classList.add('hidden');
-
-            // Clear the access code input and feedback message for a clean slate
-            accessCodeInput.value = '';
-            feedbackMessage.textContent = '';
-            feedbackMessage.classList.remove('text-red-600');
+            event.preventDefault();
+            location.reload();
         });
-    </script>
 
+        updatePayScale();
+    </script>
+    <script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+
+  if (document.documentElement.classList.contains('dark')) {
+    themeIcon.textContent = '☀️';
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    themeIcon.textContent = isDark ? '☀️' : '🌙';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+</script>
 </body>
 </html>

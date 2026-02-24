@@ -1,60 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <!-- Google tag (gtag.js) -->
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-NKD0YM45CW"></script>
-            <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+    <!-- THEME LOADER -->
+    <script>
+        (function() {
+            try {
+                const saved = localStorage.getItem('theme');
+                if (saved === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.style.backgroundColor = '#111827';
+                }
+            } catch (e) {}
+        })();
+    </script>
 
-            gtag('config', 'G-NKD0YM45CW');
-            </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NKD0YM45CW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NKD0YM45CW');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FLICA Codes & Definitions</title>
-    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configure Tailwind and Inter font -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        'primary-green': '#008467',
-                        'light-gray': '#f9fafb',
-                    }
-                }
-            }
-        }
-    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        /* Smooth scrolling for navigation */
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8; /* Light blue-gray background */
+            background-color: #f0f4f8;
             color: #1f2937;
+            transition: background-color 0.3s, color 0.3s;
         }
-        /* Custom styling for definitions lists */
+
+        .dark body {
+            background-color: #111827;
+            color: #f3f4f6;
+        }
+        .dark .glossary-list dt {
+            color: #e5e7eb;
+        }
+        .dark .glossary-list dd {
+            color: #d1d5db;
+            border-left-color: #10b981;
+        }
+        .dark .glossary-list ul {
+            color: #d1d5db;
+        }
+        .dark .bg-white, .dark .light-gray-bg {
+            background-color: #1f2937;
+        }
+        .dark .text-gray-600, .dark .text-gray-700 {
+            color: #d1d5db;
+        }
+        .dark .nav-link {
+            background-color: #10b981;
+        }
+        .dark .nav-link:hover {
+            background-color: #059669;
+        }
+
+        /* Existing styles kept + overrides */
         .glossary-list dt {
-            font-weight: 700; /* Bold for the term */
+            font-weight: 700;
             margin-top: 1.5rem;
-            color: #1f2937; /* Darker text */
+            color: #1f2937;
         }
         .glossary-list dd {
             margin-left: 1rem;
-            color: #4b5563; /* Slightly lighter text for definitions */
+            color: #4b5563;
             padding-left: 0.5rem;
-            border-left: 3px solid #008467; /* Green accent bar */
+            border-left: 3px solid #008467;
             padding-bottom: 0.5rem;
             margin-bottom: 1rem;
         }
@@ -64,36 +86,73 @@
             margin-top: 0.5rem;
             color: #4b5563;
         }
-
-        /* Navigation Link Styling */
         .nav-link {
             padding: 0.5rem 0.75rem;
             border-radius: 0.5rem;
-            font-size: 0.875rem; /* sm text size */
+            font-size: 0.875rem;
             font-weight: 600;
             color: white;
             background-color: #008467;
             transition: background-color 0.2s, transform 0.1s;
             text-decoration: none;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             text-align: center;
         }
         .nav-link:hover {
             background-color: #006b51;
             transform: translateY(-1px);
         }
-        /* Mobile responsiveness for the definition lists */
         @media (max-width: 640px) {
-            .glossary-list dd {
-                margin-left: 0;
-            }
-            .glossary-list dt {
-                font-size: 0.9rem;
-            }
+            .glossary-list dd { margin-left: 0; }
+            .glossary-list dt { font-size: 0.9rem; }
         }
+
+                .dark #theme-toggle {
+        background: #374151 !important;
+        border: 1px solid #4b5563 !important;
+        color: #facc15 !important;
+        }
+        .dark body {
+        background-color: #111827 !important;
+        }
+
+        .dark .glossary-list dd,
+        .dark .glossary-list dt,
+        .dark .glossary-list ul,
+        .dark .glossary-list ul li {
+        background-color: #1f2937 !important;
+        color: #f3f4f6 !important;
+        }
+
+        .dark .search-bar,
+        .dark input[type="search"],
+        .dark input[type="text"] {
+        background-color: #374151 !important;
+        color: #f3f4f6 !important;
+        border-color: #4b5563 !important;
+        }
+
     </style>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'sans-serif'] },
+            colors: {
+              'primary-green': '#008467',
+              'light-gray': '#f9fafb',
+            }
+          }
+        }
+      }
+    </script>
 </head>
+
 <body class="p-4 sm:p-8">
+<button id="theme-toggle" title="Toggle Dark Mode" style="position: fixed; top: 15px; right: 15px; z-index: 9999; background: #fff; border: 1px solid #ddd; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: all 0.3s ease;">
+  <span id="theme-icon">🌙</span>
+</button>
 
     <div class="max-w-6xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-xl border border-gray-100">
 
@@ -136,6 +195,7 @@
                     <tbody>
                         <tr class="hover:bg-gray-50 transition-colors text-center"><td>ATD</td><td>AT</td><td>ALPA Travel Day</td></tr>
                         <tr class="hover:bg-gray-50 transition-colors text-center"><td>AVA</td><td>AV</td><td>Avail to Assign</td></tr>
+                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>BGP</td><td>BG</td><td>Below Guarantee Pay</td></tr>
                         <tr class="hover:bg-gray-50 transition-colors text-center"><td>CBS</td><td>CB</td><td>Reserve Call Back Status....Not Company Business</td></tr>
                         <tr class="hover:bg-gray-50 transition-colors text-center"><td>CL1</td><td>CL</td><td>COLA</td></tr>
                         <tr class="hover:bg-gray-50 transition-colors text-center"><td>COM</td><td>CO</td><td>Company Business</td></tr>
@@ -180,20 +240,21 @@
                         <tr class="hover:bg-gray-50 transition-colors text-center"><td>PP2</td><td>P2</td><td>CHECK AIRMAN</td></tr>
                         <tr class="hover:bg-gray-50 transition-colors text-center"><td>PP3</td><td>P3</td><td>FO Duty Officer Pay</td></tr>
                         <tr class="hover:bg-gray-50 transition-colors text-center"><td>RES</td><td>RS</td><td>Resigned</td></tr>
+                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RSND</td><td>RS</td><td>Resigned</td></tr>
                         <tr class="hover:bg-gray-50 transition-colors text-center"><td>RG1</td><td>RO</td><td>Grnd Schl on day off</td></tr>
                         <tr class="hover:bg-gray-50 transition-colors text-center"><td>RGS</td><td>RT</td><td>Recurrent Ground Sch</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RIA</td><td>IA</td><td>RSA Inbound</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RIB</td><td>IB</td><td>RSB Inbound</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RIC</td><td>IC</td><td>RSC Inbound</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RID</td><td>ID</td><td>RSD Inbound</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RIE</td><td>IE</td><td>RSE Inbound</td></tr>
+                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RIA</td><td>IA</td><td>Reserve A Inbound From Trip</td></tr>
+                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RIB</td><td>IB</td><td>Reserve B Inbound From Trip</td></tr>
+                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RIC</td><td>IC</td><td>Reserve C Inbound From Trip</td></tr>
+                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RID</td><td>ID</td><td>Reserve D Inbound From Trip</td></tr>
+                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RIE</td><td>IE</td><td>Reserve E Inbound From Trip</td></tr>
                         <tr class="hover:bg-gray-50 transition-colors text-center"><td>RNF</td><td>RF</td><td>Reserve No Fly</td></tr>
                         <tr class="hover:bg-gray-50 transition-colors text-center"><td>RPP</td><td>RP</td><td>Remove Pending Paper</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RSA</td><td>R1</td><td>RSA Blockholder</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RSB</td><td>RB</td><td>RSB Blockholder</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RSC</td><td>R2</td><td>RSC Blockholder</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RSD</td><td>R3</td><td>RSD Blockholder</td></tr>
-                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RSE</td><td>RE</td><td>RSE Blockholder</td></tr>
+                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RSA</td><td>R1</td><td>Reserve A 0300-1300: Latest release 1700</td></tr>
+                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RSB</td><td>RB</td><td>Reserve B 0800-1830: Latest release 2200</td></tr>
+                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RSC</td><td>R2</td><td>Reserve C 1200-2230: Latest release 0200</td></tr>
+                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RSD</td><td>R3</td><td>Reserve D 1700-2400: Latest release 0700(except 0900 for CDO’s)</td></tr>
+                        <tr class="hover:bg-gray-50 transition-colors text-center"><td>RSE</td><td>RE</td><td>Reserve E 1900-0200: Latest release 0900(except 1100 for CDO’s)</td></tr>
                         <tr class="hover:bg-gray-50 transition-colors text-center"><td>RSL</td><td>RL</td><td>Reserve Long Call</td></tr>
                         <tr class="hover:bg-gray-50 transition-colors text-center"><td>RVA</td><td>AR</td><td>RVA Open Time</td></tr>
                         <tr class="hover:bg-gray-50 transition-colors text-center"><td>RVB</td><td>BR</td><td>RVB Open Time</td></tr>
@@ -290,7 +351,7 @@
             <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
                 <dl id="definitions-list">
                     <dt><strong>ACCRUED VACATION</strong></dt><dd>means vacation a Pilot accrues in the current year that may be used the next year</dd>
-                    <dt><strong>ACTIVE SERVICE</strong></dt><dd>means the period of time that begins on a Pilot's most recent date of hire as a Pilot and continues until resignation, termination, furlough, or as set forth in Section 13 (Leaves of Absence). A Pilot shall continue to accrue Active Service upon return from Leave of Absence or Furlough in accordance with those Sections. A Pilot shall forfeit all Active Service upon resignation or termination</dd>
+                    <dt><strong>ACTIVE SERVICE</strong></dt><dd>Time from most recent pilot hire date until resignation, termination, furlough, or per Section 13 (Leaves). Accrues during leave/furlough return per those sections; forfeited on resignation or termination.</dd>
                     <dt><strong>ACTUAL BLOCK HOURS</strong></dt><dd>means actual time from Block Out to Block In</dd>
                     <dt><strong>ADD</strong></dt><dd>means a Sequence or Reserve Day or RDP a Pilot voluntarily elects to place on his schedule from Open Time or the Premium Add Folder</dd>
                     <dt><strong>AGGRESSIVE RESERVE</strong></dt><dd>means the process that allows an eligible Reserve Pilot to bid for Sequences on his Reserve Days or RDPs one (1) hour after Daily Open Time closes and prior to Reserve assignment, in accordance with Section 25.T.7</dd>
@@ -305,12 +366,12 @@
                     <dt><strong>CATEGORY</strong></dt><dd>means Seat and equipment (e.g., Airbus 320 Captain)</dd>
                     <dt><strong>CDO LINE</strong></dt><dd>means a line of flying consisting of only CDO Sequences</dd>
                     <dt><strong>CHECK AIRMAN or LINE CHECK PILOT or LCP</strong></dt><dd>means a Pilot who is designated by the Company and approved by the FAA to examine other Pilots to determine Pilot proficiency with respect to Company and FAR procedures and competency to perform Pilot duties</dd>
-                    <dt><strong>CONTINUOUS DUTY OVERNIGHT (CDO)</strong></dt><dd>means a scheduled Duty Period which begins in one Calendar Day and ends in the following Calendar Day which includes an overnight stay out of Domicile that is scheduled for less than FAR required minimum rest</dd>
+                    <dt><strong>CONTINUOUS DUTY OVERNIGHT (CDO)</strong></dt><dd>Scheduled duty period crossing midnight with an overnight away from base, rest less than FAR minimum.</dd>
                     <dt><strong>CORRECT LINE</strong></dt><dd>means the initial line the Pilot should have been awarded had a PBS misaward not occurred</dd>
                     <dt><strong>DAILY DROP LIMIT (DDL)</strong></dt><dd>means the limit on the number of Duty Periods that may be Dropped on a given day. The limit will include all Duty Periods operating that day</dd>
                     <dt><strong>DAY OFF</strong></dt><dd>means a Calendar Day free from all duty with the Company which occurs in a Pilot's Domicile</dd>
                     <dt><strong>DEADHEAD</strong></dt><dd>means transportation at Company direction (not local in character) to or from a duty assignment</dd>
-<dt><strong>DENIAL MODE</strong></dt><dd> A step in PBS used when the system can’t build a schedule that meets all your preferences. It relaxes one “avoid” preference at a time (like avoiding certain trips or days) to make sure you still get a legal schedule within your credit window.</dd>
+                    <dt><strong>DENIAL MODE</strong></dt><dd> A step in PBS used when the system can’t build a schedule that meets all your preferences. It relaxes one “avoid” preference at a time (like avoiding certain trips or days) to make sure you still get a legal schedule within your credit window.</dd>
                     <dt><strong>DISPLACEMENT or DISPLACED</strong></dt><dd>means that a Pilot no longer has sufficient seniority to hold his current Position pursuant to Section 24</dd>
                     <dt><strong>DOMICILE</strong></dt><dd>means a geographic location where Pilots are based and the location from which Sequences are constructed to start and finish</dd>
                     <dt><strong>DROP</strong></dt><dd>means a Sequence, Reserve Day, or RDP, or portion thereof, that a Pilot voluntarily removes from his schedule resulting in a deduction in Pay Credit</dd>
@@ -321,12 +382,12 @@
                     <dt><strong>EXTENDED/EXTENSION</strong></dt><dd>means a Reserve assignment that is not in accordance with Section 25.R.4</dd>
                     <dt><strong>FILL TO THRESHOLD</strong></dt><dd>means a tool in PBS that: is utilized prior to Denial Mode; and continues to award Sequences to each Pilot's line, if possible, until such line is at or above the Threshold.</dd>
                     <dt><strong>FINAL LINE CHECK</strong></dt><dd>means the line check that qualifies the Pilot to be released to the line (either by the Company or FAA)</dd>
-                    <dt><strong>FIRST OFFICER</strong></dt><dd>means a Pilot who is second-in-command of the aircraft whose duty is to assist and relieve the Captain and, in the absence of the Captain, is responsible for the aircraft and crew while on duty. A First Officer shall be properly qualified and designated by the Company, hold currently effective airman's certificates authorizing such Pilot to serve as First Officer and act as second-in-command</dd>
+                    <dt><strong>FIRST OFFICER</strong></dt><dd>Second-in-command pilot assisting/relieving the Captain; responsible for aircraft/crew if Captain absent. Must be qualified, company-designated, with valid certificates.</dd>
                     <dt><strong>FLIGHT TIME</strong></dt><dd>means the total time from Block Out to Block In for scheduling and pay purposes</dd>
                     <dt><strong>FOOTPRINT</strong></dt><dd>means the time between the originally scheduled Sequence Report Time and the originally Scheduled Sequence Release Time</dd>
                     <dt><strong>FORCE PRIORITY STACK DATE ON SLG</strong></dt><dd>means a tool in PBS that ensures a Pilot who is awarded a line during the SLG process is awarded a Sequence that is scheduled to operate on the specified Priority Stack Date</dd>
                     <dt><strong>GOLDEN DAYS</strong></dt><dd>means days chosen by a Pilot on which no training can be assigned</dd>
-                    <dt><strong>GROUND TRAINING</strong></dt><dd>means all training conducted in a classroom or at any place that is not usually associated with flight training. It shall include classroom instruction, and training involving aircraft emergency procedures, flight equipment, hands on equipment, home/distance learning, or a Cockpit Procedure Trainer (CPT)</dd>
+                    <dt><strong>GROUND TRAINING</strong></dt><dd>Classroom or non-flight-training location instruction, including emergency procedures, equipment training, hands-on, home/distance learning, or CPT</dd>
                     <dt><strong>HARD LINE or REGULAR LINE</strong></dt><dd>means a line that includes only Sequences and Days Off and is not a Reserve Line</dd>
                     <dt><strong>HISTORICAL LINE VALUE</strong></dt><dd>means the twelve (12) Monthly Bid Period rolling average of the ALV for a Category</dd>
                     <dt><strong>HOURLY RATE</strong></dt><dd>means the rate of pay applicable to a Pilot in accordance with Section 3.B.1</dd>
@@ -350,13 +411,13 @@
                     <dt><strong>MAX TRIP SUBSTITUTION</strong></dt><dd>means a parameter in PBS that limits multiple combinations of Sequences to be tested on a Pilot's Regular Line that match specific bid preferences in an attempt to construct a Regular Line for the Pilot</dd>
                     <dt><strong>MAXIMUM CREDIT WINDOW</strong></dt><dd>means the range of hours based on ALV plus fourteen (14) hours. The Maximum Credit Window is available to Pilots on a seniority basis to those who used a set condition preference for the Maximum Credit Window</dd>
                     <dt><strong>MAXIMUM STACK HEIGHT</strong></dt><dd>means a parameter in PBS that limits a stack</dd>
-                    <dt><strong>MINIMUM CREDIT WINDOW</strong></dt><dd>means the range of hours based on ALV minus fourteen (14) hours except that the bottom of the Minimum Credit Window will never be set lower than seventy-four and one-half (74.5) hours. The Minimum Credit Window is available to Pilots on a seniority basis to those who used a set condition preference for the Minimum Credit Window</dd>
+                    <dt><strong>MINIMUM CREDIT WINDOW</strong></dt><dd>Average Line Value minus 14 hours (bottom never below 74.5 hours). Available seniority-based to pilots who bid the Minimum Credit Window condition.</dd>
                     <dt><strong>MONTHLY BID PERIOD</strong></dt><dd>means one of twelve Calendar month-based periods of thirty (30) or thirty-one (31) days as described in Section 25.K</dd>
                     <dt><strong>MONTHLY CREDIT OVERRIDE or MCO</strong></dt><dd>means one hundred twenty-five percent (125%) Pay Credit for all credit in excess of eighty-two (82) hours, exclusive of sick and training credits, accrued in a Monthly Bid Period</dd>
                     <dt><strong>MONTHLY PAY GUARANTEE</strong></dt><dd>means the minimum amount of Pay Credit paid per Monthly Bid Period in accordance with Section 4.A</dd>
                     <dt><strong>NEW HIRE PILOT</strong></dt><dd>means a Pilot who has not completed initial training</dd>
-                    <dt><strong>NO-BID PILOT or SPECIAL PROJECT PILOT</strong></dt><dd>means a Pilot (other than a Management Pilot) working on Company business who is not eligible to participate in the monthly schedule bid process in accordance with Section 10.D</dd>
-                    <dt><strong>NORMAL CREDIT WINDOW</strong></dt><dd>means the range of hours based on ALV plus or minus seven (7) hours. A Pilot who does not use a Set Condition preference for the Minimum Credit Window or Maximum Credit Window, or who is not awarded a Line in their desired window, will be awarded within the Normal Credit Window</dd>
+                    <dt><strong>NO BID PILOT or SPECIAL PROJECT PILOT</strong></dt><dd>means a Pilot (other than a Management Pilot) working on Company business who is not eligible to participate in the monthly schedule bid process in accordance with Section 10.D</dd>
+                    <dt><strong>NORMAL CREDIT WINDOW</strong></dt><dd>Average Line Value ±7 hours. Default award range for pilots not bidding Minimum/Maximum Credit Window or not awarded in their preferred window.</dd>
                     <dt><strong>OPEN TIME</strong></dt><dd>means a Sequence, Reserve Day or RDP that has not been assigned or awarded to a Pilot as part of the Monthly Bid process or Sequences that were originally assigned or awarded to a Pilot but have become unassigned due to illness, injury, qualification, leaves of absence, etc</dd>
                     <dt><strong>OPEN VACATION PERIOD</strong></dt><dd>means a block of vacation that is not assigned or awarded to a Pilot</dd>
                     <dt><strong>OPERATING EXPERIENCE</strong></dt><dd>means the operating experience required by FARs and administered by Company Line Check Pilots</dd>
@@ -367,12 +428,12 @@
                     <dt><strong>POSITION</strong></dt><dd>means Domicile, equipment, and Seat (e.g., Denver Airbus 320 Captain)</dd>
                     <dt><strong>POSITIVE SPACE MUST RIDE</strong></dt><dd>means a guaranteed seat for a Pilot from which the Pilot will not be removed by a revenue passenger, in accordance with the provisions of Sections 8 and 11</dd>
                     <dt><strong>POSITIVE TELEPHONE CONTACT</strong></dt><dd>means a telephone conversation between the Pilot and the Company</dd>
-                    <dt><strong>PREMIUM PAY</strong></dt><dd>means the pay applicable to Premium Add Folder Adds, which will be paid at one hundred fifty percent (150%) of the Pay Credit for the Sequence</dd>
+                    <dt><strong>PREMIUM PAY</strong></dt><dd>means the pay applicable to Premium Add Folder Adds, which will be paid at 150% of the Pay Credit for the Sequence</dd>
                     <dt><strong>PRIORITY STACK DATE</strong></dt><dd>means a designated date that is unstacked before PBS unstacks any other date</dd>
                     <dt><strong>PROBATION</strong></dt><dd>means the period of three hundred sixty-five (365) days from the date of hire (or as extended by a leave of absence) as a Pilot or the successful completion of the probationary proficiency check as described in Section 11 whichever comes later (see Section 22.D.2.)</dd>
                     <dt><strong>REASSIGNMENT or REASSIGNED</strong></dt><dd>means a Pilot is directed to operate or Deadhead on a leg or legs that is not a part of the Pilot's originally scheduled Sequence</dd>
                     <dt><strong>RECURRENT TRAINING</strong></dt><dd>means the FAA required training necessary for a Pilot to remain qualified in his current Position</dd>
-                    <dt><strong>RED-EYE</strong></dt><dd>means any Duty Period, other than a CDO, that reports prior to and releases after, or the entire Duty Period occurs between 0100-0300 LDT</dd>
+                    <dt><strong>REDEYE</strong></dt><dd>Any duty period (except CDO) that reports before 0100 LDT and releases after 0300 LDT, or occurs entirely between 0100-0300 LDT.</dd>
                     <dt><strong>REPORT TIME</strong></dt><dd>means the time that a Pilot is scheduled to report at the beginning of a Duty Period</dd>
                     <dt><strong>RESERVE AVAILABILITY PERIOD or RAP</strong></dt><dd>means short call reserve duty in accordance with FAR 117</dd>
                     <dt><strong>RESERVE DAY</strong></dt><dd>means the period of time a Long Call Reserve is obligated to be available to the Company for assignment</dd>
@@ -390,11 +451,11 @@
                     <dt><strong>SEQUENCE PAY CREDIT</strong></dt><dd>means the sum of all the Pay Credit in a Monthly Bid Period by Position, including carry-in Pay Credit from the previous Monthly Bid period, excluding carry-out Pay Credit from the current Monthly Bid Period and excluding all Pay Credit associated with a Known Absence(s)</dd>
                     <dt><strong>SEQUENCE RELEASE TIME</strong></dt><dd>means the time of the end of a Duty Period in Domicile on the last day of a Sequence</dd>
                     <dt><strong>SEQUENCE REPORT TIME</strong></dt><dd>means the time of the start of a Duty Period in Domicile on the first day of a Sequence</dd>
-                    <dt><strong>SHUFFLE</strong></dt><dd>means a tool in PBS that: is utilized after PBS is unable to award a Pilot a Regular Line within his credit window which complies with his higher priority bid preference(s), removes a Sequence(s) which had been awarded in accordance with such bid preference(s) and searches for combinations of Sequence(s) which comply with his lower priority bid preference(s), and is utilized prior to Denial Mode.</dd>
+                    <dt><strong>SHUFFLE</strong></dt><dd>PBS tool used when no Regular Line awards within credit window per higher bid preferences: removes awarded sequences and searches for new combinations matching lower preferences, before Denial Mode.</dd>
                     <dt><strong>SMALL DOMICILE</strong></dt><dd>means a Domicile with seventy five (75) or fewer eligible monthly bidders by Position</dd>
                     <dt><strong>SPLIT</strong></dt><dd>means a Sequence that is divided in a Pilot's Domicile. However, this definition is not applicable to the Company's option to divide a Sequence to assign a Reserve, in accordance with Section 25.0.5.b.iv</dd>
                     <dt><strong>STACK</strong></dt><dd>means the number of Duty Periods that remain in Open Time on a given Day at the end of a bid run</dd>
-                    <dt><strong>SWAP</strong></dt><dd>means an exchange of flying, vacation, (or other activities as allowed by this Agreement) between a Pilot and Open Time (or Open Vacation Periods). All elements of the Swap (i.e. the work being added and the work being removed) must be scheduled to occur within the same Monthly Bid Period, except as provided in the Note below the grid in Section 25.1</dd>
+                    <dt><strong>SWAP</strong></dt><dd>Exchange of flying, vacation, or allowed activities between a pilot and Open Time (or Open Vacation). All elements must occur in the same monthly bid period (except per Section 25.1 note).</dd>
                     <dt><strong>THRESHOLD</strong></dt><dd>means the target number of Pay Credit hours set by ALPA for a given credit window</dd>
                     <dt><strong>TIME AWAY FROM BASE (TAFB)</strong></dt><dd>means the time from Sequence Report Time to the Sequence Release Time</dd>
                     <dt><strong>TRADE</strong></dt><dd>means an exchange of flying, vacation or other activities as allowed by this Agreement between two Pilots</dd>
@@ -458,7 +519,7 @@
       <dt><strong>PAIRING (Sequence or Trip)</strong></dt>
       <dd>A group of flights over one or more days that starts and ends at your base.</dd>
 
-      <dt><strong>PAY-VS-CREDIT</strong></dt>
+      <dt><strong>PAY VS CREDIT</strong></dt>
       <dd>You’re paid whichever is higher — actual flight time or contractual pay protections.</dd>
 
       <dt><strong>PER DIEM</strong></dt>
@@ -588,5 +649,19 @@ function filterContent() {
     class="fixed bottom-6 right-6 bg-[#008467]/70 text-white text-xs px-3 py-2 rounded-full shadow-md hover:bg-[#008467] hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
     ↑ Top
   </button>
+  <script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+
+  if (document.documentElement.classList.contains('dark')) {
+    themeIcon.textContent = '☀️';
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    themeIcon.textContent = isDark ? '☀️' : '🌙';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+</script>
     </body>
 </html>

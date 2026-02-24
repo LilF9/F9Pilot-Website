@@ -1,25 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <!-- Google tag (gtag.js) -->
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-NKD0YM45CW"></script>
-            <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+    <!-- THEME LOADER: First script in head -->
+    <script>
+        (function() {
+            try {
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.style.backgroundColor = '#111827';
+                }
+            } catch (e) {}
+        })();
+    </script>
 
-            gtag('config', 'G-NKD0YM45CW');
-            </script>
+    <!-- Google tag -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NKD0YM45CW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NKD0YM45CW');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Changelog - F9Pilot</title>
     <link rel="icon" href="favicon.png">
+
     <style>
         :root {
             --f9-green: #008467;
             --f9-dark-green: #005f4a;
             --f9-light-green-bg: #e6f2ee;
             --f9-dark-gray: #333;
+            --card-bg: #ffffff;
+            --text-muted: #555;
+            --transition-speed: 0.3s;
+        }
+
+        .dark {
+            --f9-light-green-bg: #111827;
+            --f9-dark-gray: #f3f4f6;
+            --f9-green: #10b981;
+            --f9-dark-green: #34d399;
+            --card-bg: #1f2937;
+            --text-muted: #9ca3af;
         }
 
         body {
@@ -29,15 +55,22 @@
             margin: 0;
             padding: 20px;
             line-height: 1.6;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background-color: #ffffff;
+            background-color: var(--card-bg);
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+            transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .dark .container {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            border: 1px solid #374151;
         }
 
         h1 {
@@ -47,12 +80,11 @@
             font-size: 2.2em;
             margin-bottom: 20px;
         }
-        
+
         .select-all-btn {
             display: block;
             width: 150px;
-            /* Changed this line to add space above the button */
-            margin: 20px auto; 
+            margin: 20px auto;
             padding: 10px 15px;
             background-color: var(--f9-dark-green);
             color: #fff;
@@ -61,14 +93,13 @@
             font-size: 1em;
             font-weight: 600;
             cursor: pointer;
-            text-align: center;
             transition: background-color 0.2s;
         }
-        
+
         .select-all-btn:hover {
             background-color: var(--f9-green);
         }
-        
+
         .changelog-entry {
             border-left: 3px solid var(--f9-green);
             padding-left: 15px;
@@ -83,7 +114,7 @@
             margin-top: 0;
             margin-bottom: 5px;
         }
-        
+
         .changelog-header h2 {
             font-size: 1.3em;
             color: var(--f9-green);
@@ -93,9 +124,9 @@
         .changelog-header:hover h2 {
             color: var(--f9-dark-green);
         }
-        
+
         .changelog-header p.date {
-            color: #666;
+            color: var(--text-muted);
             font-size: 0.9em;
             margin: 0;
         }
@@ -112,12 +143,12 @@
             max-height: 0;
             opacity: 0;
         }
-        
+
         ul {
             list-style-type: disc;
             padding-left: 20px;
         }
-        
+
         li {
             margin-bottom: 8px;
         }
@@ -132,15 +163,16 @@
             color: var(--f9-green);
             text-decoration: underline;
         }
-        
+
         .back-link {
             display: block;
             margin-top: 30px;
             text-align: center;
             font-size: 1em;
             font-weight: 600;
+            color: var(--f9-dark-green);
         }
-        
+
         .arrow {
             display: inline-block;
             width: 0;
@@ -150,19 +182,34 @@
             border-top: 6px solid var(--f9-green);
             transition: transform 0.2s ease-in-out;
         }
-        
+
         .arrow.open {
             transform: rotate(180deg);
         }
+
         .centered-text {
-        text-align: center; /* Centers the text horizontally */
-        font-size: 0.8em; /* Makes the text smaller. Adjust the value as needed (e.g., 80%, 12px) */
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .dark .centered-text {
+            color: var(--text-muted);
         }
         
+        .dark #theme-toggle {
+    background: #374151 !important;
+    border-color: #4b5563 !important;
+    color: #facc15 !important;
+}
     </style>
 </head>
 
 <body>
+    <button id="theme-toggle" title="Toggle Dark Mode" style="position: fixed; top: 15px; right: 15px; z-index: 2000; background: #fff; border: 1px solid #ddd; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: all 0.3s ease;">
+    <span id="theme-icon">🌙</span>
+</button>
     <div class="container">
         <h1>F9Pilot.com - Changelog</h1>
             <div class="centered-text">
@@ -172,6 +219,22 @@
         <a class="back-link" href="index.html">← Back to Main Page</a>
 
         <button id="select-all-btn" class="select-all-btn">Show All</button>
+
+              <div class="changelog-entry">
+            <div class="changelog-header">
+                <h2>Version 1.9 <span class="arrow"></span></h2>
+                <p class="date">February 23, 2026</p>
+            </div>
+            <div class="changelog-details hidden">
+                <ul>
+                    <li>Added dark theme to all pages</li>
+                    <li>Removed A320 Guide app since it requires a subscription</li>
+                    <li>Added FIFO definition & example in New Hire Guide</li>
+                    <li>ELP & ELP CrewPay app are now merged into ELP Crew Portal</li>
+                    <li>Added Pay Calculator in Confidential Information section</li>
+                </ul>
+            </div>
+        </div>
 
               <div class="changelog-entry">
             <div class="changelog-header">
@@ -318,5 +381,19 @@
 
         document.addEventListener('DOMContentLoaded', initCollapsible);
     </script>
+    <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    if (document.documentElement.classList.contains('dark')) {
+        themeIcon.textContent = '☀️';
+    }
+
+    themeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        themeIcon.textContent = isDark ? '☀️' : '🌙';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+</script>
 </body>
 </html>

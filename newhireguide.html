@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <!-- Google tag (gtag.js) -->
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-NKD0YM45CW"></script>
-            <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+    <!-- THEME LOADER -->
+    <script>
+        (function() {
+            try {
+                const saved = localStorage.getItem('theme');
+                if (saved === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.style.backgroundColor = '#111827';
+                }
+            } catch (e) {}
+        })();
+    </script>
 
-            gtag('config', 'G-NKD0YM45CW');
-            </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NKD0YM45CW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NKD0YM45CW');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frontier Pilots Getting Started Guide</title>
@@ -17,27 +29,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
         }
-        .section-divider {
-            border-top: 2px dashed #9ca3af;
+        .dark body {
+            background-color: #111827;
+            color: #f3f4f6;
         }
-        .dark-green-text {
-            color: #000000;
-            font-weight: bold;
+        .dark .dark-green-text { color: #34d399 !important; }
+        .dark .dark-f9green-text { color: #10b981 !important; }
+        .dark .section-divider { border-top-color: #4b5563 !important; }
+        .dark .tooltip { border-bottom-color: #9ca3af !important; }
+        .dark .tooltip:hover::after {
+            background: #1f2937;
+            color: #f3f4f6;
         }
-        .dark-f9green-text {
-            color: #008467;
-            font-weight: bold;
-        }
-                .tooltip {
-            border-bottom: 1px dotted #000000; /* dotted underline to hint hover */
-            cursor: help;                     /* pointer changes to a help cursor */
+        .tooltip {
+            border-bottom: 1px dotted #000000;
+            cursor: help;
             position: relative;
         }
-
         .tooltip:hover::after {
             content: attr(data-tooltip);
             position: absolute;
@@ -48,22 +62,64 @@
             font-size: 0.8rem;
             white-space: normal;
             width: 220px;
-            bottom: 125%;                      /* show above text */
+            bottom: 125%;
             left: 50%;
             transform: translateX(-50%);
             opacity: 1;
             pointer-events: none;
             z-index: 1000;
         }
-
         .tooltip::after {
             content: '';
             opacity: 0;
             transition: opacity 0.2s ease-in-out;
         }
+                .dark #theme-toggle {
+        background: #374151 !important;
+        border: 1px solid #4b5563 !important;
+        color: #facc15 !important;
+            }
+            .dark body {
+            background-color: #111827 !important;
+            }
+
+            .dark .bg-white,
+            .dark .container,
+            .dark .bg-gray-100,
+            .dark section,
+            .dark div[class*="bg-"] {
+            background-color: #1f2937 !important;
+            color: #f3f4f6 !important;
+            }
+            .dark {
+            --text-primary: #f3f4f6;
+            --text-secondary: #d1d5db;
+            }
+
+            .dark body,
+            .dark p,
+            .dark li,
+            .dark h1,
+            .dark h2,
+            .dark h3,
+            .dark span,
+            .dark div {
+            color: var(--text-primary) !important;
+            }
+
+            .dark .text-gray-600,
+            .dark .text-gray-700,
+            .dark .text-gray-500,
+            .dark .text-gray-800 {
+            color: var(--text-secondary) !important;
+            }
     </style>
 </head>
+
 <body class="bg-gray-100 p-4 sm:p-8 text-gray-900">
+<button id="theme-toggle" title="Toggle Dark Mode" style="position: fixed; top: 15px; right: 15px; z-index: 9999; background: #fff; border: 1px solid #ddd; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: all 0.3s ease;">
+  <span id="theme-icon">🌙</span>
+</button>
 
     <div class="container mx-auto bg-white p-6 md:p-10 rounded-xl shadow-lg">
         
@@ -111,11 +167,9 @@
                 <div>
                     <h4 class="text-lg font-semibold">Compensation & Pay (CBA Sections 3, 26, 4) 💰</h4>
                     <ul class="list-disc list-inside space-y-2 text-sm text-gray-800">
-                        <li>
-                        <strong class="dark-green-text">Monthly Guarantee:</strong> 
+                        <li><strong class="dark-green-text">Monthly Guarantee:</strong> 
                         Both <strong class="dark-green-text">Line Holders</strong> and <strong class="dark-green-text">Reserve</strong> pilots are guaranteed <strong class="dark-green-text">75 hrs/month</strong> or their actual credit, whichever is higher. 
-                        Extra pay comes from >8-hr legs, day-off flying, or picking up extra trips.
-                        </li>
+                        Extra pay comes from >8-hr legs, day-off flying, or picking up extra trips.</li>
                         <li><strong class="dark-green-text">Overtime Pay:</strong> All Pay Credit over 82 hours a month is paid at 125%.</li>
                         <li><strong class="dark-green-text">Pay Rigs:</strong> The CBA includes "Trip Rig" (pay for time away from base) and "Duty Rig" (minimum pay for certain trips) to ensure fair compensation.</li>
                     </ul>
@@ -142,27 +196,34 @@
                     <h5 class="font-bold text-sm mt-4">Reserve Duty Period Times (Local Domicile Time):</h5>
                     <ul class="list-disc list-inside text-sm text-gray-800 mt-2">
                         <li><span class="dark-green-text">RSV A:</span> 0300 - 1330. Latest release is 1700.</li>
-                        <li>RSV B: 0800 - 1830. Latest release is 2200.</li>
+                        <li><span class="dark-green-text">RSV B:</span> 0800 - 1830. Latest release is 2200.</li>
                         <li><span class="dark-green-text">RSV C:</span> 1200 - 2230. Latest release is 0200.</li>
-                        <li>
-                            <span class="dark-green-text">RSV D:</span> 1700 - 2400. Latest release is 0700 
-                            (except 0900 for 
-                            <span class="tooltip" data-tooltip="Continuous Duty Overnight — Overnight duty with less rest than normal.">
-                            CDO
-                            </span>’s).
-                        </li>
-                        <li>
-                            RSV E:</span> 1900 - 0200. Latest release is 0900 
-                            (except 1100 for 
-                            <span class="tooltip" data-tooltip="Continuous Duty Overnight — Overnight duty with less rest than normal.">
-                            CDO
-                            </span>’s).
-                        </li>    
+                        <li><span class="dark-green-text">RSV D:</span> 1700 - 2400. Latest release is 0700 (except 0900 for 
+                            <span class="tooltip" data-tooltip="Continuous Duty Overnight — Overnight duty with less rest than normal.">CDO</span>’s).</li>
+                        <li><span class="dark-green-text">RSV E:</span> 1900 - 0200. Latest release is 0900 (except 1100 for
+                            <span class="tooltip" data-tooltip="Continuous Duty Overnight — Overnight duty with less rest than normal.">CDO</span>’s).</li>    
                 </ul>
                     <p class="text-sm text-gray-800 leading-relaxed mt-4">
                         Only the <strong class="dark-green-text">A</strong>, <strong class="dark-green-text">C</strong>, and <strong class="dark-green-text">D</strong> RDPs are biddable. The <strong class="dark-green-text">B</strong> and <strong class="dark-green-text">E</strong> RDPs are assigned by Crew Scheduling.
                     </p>
                     </ul>
+
+                    <h4 class="text-lg font-semibold mt-6">FIFO (First In/First Out) on Reserve</h4>
+                    <p class="text-sm text-gray-800 leading-relaxed">
+                    FIFO is the tie-breaker used to assign trips within a "bucket" of pilots with the same days of availability. It is based on who was released from their last flying assignment first.
+                    </p>
+
+                    <h5 class="font-semibold mt-4 text-sm">Example Scenario:</h5>
+                    <ul class="list-disc ml-6 text-sm text-gray-800">
+                    <li><strong>Day 1:</strong> You and two others have 4 days of RSC. You are #1 in FIFO and fly a 1-day turn.</li>
+                    <li><strong>Day 2:</strong> All three now have 3 days left. However, since you just flew, you move to the <strong>bottom</strong> of the list (#3). The pilots who didn't fly yesterday move up to #1 and #2.</li>
+                    </ul>
+
+                    <h5 class="font-semibold mt-4 text-sm text-red-700">Watch the Sequence:</h5>
+                    <p class="text-sm text-gray-800 leading-relaxed">
+                    Assignments out of order happen about 10% of the time. If Scheduling gives you a trip but you believe someone else was ahead of you in FIFO, call and challenge them. Ask why the trip was given to you over another legal pilot. Don't be afraid to speak up. Mistakes happen more than you think, and it’s your right to verify the contract is being followed.
+                    </p>
+
 
                     <h4 class="text-lg font-semibold mt-6">FDO - Fixed Day Off Reserve Lines</h4>
                     <p class="text-sm text-gray-800 leading-relaxed">
@@ -300,11 +361,11 @@
 <section class="mb-8">
       <h3 class="text-xl font-semibold border-b-2 border-[#008467] pb-2 mb-4">Helpful Tips 💡</h3>
       <ul class="list-disc list-inside space-y-4 text-sm text-gray-800">
-        <li><strong class="dark-green-text">Use Your Union Rep:</strong> Your reps are here to help. Don’t hesitate to send a DART or text your ALPA mentor—others on the committee can respond if one is busy.</li>
+        <li><strong class="dark-green-text">Use Your Union Rep:</strong> Your reps are here to help. Don’t hesitate to send a DART or text your ALPA mentor others on the committee can respond if one is busy.</li>
         <li><strong class="dark-green-text">Stay Updated with Your MEC:</strong> FFT MEC uses TextCaster for urgent updates, bid reminders, and news. <a href="https://fft.alpa.org/Resources/TextCaster-SignUp" class="text-[#008467] underline" target="_blank">Sign up for TextCaster</a> if you haven’t already.</li>
         <li><strong class="dark-green-text">Scheduling Mistakes:</strong> Challenge crew scheduling if you see an error. Text your ALPA mentor or submit a <strong class="dark-green-text">DART</strong>.</li>
         <li><strong class="dark-green-text">Your Right to a Two-Hour Call-In:</strong> On reserve, you have the right to the full two hours. Let Crew Scheduling know if you need the full time to get to the airport.</li>
-        <li><strong class="dark-green-text">Filing a Grievance:</strong> If the company breaks a contract rule, file a grievance. First-timers should submit a DART to the Grievance Committee for guidance.</li>
+        <li><strong class="dark-green-text">Filing a Grievance:</strong> If the company breaks a contract rule, file a grievance. First timers should submit a DART to the Grievance Committee for guidance.</li>
         <li><strong class="dark-green-text">Speak Up on Probation:</strong> Even during probation, report safety or contractual issues to your union. The system works when pilots advocate for a safe workplace.</li>
         <li><strong class="dark-green-text">Stay Informed:</strong> Review relevant CBA sections, like <strong class="dark-green-text">Section 25.R (Reserve)</strong>, to understand your rules and rights.</li>
         <li><strong class="dark-green-text">Understanding Codes & Lingo:</strong> Not sure what a code or term means? The <a href="flica-codes.html" class="text-[#008467] underline" target="_blank">Paycodes and Definitions section</a> makes it easy to search and learn quickly.</li>
@@ -329,8 +390,7 @@
                 Get familiar with these systems for daily operations:
             </p>
             <ul class="list-disc list-inside space-y-2 text-sm text-gray-800">
-                <li><strong class="font-bold">ELP:</strong> View your schedule, flight assignments, and accept pairing changes via the <a href="https://www.crewportal.elpportal.com/login" class="text-[#008467] underline" target="_blank">ELP Crew Portal</a>. Available on iOS & Android.</li>
-                <li><strong class="font-bold">ELP CrewPay:</strong> Check pay reports and sick time via the <a href="https://www.frontier-crewpay.elpportal.com/login" class="text-[#008467] underline" target="_blank">CrewPay portal</a>.</li>
+                <li><strong class="font-bold">ELP / CrewPay:</strong> View schedule, assignments, accept changes, pay reports, and sick time — all in one app/portal. Access via <a href="https://www.crewportal.elpportal.com/login" class="text-[#008467] underline" target="_blank">ELP Crew Portal</a> (download app from site for iOS/Android).</li>
                 <li><strong class="font-bold">Navblue:</strong> Used for monthly bidding and schedule management. See the <a href="https://fft.alpa.org/Portals/94/Documents/committees/pbs-resources/frontier-alpa-pbs-guide-2023.pdf" class="text-[#008467] underline" target="_blank">PBS Bidding Guide</a>, <a href="https://fft.alpa.org/Committees/PBS-Resources/Video-Training" class="text-[#008467] underline" target="_blank">training videos</a>, or the <em>Five by Five</em> podcast <a href="https://fftalpa.podbean.com/e/set-condition-unstacking-your-pbs-bid/" class="text-[#008467] underline" target="_blank">“Set Condition | Unstacking Your PBS Bid”</a>. Submit a DART to Scheduling for help.</li>
                 <li><strong class="font-bold">FLICA:</strong> Trade, drop, or pick up open flights, bid for premium trips, FDO, Pilot Domicile Trades, and vacation.</li>
             </ul>
@@ -351,6 +411,20 @@
                     ← Back to Main Page
                 </a>
     </div>
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+
+  if (document.documentElement.classList.contains('dark')) {
+    themeIcon.textContent = '☀️';
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    themeIcon.textContent = isDark ? '☀️' : '🌙';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+</script>
 
 </body>
 </html>

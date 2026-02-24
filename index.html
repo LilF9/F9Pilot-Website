@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NKD0YM45CW"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-NKD0YM45CW');
-    </script>
-    
     <!-- THEME LOADER: This MUST be the first thing in the <head> of every page -->
     <script>
         // Use an IIFE to execute immediately and prevent theme flickering
@@ -24,6 +15,15 @@
                 console.log("Local storage blocked or unavailable");
             }
         })();
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NKD0YM45CW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NKD0YM45CW');
     </script>
 
     <meta charset="UTF-8">
@@ -445,10 +445,6 @@
                     <img src="finaces.png" alt="Pilot Finance Guide">
                     <span>Finance Guide</span>
                 </a>
-                <a class="grid-item" href="http://www.a320guide.com/" target="_blank">
-                    <img src="a320.png" alt="A320 Free Guide">
-                    <span>A320 Guide</span>
-                </a>
                 <a class="grid-item" href="https://radio.arinc.net/atlantic/" target="_blank">
                     <img src="arincphoto.png" alt="Arinc HF Assignments">
                     <span>ARINC HF</span>
@@ -475,13 +471,9 @@
                     <img src="401k.png" alt="Schwab 401k">
                     <span>Schwab 401k</span>
                 </a>
-                <a class="grid-item" href="https://www.frontier-crewpay.elpportal.com/login" target="_blank">
-                    <img src="frontierpayreport.png" alt="Frontier Pay Report">
-                    <span>Pay Report</span>
-                </a>
                 <a class="grid-item" href="https://www.crewportal.elpportal.com/login" target="_blank">
                     <img src="elp.png" alt="ELP">
-                    <span>ELP Portal</span>
+                    <span>ELP & Pay Reports</span>
                 </a>
             </div>
         </div>
@@ -531,7 +523,7 @@
         </div>
         
         <footer>
-            <p><a href="disclaimer.html">Disclaimer</a> | <a href="suggestions.html">Feedback or Suggestions</a> | <a href="changelogs.html">v1.8</a></p>
+            <p><a href="disclaimer.html">Disclaimer</a> | <a href="suggestions.html">Feedback or Suggestions</a> | <a href="changelogs.html">v1.9</a></p>
             <p>&copy; <span id="current-year"></span> F9Pilot.com</p>
         </footer>
     </div>
